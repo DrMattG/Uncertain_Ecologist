@@ -7,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 15 Oct 2017 00:00:00 +0200</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>An imperfect vision of indivisibility in the Sustainable Development Goals</title>
       <link>/publication/an-imperfect-vision-of-indivisibility-in-the-sustainable-development-goals/</link>
-      <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 17 Dec 2018 00:00:00 +0100</pubDate>
       
       <guid>/publication/an-imperfect-vision-of-indivisibility-in-the-sustainable-development-goals/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
@@ -23,7 +23,7 @@
     <item>
       <title>Example Page</title>
       <link>/tutorial/example/</link>
-      <pubDate>Sun, 09 Sep 2018 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0200</pubDate>
       
       <guid>/tutorial/example/</guid>
       <description>
@@ -43,7 +43,7 @@
     <item>
       <title>Using the Value of Information to improve conservation decision making</title>
       <link>/publication/using-the-value-of-information-to-improve-conservation-decision-making/</link>
-      <pubDate>Sun, 02 Sep 2018 00:00:00 +0100</pubDate>
+      <pubDate>Sun, 02 Sep 2018 00:00:00 +0200</pubDate>
       
       <guid>/publication/using-the-value-of-information-to-improve-conservation-decision-making/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
@@ -53,7 +53,7 @@
     <item>
       <title>Privacy Policy</title>
       <link>/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0200</pubDate>
       
       <guid>/privacy/</guid>
       <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
@@ -63,7 +63,7 @@
     <item>
       <title>Informing decisions on an extremely data poor species facing imminent extinction</title>
       <link>/publication/informing-decisions-on-an-extremely-data-poor-species-facing-imminent-extinction/</link>
-      <pubDate>Fri, 18 Aug 2017 00:00:00 +0100</pubDate>
+      <pubDate>Fri, 18 Aug 2017 00:00:00 +0200</pubDate>
       
       <guid>/publication/informing-decisions-on-an-extremely-data-poor-species-facing-imminent-extinction/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
@@ -73,7 +73,7 @@
     <item>
       <title>Example Talk</title>
       <link>/talk/example/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
       
       <guid>/talk/example/</guid>
       <description>&lt;div class=&#34;alert alert-note&#34;&gt;
@@ -97,7 +97,7 @@
     <item>
       <title>External Project</title>
       <link>/project/external-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0100</pubDate>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0200</pubDate>
       
       <guid>/project/external-project/</guid>
       <description></description>
@@ -106,7 +106,7 @@
     <item>
       <title>Internal Project</title>
       <link>/project/internal-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0100</pubDate>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0200</pubDate>
       
       <guid>/project/internal-project/</guid>
       <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
@@ -124,7 +124,7 @@
     <item>
       <title>Academic: the website designer for Hugo</title>
       <link>/post/getting-started/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 +0100</pubDate>
+      <pubDate>Wed, 20 Apr 2016 00:00:00 +0200</pubDate>
       
       <guid>/post/getting-started/</guid>
       <description>

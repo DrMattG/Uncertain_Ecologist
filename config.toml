@@ -52,11 +52,11 @@ enableGitInfo = false
 
   # Your details.
   name = "Matt Grainger"
-  role = "Research Associate"
+  role = "Post-Doctorial Fellow"
 
   # Organizations/Affiliations.
   #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-  organizations = [ { name = "Newcastle University", url = "https://www.ncl.ac.uk/nes/" } ]
+  organizations = [ { name = "Norwegian Institute for Nature Research (NINA)", url = "https://www.nina.no/" } ]
 
   gravatar = false  # Get your avatar from Gravatar.com? (true/false)
   avatar = "IMG_0429.jpg"  # Specify an avatar image (in `static/img/` folder) or delete value to disable avatar.
@@ -112,7 +112,7 @@ enableGitInfo = false
   sharing_image = ""
 
   # Twitter username (without @). Used when a vistor shares your site on Twitter.
-  twitter = ""
+  twitter = "@Ed_pheasant"
 
   # Diplay a logo in navigation bar rather than title (optional).
   #   To enable, place an image in `static/img/` and reference its filename below. To disable, set the value to "".
