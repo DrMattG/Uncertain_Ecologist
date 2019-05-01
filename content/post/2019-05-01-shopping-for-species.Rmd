@@ -1,0 +1,147 @@
+---
+title: Shopping for species
+author: Matt
+date: '2019-05-01'
+slug: shopping-for-species
+categories: []
+tags:
+  - Species
+  - Association rules
+  - Monitoring
+image:
+  caption: ''
+  focal_point: ''
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Can we use association rules to identify co-occurring species?
+Machine learning has been occupying my thoughts recently as I am reading the book Machine Learning with R by Brett Lantz (https://www.amazon.com/dp/1782162143?tag=inspiredalgor-20). I am interested in making the algorithms described in the book useful for my work in applied conservation science. 
+
+Unsurprisingly a lot of effort in machine-learning has been focused on increasing sales. One area where this has shown rapid growth is in grocery shops where loyalty cards have allowed data to be collected on our transactions. Using algorithms such as "Apriori"  developed by Agrawal & Srikant in 1994, grocery shops can develop association rules which predict which products are most likely to be sold in combination. If you go to the shop and buy burgers then the chances are quite high that you will also buy burger buns to go with them. These rules allow the shops, for example, to provide offers on some products or to place certain products together on the shelves and thus encourage us to buy them more often.
+
+Transactions are lists of products that a person has purchased. As ecologists and conservation scientists we often deal with lists of species (products) that we have observed at different sites (purchased). Can we use these association rules algorithms to identify species that are typically co-occurring? So, if we are shopping for a rare species, can we use the association rules from large datasets to predict how likely we are to find it co-occurring with other more common species. 
+
+Using the Arules R package we can mine association rules from transactions data (see this blog for an example: http://r-statistics.co/Association-Mining-With-R.html). We need some data with a lot of species from many sites to be useful for this exploration. The Natura2000 species lists contains data on over 27,000 sites in both terrestrial and marine environments. Species lists for each site are updated yearly by each European Member State. The main focus is on bird species (76% of species records are of birds), but also includes some mammals, amphibians, fish, invertebrates and plants. Clearly, this data is used here as purely an example and one should not interpret that outcomes in any ecologically meaningful way. However, ecological data are often similar in structure to these Natura2000 data. 
+
+To get the data go to https://www.eea.europa.eu/data-and-maps/data/natura-10 and download the csv file of the species data
+
+```{r data, echo=TRUE, warning=FALSE, message=FALSE}
+library(arules) # allows us to mine association rules
+library(arulesViz) # this is a companion package to allow more fancy visualisations from the outputs of arules
+library(tidyverse) # for data manipulation
+library(knitr) # for html tables
+library(kableExtra)
+# load the data
+dat<-read.csv(choose.files(), header=TRUE, sep= ";") # this allows you to navigate to the correct folder on your own computer
+# We only need the sitecode and species name columns from the data set to allow us to create "transaction" data
+dat %>% 
+  select(SITECODE, SPECIESNAME)->dat
+dat<-as.data.frame(dat) 
+dat<-dat[order(dat$SITECODE),]
+dat<-plyr::dlply(dat,"SITECODE",c) # here we are creating a list of species for each sitecode
+dat<-lapply(dat, '[[', "SPECIESNAME") # and here we are stripping out only the species list from the full list of lists above
+T<-dat[-1] %>%
+  head(5)
+
+T %>% 
+  kable() %>%
+  kable_styling()
+
+```
+
+For each site there is a list of species recorded in them. We can then use the Apriori algorithm to determine association using the apriori function in the arules package. 
+
+```{r get rules, echo=TRUE, warning=FALSE, message=FALSE}
+tData <- as (dat, "transactions") # we need to convert our data to a format that arules can make use of 
+rules <- apriori (tData, parameter = list(supp = 0.03, conf = 0.8)) # run the algorithm 
+kable(inspect(head(rules, 3))) %>% 
+  kable_styling()
+```
+
+The output of the algorithm needs a little explanation. The species are listed as being on the Left-hand side (lhs) or right-hand side (rhs), so for the first rule is that Tetrao urogallus is more frequently listed with Dryocopus martius. The strength of that rule is measured in three ways. First is "support" which is calculated as the number of species lists that contains both those species divided by the total number of species lists. Confidence is the number of species lists with both species divided by the total number of species lists containing species A (in this case Tetrao urogallus). Lift is measured as the confidence divided by the expected confidence which is the number of species lists with species B (in this case Dryocopus martius) divided by the total species list. The higher the lift the more probable that the two species will occur together. The lift measure is not directional so that the rule A->B is equivalent to B->A.
+
+So lets have a look at some of the rules and highlight the most supported
+
+```{r plot rules, warning=FALSE, message=FALSE}
+plot(rules)
+```
+
+```{r get top ranked rules for confidence, warning=FALSE, message=FALSE}
+rules_conf <- sort (rules, by="confidence", decreasing=TRUE) # 'high-confidence' rules.
+kable(inspect(head(rules_conf))) %>% 
+  kable_styling() 
+
+```
+
+```{r get top ranked rules for lift,warning=FALSE, message=FALSE}
+rules_lift <- sort (rules, by="lift", decreasing=TRUE)
+kable(inspect(head(rules_lift))) %>% 
+  kable_styling() 
+```
+
+##So, what do these measures of strength mean?
+A rule with a confidence of 1 implies that whenever we record the species on the left-hand side we also record the species on the right-hand side 100 % of the time. So for our top ranked rule for confidence when we record Botaurus stellaris, Philomachus pugnax and  Tringa glareola we also record Circus aeruginosus 97% of the time. 
+
+A rule with a lift of 20 implies that, the species on the left-hand side and right-hand side are 20 times more likely to be recorded together compared to the assumption of unrelatedness.
+
+Support is a measure of the probability that species on the left-hand side are recorded with together with those on the right-hand side in the dataset analysed. 
+
+## Buying rare species
+The apriori algorithm can be used to get rules for specific items. If you set the list to include only your focal species on the right-hand side you will get rules for species that it is listed with. So in our example below Turtle dove is associated with the Cyprian coal tit in 100% of the lists where the coal tit is recorded. 
+
+```{r, hen harrier, message=FALSE, warning=FALSE}
+rules2 <- apriori (data=tData, parameter=list (supp=0.001,conf = 0.08), appearance = list (default="lhs",rhs="Streptopelia turtur"), control = list (verbose=F)) # get rules that lead to buying 'Streptopelia turtur'
+rules_conf2 <- sort (rules2, by="confidence", decreasing=TRUE)
+kable(inspect(head(rules_conf2))) %>% 
+  kable_styling() 
+```
+
+
+```{r,warning=FALSE, message=FALSE}
+rules3 <- apriori (data=tData, parameter=list (supp=0.001,conf = 0.15,minlen=2), appearance = list(default="rhs",lhs="Streptopelia turtur"), control = list (verbose=F)) # those who bought 'Streptopelia turtur' also bought..
+rules_conf3 <- sort (rules3, by="confidence", decreasing=TRUE) # 'high-confidence' rules.
+kable(inspect(head(rules_conf3))) %>% 
+  kable_styling()
+```
+
+We can look at the opposite relationship by limiting the left-hand side to our focal species. Here we can see that when we record turtle dove there is a 66 % probability of recording a red-backed shrike. 
+
+##Future work
+We need to test this with real datasets. Can we use the association rules to give meaningful insights in to co-occurrence  or at least meaningful shortcuts to survey of rare species using their associations with more common ones. 
+
+If anyone has datasets that they wish to share please feel free to get in contact. 
+
+
+#References
+
+Agrawal, R., Srikant, R. 1994. Fast algorithms for mining association rules. Proceedings of the 20th International Conference on Very Large Data Bases, VLDB, pages 487-499, Santiago, Chile.
+
+
+##Package citations
+```{r,warning=FALSE, message=FALSE}
+print(citation("arules")[2], bibtex=TRUE)
+```
+
+```{r}
+print(citation("arulesViz"), bibtex=TRUE)
+
+
+```
+
+```{r}
+print(citation("tidyverse"), bibtex=TRUE)
+
+```
+
+```{r}
+print(citation("knitr")[2], bibtex=TRUE)
+
+```
+
+```{r}
+print(citation("kableExtra"), bibtex=TRUE)
+```
+

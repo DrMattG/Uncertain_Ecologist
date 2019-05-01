@@ -7,31 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Wed, 01 May 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Academic: the website designer for Hugo</title>
-      <link>/post/getting-started/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 +0200</pubDate>
+      <title>Shopping for species</title>
+      <link>/post/shopping-for-species/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/post/getting-started/</guid>
-      <description>Academic makes it easy to create a beautiful website for free using Markdown. Customize anything on your site with widgets, themes, and language packs.
-Follow our easy step by step guide to learn how to build your own free website with Academic. Check out the personal demo or the business demo of what you&amp;rsquo;ll get in less than 10 minutes.
- View the documentation Ask a question Request a feature or report a bug Updating?</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
+      <guid>/post/shopping-for-species/</guid>
+      <description>Can we use association rules to identify co-occurring species?Machine learning has been occupying my thoughts recently as I am reading the book Machine Learning with R by Brett Lantz (https://www.amazon.com/dp/1782162143?tag=inspiredalgor-20). I am interested in making the algorithms described in the book useful for my work in applied conservation science.
+Unsurprisingly a lot of effort in machine-learning has been focused on increasing sales. One area where this has shown rapid growth is in grocery shops where loyalty cards have allowed data to be collected on our transactions.</description>
     </item>
     
   </channel>

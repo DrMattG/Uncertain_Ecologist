@@ -11,6 +11,829 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Shopping for species</title>
+      <link>/post/shopping-for-species/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/shopping-for-species/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/kePrint/kePrint.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;can-we-use-association-rules-to-identify-co-occurring-species&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Can we use association rules to identify co-occurring species?&lt;/h2&gt;
+&lt;p&gt;Machine learning has been occupying my thoughts recently as I am reading the book Machine Learning with R by Brett Lantz (&lt;a href=&#34;https://www.amazon.com/dp/1782162143?tag=inspiredalgor-20&#34; class=&#34;uri&#34;&gt;https://www.amazon.com/dp/1782162143?tag=inspiredalgor-20&lt;/a&gt;). I am interested in making the algorithms described in the book useful for my work in applied conservation science.&lt;/p&gt;
+&lt;p&gt;Unsurprisingly a lot of effort in machine-learning has been focused on increasing sales. One area where this has shown rapid growth is in grocery shops where loyalty cards have allowed data to be collected on our transactions. Using algorithms such as “Apriori” developed by Agrawal &amp;amp; Srikant in 1994, grocery shops can develop association rules which predict which products are most likely to be sold in combination. If you go to the shop and buy burgers then the chances are quite high that you will also buy burger buns to go with them. These rules allow the shops, for example, to provide offers on some products or to place certain products together on the shelves and thus encourage us to buy them more often.&lt;/p&gt;
+&lt;p&gt;Transactions are lists of products that a person has purchased. As ecologists and conservation scientists we often deal with lists of species (products) that we have observed at different sites (purchased). Can we use these association rules algorithms to identify species that are typically co-occurring? So, if we are shopping for a rare species, can we use the association rules from large datasets to predict how likely we are to find it co-occurring with other more common species.&lt;/p&gt;
+&lt;p&gt;Using the Arules R package we can mine association rules from transactions data (see this blog for an example: &lt;a href=&#34;http://r-statistics.co/Association-Mining-With-R.html&#34; class=&#34;uri&#34;&gt;http://r-statistics.co/Association-Mining-With-R.html&lt;/a&gt;). We need some data with a lot of species from many sites to be useful for this exploration. The Natura2000 species lists contains data on over 27,000 sites in both terrestrial and marine environments. Species lists for each site are updated yearly by each European Member State. The main focus is on bird species (76% of species records are of birds), but also includes some mammals, amphibians, fish, invertebrates and plants. Clearly, this data is used here as purely an example and one should not interpret that outcomes in any ecologically meaningful way. However, ecological data are often similar in structure to these Natura2000 data.&lt;/p&gt;
+&lt;p&gt;To get the data go to &lt;a href=&#34;https://www.eea.europa.eu/data-and-maps/data/natura-10&#34; class=&#34;uri&#34;&gt;https://www.eea.europa.eu/data-and-maps/data/natura-10&lt;/a&gt; and download the csv file of the species data&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(arules) # allows us to mine association rules
+library(arulesViz) # this is a companion package to allow more fancy visualisations from the outputs of arules
+library(tidyverse) # for data manipulation
+library(knitr) # for html tables
+library(kableExtra)
+# load the data
+dat&amp;lt;-read.csv(choose.files(), header=TRUE, sep= &amp;quot;;&amp;quot;) # this allows you to navigate to the correct folder on your own computer
+# We only need the sitecode and species name columns from the data set to allow us to create &amp;quot;transaction&amp;quot; data
+dat %&amp;gt;% 
+  select(SITECODE, SPECIESNAME)-&amp;gt;dat
+dat&amp;lt;-as.data.frame(dat) 
+dat&amp;lt;-dat[order(dat$SITECODE),]
+dat&amp;lt;-plyr::dlply(dat,&amp;quot;SITECODE&amp;quot;,c) # here we are creating a list of species for each sitecode
+dat&amp;lt;-lapply(dat, &amp;#39;[[&amp;#39;, &amp;quot;SPECIESNAME&amp;quot;) # and here we are stripping out only the species list from the full list of lists above
+T&amp;lt;-dat[-1] %&amp;gt;%
+  head(5)
+
+T %&amp;gt;% 
+  kable() %&amp;gt;%
+  kable_styling()&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;kable_wrapper table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+x
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Anthus campestris
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Artemisia pancicii
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Lanius collurio
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Pulsatilla grandis
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sylvia nisoria
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+x
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Anthus campestris
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Aquila heliaca
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Barbastella barbastellus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Buteo lagopus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Circus cyaneus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Dendrocopos medius
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Dryocopus martius
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Falco vespertinus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Lanius collurio
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Lanius excubitor
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sylvia nisoria
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+x
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Lanius collurio
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spermophilus citellus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sylvia nisoria
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+x
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Castor fiber
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Ciconia nigra
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Circus aeruginosus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Circus cyaneus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Coenagrion ornatum
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Lanius collurio
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Rhodeus amarus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Saxicola rubetra
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Unio crassus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Vanellus vanellus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+x
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Bombina bombina
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Cirsium brachycephalum
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Lanius collurio
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Pulsatilla grandis
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Spermophilus citellus
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+Sylvia nisoria
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;For each site there is a list of species recorded in them. We can then use the Apriori algorithm to determine association using the apriori function in the arules package.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tData &amp;lt;- as (dat, &amp;quot;transactions&amp;quot;) # we need to convert our data to a format that arules can make use of 
+rules &amp;lt;- apriori (tData, parameter = list(supp = 0.03, conf = 0.8)) # run the algorithm &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Apriori
+## 
+## Parameter specification:
+##  confidence minval smax arem  aval originalSupport maxtime support minlen
+##         0.8    0.1    1 none FALSE            TRUE       5    0.03      1
+##  maxlen target   ext
+##      10  rules FALSE
+## 
+## Algorithmic control:
+##  filter tree heap memopt load sort verbose
+##     0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+## 
+## Absolute minimum support count: 655 
+## 
+## set item appearances ...[0 item(s)] done [0.00s].
+## set transactions ...[1770 item(s), 21864 transaction(s)] done [0.08s].
+## sorting and recoding items ... [173 item(s)] done [0.00s].
+## creating transaction tree ... done [0.01s].
+## checking subsets of size 1 2 3 4 5 done [0.04s].
+## writing ... [1400 rule(s)] done [0.00s].
+## creating S4 object  ... done [0.00s].&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;kable(inspect(head(rules, 3))) %&amp;gt;% 
+  kable_styling()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     lhs                        rhs                        support   
+## [1] {Tetrao urogallus}      =&amp;gt; {Dryocopus martius}        0.03453165
+## [2] {Glaucidium passerinum} =&amp;gt; {Dryocopus martius}        0.03741310
+## [3] {Rhinolophus euryale}   =&amp;gt; {Rhinolophus hipposideros} 0.03146725
+##     confidence lift     count
+## [1] 0.8569807  6.206368 755  
+## [2] 0.9434833  6.832832 818  
+## [3] 0.8171021  7.250455 688&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+lhs
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+rhs
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+support
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+confidence
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+lift
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+count
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+[1]
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Tetrao urogallus}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+=&amp;gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Dryocopus martius}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0345317
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.8569807
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.206368
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+755
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+[2]
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Glaucidium passerinum}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+=&amp;gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Dryocopus martius}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0374131
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.9434833
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+6.832832
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+818
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+[3]
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Rhinolophus euryale}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+=&amp;gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Rhinolophus hipposideros}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0314673
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.8171021
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+7.250455
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+688
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The output of the algorithm needs a little explanation. The species are listed as being on the Left-hand side (lhs) or right-hand side (rhs), so for the first rule is that Tetrao urogallus is more frequently listed with Dryocopus martius. The strength of that rule is measured in three ways. First is “support” which is calculated as the number of species lists that contains both those species divided by the total number of species lists. Confidence is the number of species lists with both species divided by the total number of species lists containing species A (in this case Tetrao urogallus). Lift is measured as the confidence divided by the expected confidence which is the number of species lists with species B (in this case Dryocopus martius) divided by the total species list. The higher the lift the more probable that the two species will occur together. The lift measure is not directional so that the rule A-&amp;gt;B is equivalent to B-&amp;gt;A.&lt;/p&gt;
+&lt;p&gt;So lets have a look at some of the rules and highlight the most supported&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(rules)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2019-05-01-shopping-for-species_files/figure-html/plot%20rules-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rules_conf &amp;lt;- sort (rules, by=&amp;quot;confidence&amp;quot;, decreasing=TRUE) # &amp;#39;high-confidence&amp;#39; rules.
+kable(inspect(head(rules_conf))) %&amp;gt;% 
+  kable_styling() &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     lhs                     rhs                     support confidence      lift count
+## [1] {Botaurus stellaris,                                                              
+##      Philomachus pugnax,                                                              
+##      Tringa glareola}    =&amp;gt; {Circus aeruginosus} 0.03036956  0.9764706  7.039088   664
+## [2] {Anas clypeata,                                                                   
+##      Anas penelope,                                                                   
+##      Anas platyrhynchos} =&amp;gt; {Anas crecca}        0.03242774  0.9712329 12.995738   709
+## [3] {Botaurus stellaris,                                                              
+##      Circus cyaneus}     =&amp;gt; {Circus aeruginosus} 0.03503476  0.9708492  6.998565   766
+## [4] {Anas querquedula,                                                                
+##      Porzana porzana}    =&amp;gt; {Circus aeruginosus} 0.03119283  0.9701280  6.993366   682
+## [5] {Circus cyaneus,                                                                  
+##      Porzana porzana}    =&amp;gt; {Circus aeruginosus} 0.03100988  0.9685714  6.982145   678
+## [6] {Botaurus stellaris,                                                              
+##      Grus grus}          =&amp;gt; {Circus aeruginosus} 0.03425723  0.9677003  6.975865   749&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rules_lift &amp;lt;- sort (rules, by=&amp;quot;lift&amp;quot;, decreasing=TRUE)
+kable(inspect(head(rules_lift))) %&amp;gt;% 
+  kable_styling() &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     lhs                         rhs                     support confidence     lift count
+## [1] {Cuculus canorus,                                                                    
+##      Fringilla coelebs,                                                                  
+##      Phylloscopus collybita} =&amp;gt; {Erithacus rubecula} 0.03160446  0.9465753 20.05419   691
+## [2] {Cuculus canorus,                                                                    
+##      Erithacus rubecula,                                                                 
+##      Sylvia atricapilla}     =&amp;gt; {Fringilla coelebs}  0.03133004  0.9133333 20.00914   685
+## [3] {Fringilla coelebs,                                                                  
+##      Phylloscopus collybita,                                                             
+##      Sylvia atricapilla}     =&amp;gt; {Erithacus rubecula} 0.03261068  0.9418758 19.95463   713
+## [4] {Cuculus canorus,                                                                    
+##      Fringilla coelebs,                                                                  
+##      Sylvia atricapilla}     =&amp;gt; {Erithacus rubecula} 0.03133004  0.9396433 19.90733   685
+## [5] {Fringilla coelebs,                                                                  
+##      Phylloscopus collybita,                                                             
+##      Turdus philomelos}      =&amp;gt; {Erithacus rubecula} 0.03018661  0.9388336 19.89017   660
+## [6] {Cuculus canorus,                                                                    
+##      Erithacus rubecula,                                                                 
+##      Phylloscopus collybita} =&amp;gt; {Fringilla coelebs}  0.03160446  0.9044503 19.81453   691&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;so-what-do-these-measures-of-strength-mean&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;So, what do these measures of strength mean?&lt;/h2&gt;
+&lt;p&gt;A rule with a confidence of 1 implies that whenever we record the species on the left-hand side we also record the species on the right-hand side 100 % of the time. So for our top ranked rule for confidence when we record Botaurus stellaris, Philomachus pugnax and Tringa glareola we also record Circus aeruginosus 97% of the time.&lt;/p&gt;
+&lt;p&gt;A rule with a lift of 20 implies that, the species on the left-hand side and right-hand side are 20 times more likely to be recorded together compared to the assumption of unrelatedness.&lt;/p&gt;
+&lt;p&gt;Support is a measure of the probability that species on the left-hand side are recorded with together with those on the right-hand side in the dataset analysed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;buying-rare-species&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Buying rare species&lt;/h2&gt;
+&lt;p&gt;The apriori algorithm can be used to get rules for specific items. If you set the list to include only your focal species on the right-hand side you will get rules for species that it is listed with. So in our example below Turtle dove is associated with the Cyprian coal tit in 100% of the lists where the coal tit is recorded.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rules2 &amp;lt;- apriori (data=tData, parameter=list (supp=0.001,conf = 0.08), appearance = list (default=&amp;quot;lhs&amp;quot;,rhs=&amp;quot;Streptopelia turtur&amp;quot;), control = list (verbose=F)) # get rules that lead to buying &amp;#39;Streptopelia turtur&amp;#39;
+rules_conf2 &amp;lt;- sort (rules2, by=&amp;quot;confidence&amp;quot;, decreasing=TRUE)
+kable(inspect(head(rules_conf2))) %&amp;gt;% 
+  kable_styling() &lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     lhs                        rhs                      support confidence     lift count
+## [1] {Parus ater cypriotes}  =&amp;gt; {Streptopelia turtur} 0.00100622          1 15.23624    22
+## [2] {Oenanthe cypriaca,                                                                  
+##      Parus ater cypriotes}  =&amp;gt; {Streptopelia turtur} 0.00100622          1 15.23624    22
+## [3] {Parus ater cypriotes,                                                               
+##      Sylvia melanothorax}   =&amp;gt; {Streptopelia turtur} 0.00100622          1 15.23624    22
+## [4] {Lanius nubicus,                                                                     
+##      Parus ater cypriotes}  =&amp;gt; {Streptopelia turtur} 0.00100622          1 15.23624    22
+## [5] {Parus ater cypriotes,                                                               
+##      Phoenicurus ochruros}  =&amp;gt; {Streptopelia turtur} 0.00100622          1 15.23624    22
+## [6] {Buteo buteo,                                                                        
+##      Gavia arctica arctica} =&amp;gt; {Streptopelia turtur} 0.00100622          1 15.23624    22&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;rules3 &amp;lt;- apriori (data=tData, parameter=list (supp=0.001,conf = 0.15,minlen=2), appearance = list(default=&amp;quot;rhs&amp;quot;,lhs=&amp;quot;Streptopelia turtur&amp;quot;), control = list (verbose=F)) # those who bought &amp;#39;Streptopelia turtur&amp;#39; also bought..
+rules_conf3 &amp;lt;- sort (rules3, by=&amp;quot;confidence&amp;quot;, decreasing=TRUE) # &amp;#39;high-confidence&amp;#39; rules.
+kable(inspect(head(rules_conf3))) %&amp;gt;% 
+  kable_styling()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##     lhs                      rhs                     support    confidence
+## [1] {Streptopelia turtur} =&amp;gt; {Lanius collurio}       0.04395353 0.6696864 
+## [2] {Streptopelia turtur} =&amp;gt; {Hirundo rustica}       0.04029455 0.6139373 
+## [3] {Streptopelia turtur} =&amp;gt; {Cuculus canorus}       0.03750457 0.5714286 
+## [4] {Streptopelia turtur} =&amp;gt; {Lullula arborea}       0.03750457 0.5714286 
+## [5] {Streptopelia turtur} =&amp;gt; {Caprimulgus europaeus} 0.03695573 0.5630662 
+## [6] {Streptopelia turtur} =&amp;gt; {Alcedo atthis}         0.03649835 0.5560976 
+##     lift      count
+## [1]  3.376072 961  
+## [2] 10.413596 881  
+## [3] 10.299847 820  
+## [4]  4.698651 820  
+## [5]  4.619467 808  
+## [6]  3.742234 798&lt;/code&gt;&lt;/pre&gt;
+&lt;table class=&#34;table&#34; style=&#34;margin-left: auto; margin-right: auto;&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+lhs
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+&lt;/th&gt;
+&lt;th style=&#34;text-align:left;&#34;&gt;
+rhs
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+support
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+confidence
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+lift
+&lt;/th&gt;
+&lt;th style=&#34;text-align:right;&#34;&gt;
+count
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+[1]
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Streptopelia turtur}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+=&amp;gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Lanius collurio}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0439535
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.6696864
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.376072
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+961
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+[2]
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Streptopelia turtur}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+=&amp;gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Hirundo rustica}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0402945
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.6139373
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.413596
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+881
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+[3]
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Streptopelia turtur}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+=&amp;gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Cuculus canorus}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0375046
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.5714286
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+10.299847
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+820
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+[4]
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Streptopelia turtur}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+=&amp;gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Lullula arborea}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0375046
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.5714286
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.698652
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+820
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+[5]
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Streptopelia turtur}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+=&amp;gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Caprimulgus europaeus}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0369557
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.5630662
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+4.619467
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+808
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+[6]
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Streptopelia turtur}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+=&amp;gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align:left;&#34;&gt;
+{Alcedo atthis}
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.0364984
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+0.5560976
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+3.742234
+&lt;/td&gt;
+&lt;td style=&#34;text-align:right;&#34;&gt;
+798
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;We can look at the opposite relationship by limiting the left-hand side to our focal species. Here we can see that when we record turtle dove there is a 66 % probability of recording a red-backed shrike.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;future-work&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Future work&lt;/h2&gt;
+&lt;p&gt;We need to test this with real datasets. Can we use the association rules to give meaningful insights in to co-occurrence or at least meaningful shortcuts to survey of rare species using their associations with more common ones.&lt;/p&gt;
+&lt;p&gt;If anyone has datasets that they wish to share please feel free to get in contact.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;references&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;References&lt;/h1&gt;
+&lt;p&gt;Agrawal, R., Srikant, R. 1994. Fast algorithms for mining association rules. Proceedings of the 20th International Conference on Very Large Data Bases, VLDB, pages 487-499, Santiago, Chile.&lt;/p&gt;
+&lt;div id=&#34;package-citations&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Package citations&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(citation(&amp;quot;arules&amp;quot;)[2], bibtex=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Hahsler M, Gruen B, Hornik K (2005). &amp;quot;arules - A Computational
+## Environment for Mining Association Rules and Frequent Item Sets.&amp;quot;
+## _Journal of Statistical Software_, *14*(15), 1-25. ISSN 1548-7660,
+## &amp;lt;URL: http://dx.doi.org/10.18637/jss.v014.i15&amp;gt;.
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Article{,
+##     title = {arules -- {A} Computational Environment for Mining Association Rules and Frequent Item Sets},
+##     author = {Michael Hahsler and Bettina Gruen and Kurt Hornik},
+##     year = {2005},
+##     journal = {Journal of Statistical Software},
+##     volume = {14},
+##     number = {15},
+##     pages = {1--25},
+##     url = {http://dx.doi.org/10.18637/jss.v014.i15},
+##     month = {October},
+##     issn = {1548-7660},
+##   }&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(citation(&amp;quot;arulesViz&amp;quot;), bibtex=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## To cite package &amp;#39;arulesViz&amp;#39; in publications use:
+## 
+##   Michael Hahsler (2018). arulesViz: Visualizing Association Rules
+##   and Frequent Itemsets. R package version 1.3-2.
+##   https://CRAN.R-project.org/package=arulesViz
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Manual{,
+##     title = {arulesViz: Visualizing Association Rules and Frequent Itemsets},
+##     author = {Michael Hahsler},
+##     year = {2018},
+##     note = {R package version 1.3-2},
+##     url = {https://CRAN.R-project.org/package=arulesViz},
+##   }&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(citation(&amp;quot;tidyverse&amp;quot;), bibtex=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## To cite package &amp;#39;tidyverse&amp;#39; in publications use:
+## 
+##   Hadley Wickham (2017). tidyverse: Easily Install and Load the
+##   &amp;#39;Tidyverse&amp;#39;. R package version 1.2.1.
+##   https://CRAN.R-project.org/package=tidyverse
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Manual{,
+##     title = {tidyverse: Easily Install and Load the &amp;#39;Tidyverse&amp;#39;},
+##     author = {Hadley Wickham},
+##     year = {2017},
+##     note = {R package version 1.2.1},
+##     url = {https://CRAN.R-project.org/package=tidyverse},
+##   }&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(citation(&amp;quot;knitr&amp;quot;)[2], bibtex=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##   Yihui Xie (2015) Dynamic Documents with R and knitr. 2nd
+##   edition. Chapman and Hall/CRC. ISBN 978-1498716963
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Book{,
+##     title = {Dynamic Documents with {R} and knitr},
+##     author = {Yihui Xie},
+##     publisher = {Chapman and Hall/CRC},
+##     address = {Boca Raton, Florida},
+##     year = {2015},
+##     edition = {2nd},
+##     note = {ISBN 978-1498716963},
+##     url = {https://yihui.name/knitr/},
+##   }&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;print(citation(&amp;quot;kableExtra&amp;quot;), bibtex=TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## To cite package &amp;#39;kableExtra&amp;#39; in publications use:
+## 
+##   Hao Zhu (2019). kableExtra: Construct Complex Table with &amp;#39;kable&amp;#39;
+##   and Pipe Syntax. R package version 1.0.1.
+##   https://CRAN.R-project.org/package=kableExtra
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Manual{,
+##     title = {kableExtra: Construct Complex Table with &amp;#39;kable&amp;#39; and Pipe Syntax},
+##     author = {Hao Zhu},
+##     year = {2019},
+##     note = {R package version 1.0.1},
+##     url = {https://CRAN.R-project.org/package=kableExtra},
+##   }&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>An imperfect vision of indivisibility in the Sustainable Development Goals</title>
       <link>/publication/an-imperfect-vision-of-indivisibility-in-the-sustainable-development-goals/</link>
       <pubDate>Mon, 17 Dec 2018 00:00:00 +0100</pubDate>
@@ -118,429 +941,6 @@
 &lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
 
 &lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Academic: the website designer for Hugo</title>
-      <link>/post/getting-started/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 +0200</pubDate>
-      
-      <guid>/post/getting-started/</guid>
-      <description>
-
-&lt;p&gt;&lt;strong&gt;Academic&lt;/strong&gt; makes it easy to create a beautiful website for free using Markdown. Customize anything on your site with widgets, themes, and language packs.&lt;/p&gt;
-
-&lt;p&gt;Follow our easy &lt;a href=&#34;https://sourcethemes.com/academic/docs/install/&#34; target=&#34;_blank&#34;&gt;step by step guide&lt;/a&gt; to learn how to build your own free website with Academic. &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Check out the personal demo&lt;/a&gt; or the &lt;a href=&#34;https://sourcethemes.com/academic/&#34; target=&#34;_blank&#34;&gt;business demo&lt;/a&gt; of what you&amp;rsquo;ll get in less than 10 minutes.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;View the documentation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://discuss.gohugo.io/&#34; target=&#34;_blank&#34;&gt;Ask a question&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/issues&#34; target=&#34;_blank&#34;&gt;Request a feature or report a bug&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Updating? View the &lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;Update Guide&lt;/a&gt; and &lt;a href=&#34;https://sourcethemes.com/academic/updates/&#34; target=&#34;_blank&#34;&gt;Release Notes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Support development of Academic:
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://paypal.me/cushen&#34; target=&#34;_blank&#34;&gt;Donate a coffee&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.patreon.com/cushen&#34; target=&#34;_blank&#34;&gt;Become a backer on Patreon&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.redbubble.com/people/neutreno/works/34387919-academic&#34; target=&#34;_blank&#34;&gt;Decorate your laptop or journal with an Academic sticker&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://academic.threadless.com/&#34; target=&#34;_blank&#34;&gt;Wear the T-shirt&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;https://raw.githubusercontent.com/gcushen/hugo-academic/master/academic.png&#34; alt=&#34;Screenshot&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Key features:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Easily manage various content including homepage, blog posts, publications, talks, and projects&lt;/li&gt;
-&lt;li&gt;Extensible via &lt;strong&gt;color themes&lt;/strong&gt; and &lt;strong&gt;widgets/plugins&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Write in &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;Markdown&lt;/a&gt; for easy formatting and code highlighting, with &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Mathematics&#34; target=&#34;_blank&#34;&gt;LaTeX&lt;/a&gt; for mathematical expressions&lt;/li&gt;
-&lt;li&gt;Social/academic network linking, &lt;a href=&#34;https://analytics.google.com&#34; target=&#34;_blank&#34;&gt;Google Analytics&lt;/a&gt;, and &lt;a href=&#34;https://disqus.com&#34; target=&#34;_blank&#34;&gt;Disqus&lt;/a&gt; comments&lt;/li&gt;
-&lt;li&gt;Responsive and mobile friendly&lt;/li&gt;
-&lt;li&gt;Simple and refreshing one page design&lt;/li&gt;
-&lt;li&gt;Multilingual and easy to customize&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;color-themes&#34;&gt;Color Themes&lt;/h2&gt;
-
-&lt;p&gt;Academic is available in different color themes and font themes.&lt;/p&gt;
-
-
-
-&lt;div class=&#34;gallery&#34;&gt;
-
-  
-  
-  
-  
-    
-    
-    
-    
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-    
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-1950s.png&#34; data-caption=&#34;1950s&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-1950s.png&#34; alt=&#34;&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-    
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-apogee.png&#34; data-caption=&#34;Apogee&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-apogee.png&#34; alt=&#34;&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-    
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-coffee-playfair.png&#34; data-caption=&#34;Coffee theme with Playfair font&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-coffee-playfair.png&#34; alt=&#34;&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-    
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-cupcake.png&#34; data-caption=&#34;Cupcake&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-cupcake.png&#34; alt=&#34;&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-    
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-dark.png&#34; data-caption=&#34;Dark&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-dark.png&#34; alt=&#34;&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-    
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-default.png&#34; data-caption=&#34;Default&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-default.png&#34; alt=&#34;&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-    
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-forest.png&#34; data-caption=&#34;Forest&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-forest.png&#34; alt=&#34;&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-    
-  &lt;a data-fancybox=&#34;gallery-gallery&#34; href=&#34;/post/getting-started/gallery/theme-ocean.png&#34; data-caption=&#34;Ocean&#34;&gt;
-  &lt;img src=&#34;/post/getting-started/gallery/theme-ocean.png&#34; alt=&#34;&#34;&gt;
-  &lt;/a&gt;
-  
-
-  
-&lt;/div&gt;
-
-&lt;h2 id=&#34;ecosystem&#34;&gt;Ecosystem&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-admin&#34; target=&#34;_blank&#34;&gt;Academic Admin&lt;/a&gt;:&lt;/strong&gt; An admin tool to import publications from BibTeX or import assets for an offline site&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-scripts&#34; target=&#34;_blank&#34;&gt;Academic Scripts&lt;/a&gt;:&lt;/strong&gt; Scripts to help migrate content to new versions of Academic&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
-
-&lt;p&gt;You can choose from one of the following four methods to install:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;one-click install using your web browser (recommended)&lt;/li&gt;
-&lt;li&gt;install on your computer using Git with the Command Prompt/Terminal app&lt;/li&gt;
-&lt;li&gt;install on your computer by downloading the ZIP files&lt;/li&gt;
-&lt;li&gt;install on your computer with RStudio&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&#34;quick-install-using-your-web-browser&#34;&gt;Quick install using your web browser&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://app.netlify.com/start/deploy?repository=https://github.com/sourcethemes/academic-kickstart&#34; target=&#34;_blank&#34;&gt;Install Academic with Netlify&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Netlify will provide you with a customizable URL to access your new site&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;On GitHub, go to your newly created &lt;code&gt;academic-kickstart&lt;/code&gt; repository and edit &lt;code&gt;config.toml&lt;/code&gt; to personalize your site. Shortly after saving the file, your site will automatically update&lt;/li&gt;
-&lt;li&gt;Read the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Quick Start Guide&lt;/a&gt; to learn how to add Markdown content. For inspiration, refer to the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/tree/master/exampleSite&#34; target=&#34;_blank&#34;&gt;Markdown content&lt;/a&gt; which powers the &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Demo&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;install-with-git&#34;&gt;Install with Git&lt;/h3&gt;
-
-&lt;p&gt;Prerequisites:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://git-scm.com/downloads&#34; target=&#34;_blank&#34;&gt;Download and install Git&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://gohugo.io/getting-started/installing/#quick-install&#34; target=&#34;_blank&#34;&gt;Download and install Hugo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-kickstart#fork-destination-box&#34; target=&#34;_blank&#34;&gt;Fork&lt;/a&gt; the &lt;em&gt;Academic Kickstart&lt;/em&gt; repository and clone your fork with Git:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;git clone https://github.com/sourcethemes/academic-kickstart.git My_Website
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;em&gt;Note that if you forked Academic Kickstart, the above command should be edited to clone your fork, i.e. replace &lt;code&gt;sourcethemes&lt;/code&gt; with your GitHub username.&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Initialize the theme:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd My_Website
-git submodule update --init --recursive
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;install-with-zip&#34;&gt;Install with ZIP&lt;/h3&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/sourcethemes/academic-kickstart/archive/master.zip&#34; target=&#34;_blank&#34;&gt;Download&lt;/a&gt; and extract &lt;em&gt;Academic Kickstart&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/gcushen/hugo-academic/archive/master.zip&#34; target=&#34;_blank&#34;&gt;Download&lt;/a&gt; and extract the &lt;em&gt;Academic theme&lt;/em&gt; to the &lt;code&gt;themes/academic/&lt;/code&gt; folder from the above step&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;install-with-rstudio&#34;&gt;Install with RStudio&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/install/#install-with-rstudio&#34; target=&#34;_blank&#34;&gt;View the guide to installing Academic with RStudio&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;quick-start&#34;&gt;Quick start&lt;/h2&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;If you installed on your computer, view your new website by running the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;hugo server
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now visit &lt;a href=&#34;http://localhost:1313&#34; target=&#34;_blank&#34;&gt;localhost:1313&lt;/a&gt; and your new Academic powered website will appear. Otherwise, if using Netlify, they will provide you with your URL.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Read the &lt;a href=&#34;https://sourcethemes.com/academic/docs/&#34; target=&#34;_blank&#34;&gt;Quick Start Guide&lt;/a&gt; to learn how to add Markdown content, customize your site, and deploy it. For inspiration, refer to the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/tree/master/exampleSite&#34; target=&#34;_blank&#34;&gt;Markdown content&lt;/a&gt; which powers the &lt;a href=&#34;https://themes.gohugo.io/theme/academic/&#34; target=&#34;_blank&#34;&gt;Demo&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Build your site by running the &lt;code&gt;hugo&lt;/code&gt; command. Then &lt;a href=&#34;https://georgecushen.com/create-your-website-with-hugo/&#34; target=&#34;_blank&#34;&gt;host it for free using Github Pages&lt;/a&gt; or Netlify (refer to the first installation method). Alternatively, copy the generated &lt;code&gt;public/&lt;/code&gt; directory (by FTP, Rsync, etc.) to your production web server (such as a university&amp;rsquo;s hosting service).&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;updating&#34;&gt;Updating&lt;/h2&gt;
-
-&lt;p&gt;Feel free to &lt;em&gt;star&lt;/em&gt; the project on &lt;a href=&#34;https://github.com/gcushen/hugo-academic/&#34; target=&#34;_blank&#34;&gt;Github&lt;/a&gt; to help keep track of updates and check out the &lt;a href=&#34;https://sourcethemes.com/academic/updates&#34; target=&#34;_blank&#34;&gt;release notes&lt;/a&gt; prior to updating your site.&lt;/p&gt;
-
-&lt;p&gt;Before updating the framework, it is recommended to make a backup of your entire website directory (or at least your &lt;code&gt;themes/academic&lt;/code&gt; directory) and record your current version number.&lt;/p&gt;
-
-&lt;p&gt;By default, Academic is installed as a Git submodule which can be updated by running the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;git submodule update --remote --merge
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;Check out the update guide&lt;/a&gt; for full instructions and alternative methods.&lt;/p&gt;
-
-&lt;h2 id=&#34;feedback-contributing&#34;&gt;Feedback &amp;amp; Contributing&lt;/h2&gt;
-
-&lt;p&gt;Please use the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/issues&#34; target=&#34;_blank&#34;&gt;issue tracker&lt;/a&gt; to let me know about any bugs or feature requests, or alternatively make a pull request.&lt;/p&gt;
-
-&lt;p&gt;For support, head over to the &lt;a href=&#34;http://discuss.gohugo.io&#34; target=&#34;_blank&#34;&gt;Hugo discussion forum&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
-
-&lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34; target=&#34;_blank&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/gcushen/hugo-academic/blob/master/LICENSE.md&#34; target=&#34;_blank&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>
-
-
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;/post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     

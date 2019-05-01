@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Species on Uncertain Ecologist</title>
+    <link>/tags/species/</link>
+    <description>Recent content in Species on Uncertain Ecologist</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018</copyright>
+    <lastBuildDate>Wed, 01 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/species/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Shopping for species</title>
+      <link>/post/shopping-for-species/</link>
+      <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/shopping-for-species/</guid>
+      <description>Can we use association rules to identify co-occurring species?Machine learning has been occupying my thoughts recently as I am reading the book Machine Learning with R by Brett Lantz (https://www.amazon.com/dp/1782162143?tag=inspiredalgor-20). I am interested in making the algorithms described in the book useful for my work in applied conservation science.
+Unsurprisingly a lot of effort in machine-learning has been focused on increasing sales. One area where this has shown rapid growth is in grocery shops where loyalty cards have allowed data to be collected on our transactions.</description>
+    </item>
+    
+  </channel>
+</rss>
