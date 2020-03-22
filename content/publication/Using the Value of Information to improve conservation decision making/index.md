@@ -1,10 +1,10 @@
 +++
-title = "Using the Value of Information to improve conservation decision making"
-date = 2018-09-02T00:00:00
+title = "Conservation decision‐making under uncertainty: Identifying when to reintroduce tiger Panthera tigris to Cambodia"
+date = 2020-02-01T00:00:00
 draft = false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Rike Bolam", "Matt Grainger", "Kerrie Mengersen", "Gavin Stewart", "Bill Sutherland", "Michael Runge", "Philip McGowan"]
+authors = ["Thomas NE Gray", "Matthew J Grainger", "Romica Grosu"]
 
 # Publication type.
 # Legend:
@@ -18,14 +18,11 @@ authors = ["Rike Bolam", "Matt Grainger", "Kerrie Mengersen", "Gavin Stewart", "
 publication_types = ["1"]
 
 # Publication name and optional abbreviated version.
-publication = "Biological Reviews"
-publication_short = "In *BioRevs*"
+publication = "Conservation Science and Practice"
+publication_short = "In *Cons Sci Pract*"
 
 # Abstract and optional shortened version.
-abstract = """Conservation decisions are challenging, not only because they often involve difficult conflicts among outcomes that people value, but because our understanding of the natural world and our effects on it is fraught with uncertainty. Value of Information (VoI) methods provide an approach for understanding and managing uncertainty from the standpoint of the decision maker. These methods are commonly used in other fields (e.g. economics, public health) and are increasingly used in biodiversity conservation. This decision‐analytical approach can identify the best management alternative to select where the effectiveness of interventions is uncertain, and can help to decide when to act and when to delay action until after further research. We review the use of VoI in the environmental domain, reflect on the need for greater uptake of VoI, particularly for strategic conservation planning, and suggest promising areas for new research. We also suggest common reporting standards as a means of increasing the leverage of this powerful tool. 
-The environmental science, ecology and biodiversity categories of the Web of Knowledge were searched using the terms ‘Value of Information,’ ‘Expected Value of Perfect Information,’ and the abbreviation ‘EVPI.’ Google Scholar was searched with the same terms, and additionally the terms decision and biology, biodiversity conservation, fish, or ecology. We identified 1225 papers from these searches. Included studies were limited to those that showed an application of VoI in biodiversity conservation rather than simply describing the method. All examples of use of VOI were summarised regarding the application of VoI, the management objectives, the uncertainties, the models used, how the objectives were measured, and the type of VoI.
-While the use of VoI appears to be on the increase in biodiversity conservation, the reporting of results is highly variable, which can make it difficult to understand the decision context and which uncertainties were considered. Moreover, it was unclear if, and how, the papers informed management and policy interventions, which is why we suggest a range of reporting standards that would aid the use of VoI. 
-The use of VoI in conservation settings is at an early stage. There are opportunities for broader applications, not only for species‐focussed management problems, but also for setting local or global research priorities for biodiversity conservation, making funding decisions, or designing or improving protected area networks and management. The long‐term benefits of applying VoI methods to biodiversity conservation include a more structured and decision‐focused allocation of resources to research."""
+abstract = """Conservationists need to present biological monitoring data to decision makers in a way which clearly represents uncertainty. Providing results in terms of the probability of a hypothesis being true may have greater utility for decision‐making than traditionally used frequentist statistical approaches. Here, we demonstrate such an approach with regard to assessing the suitability of the Cardamom Rainforest Landscape, Cambodia for Panthera tigris (tiger) reintroduction. We estimated the density of tiger prey in the core of the landscape using the Random Encounter Model from camera‐trap data and used Monte Carlo simulation to prorogate uncertainty around our model parameter estimates. This suggests there is currently a low probability that the core area of the landscape supports sufficient prey for a population of 25 adult tigers and that significant prey recovery is thus required prior to any reintroduction into the landscape. The Random Encounter Model contains a number of assumptions and we stress our main purpose is to illustrate an approach to incorporating uncertainty into conservation decision‐making rather than providing robust estimation of current tiger prey densities in the Cardamom Rainforest Landscape. Our approach has wide utility for conveying species monitoring information to conservation planners in a simple to understand fashion."""
 
 # Is this a selected publication? (true/false)
 selected = true
