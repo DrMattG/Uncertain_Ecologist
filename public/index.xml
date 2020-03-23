@@ -27,9 +27,11 @@
 &lt;/div&gt;
 &lt;div id=&#34;r-for-psychological-science-httpspsyr.org&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;R for Psychological Science (&lt;a href=&#34;https://psyr.org/&#34; class=&#34;uri&#34;&gt;https://psyr.org/&lt;/a&gt;)&lt;/h3&gt;
-&lt;p&gt;This is a great resource for learning R. You can just cross out Psychological and replace it with Ecology and no one would know…. It’s such a nice and easy introduction to R and how to use it well.
-### R - bloggers &lt;a href=&#34;https://www.r-bloggers.com/&#34; class=&#34;uri&#34;&gt;https://www.r-bloggers.com/&lt;/a&gt;
-A useful place to find code examples of all kinds of different functions that you never thought you would need or want to play with. New packages are often highlighted and demonstrated on here.&lt;/p&gt;
+&lt;p&gt;This is a great resource for learning R. You can just cross out Psychological and replace it with Ecology and no one would know…. It’s such a nice and easy introduction to R and how to use it well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r---bloggers-httpswww.r-bloggers.com&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;R - bloggers (&lt;a href=&#34;https://www.r-bloggers.com/&#34; class=&#34;uri&#34;&gt;https://www.r-bloggers.com/&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;A useful place to find code examples of all kinds of different functions that you never thought you would need or want to play with. New packages are often highlighted and demonstrated on here.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;tidyverse-httpswww.tidyverse.org&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Tidyverse (&lt;a href=&#34;https://www.tidyverse.org/&#34; class=&#34;uri&#34;&gt;https://www.tidyverse.org/&lt;/a&gt;)&lt;/h3&gt;
@@ -441,7 +443,7 @@ rules &amp;lt;- apriori (tData, parameter = list(supp = 0.03, conf = 0.8)) # run
 ## Absolute minimum support count: 655 
 ## 
 ## set item appearances ...[0 item(s)] done [0.00s].
-## set transactions ...[1770 item(s), 21864 transaction(s)] done [0.07s].
+## set transactions ...[1770 item(s), 21864 transaction(s)] done [0.08s].
 ## sorting and recoding items ... [173 item(s)] done [0.00s].
 ## creating transaction tree ... done [0.01s].
 ## checking subsets of size 1 2 3 4 5 done [0.04s].

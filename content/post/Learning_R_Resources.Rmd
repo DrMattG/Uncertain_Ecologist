@@ -24,7 +24,8 @@ I really like the swirl package in R that has several modules available for lear
 
 ### R for Psychological Science (https://psyr.org/)
 This is a great resource for learning R. You can just cross out Psychological and replace it with Ecology and no one would know.... It's such a nice and easy introduction to R and how to use it well. 
-### R - bloggers https://www.r-bloggers.com/
+
+### R - bloggers (https://www.r-bloggers.com/)
 A useful place to find code examples of all kinds of different functions that you never thought you would need or want to play with. New packages are often highlighted and demonstrated on here.
 
 ### Tidyverse (https://www.tidyverse.org/)
