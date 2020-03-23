@@ -40,11 +40,29 @@
     </item>
     
     <item>
+      <title>Learning</title>
+      <link>/tags/learning/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Monitoring</title>
       <link>/tags/monitoring/</link>
       <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rstats</title>
+      <link>/tags/rstats/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rstats/</guid>
       <description></description>
     </item>
     

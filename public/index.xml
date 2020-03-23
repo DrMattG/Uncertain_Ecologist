@@ -11,6 +11,66 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Learning R resources</title>
+      <link>/post/learning-r-resources/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/learning-r-resources/</guid>
+      <description>
+
+
+&lt;div id=&#34;learning-r-where-to-start&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Learning R: where to start&lt;/h2&gt;
+&lt;div id=&#34;swirl-httpsswirlstats.com&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Swirl (&lt;a href=&#34;https://swirlstats.com/&#34; class=&#34;uri&#34;&gt;https://swirlstats.com/&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;I really like the swirl package in R that has several modules available for learning and understanding how R works. It leads you by the hand through straight forward courses that are carried out through the R console. There are a number of additional courses available (see: &lt;a href=&#34;https://github.com/swirldev/swirl_courses#swirl-courses&#34; class=&#34;uri&#34;&gt;https://github.com/swirldev/swirl_courses#swirl-courses&lt;/a&gt;). Adventr is another package that does a similar thing - interactive tutorials, but I have not used that one.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r-for-psychological-science-httpspsyr.org&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;R for Psychological Science (&lt;a href=&#34;https://psyr.org/&#34; class=&#34;uri&#34;&gt;https://psyr.org/&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;This is a great resource for learning R. You can just cross out Psychological and replace it with Ecology and no one would know…. It’s such a nice and easy introduction to R and how to use it well.
+### R - bloggers &lt;a href=&#34;https://www.r-bloggers.com/&#34; class=&#34;uri&#34;&gt;https://www.r-bloggers.com/&lt;/a&gt;
+A useful place to find code examples of all kinds of different functions that you never thought you would need or want to play with. New packages are often highlighted and demonstrated on here.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidyverse-httpswww.tidyverse.org&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tidyverse (&lt;a href=&#34;https://www.tidyverse.org/&#34; class=&#34;uri&#34;&gt;https://www.tidyverse.org/&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;There is some tensions between different factions in the R world - those who use base and those who use Tidy. I would learn Tidy from the outset as it does make your code cleaner and has (to me at least) a more logical structure. I love the way you can flow code directly into a plot.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;tidy-tuesday-httpsgithub.comrfordatasciencetidytuesday&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Tidy Tuesday &lt;a href=&#34;https://github.com/rfordatascience/tidytuesday&#34; class=&#34;uri&#34;&gt;https://github.com/rfordatascience/tidytuesday&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A friendly and supportive community which releases a data set weekly (on… you guessed it… Tuesday ) that people then manipulate using R (using the “Tidy” principles) and do some data visualisation. You can learn a lot from how others approach a dataset and also have a go yourself to improve your coding skills.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cheat-sheets-httpsrstudio.comresourcescheatsheets&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Cheat sheets (&lt;a href=&#34;https://rstudio.com/resources/cheatsheets/&#34; class=&#34;uri&#34;&gt;https://rstudio.com/resources/cheatsheets/&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;Lots of cheat sheets available at this site. Cheatsheets give a quick overview of functions that you might not use every day.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;stackoverflow-httpsstackoverflow.com&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Stackoverflow (&lt;a href=&#34;https://stackoverflow.com/&#34; class=&#34;uri&#34;&gt;https://stackoverflow.com/&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;If you are stuck there were probably 100000s of people who have at one stage been stuck with the same thing. Search Google and you will probably end up here at Stackoverflow. It’s a great resource where people try and help each other when they are stuck with code. Sometimes it can be an intimidating place for beginners, but they have put a lot of things in place to make it nicer…. Remember reproducible code - people need to replicate your error so they can help.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;a-bit-more-advanced&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;A bit more advanced&lt;/h2&gt;
+&lt;div id=&#34;advanced-r-httpsadv-r.hadley.nz&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Advanced R (&lt;a href=&#34;https://adv-r.hadley.nz/&#34; class=&#34;uri&#34;&gt;https://adv-r.hadley.nz/&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;It says it all in the title. Useful for going beyond the basics&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;happy-git-with-r-httpshappygitwithr.com&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Happy Git with R (&lt;a href=&#34;https://happygitwithr.com/&#34; class=&#34;uri&#34;&gt;https://happygitwithr.com/&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;Get yourself up and running on Github quickly using this great resource. Github is useful for version control of code, sharing code and for collaborating with others on a project (it doesn’t have to be just R code either!)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;hands-on-machine-learning-in-r-httpsbradleyboehmke.github.iohoml&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Hands on Machine learning in R (&lt;a href=&#34;https://bradleyboehmke.github.io/HOML/&#34; class=&#34;uri&#34;&gt;https://bradleyboehmke.github.io/HOML/&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;Hands-on guide to machine learning (i.e. regression techniques) in R. Really useful and straight-forward with lots of example code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r-packages-httpr-pkgs.had.co.nzdescription.html&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;R packages (&lt;a href=&#34;http://r-pkgs.had.co.nz/description.html&#34; class=&#34;uri&#34;&gt;http://r-pkgs.had.co.nz/description.html&lt;/a&gt;)&lt;/h3&gt;
+&lt;p&gt;Building a package is tough, but very useful. You can build your own package that stores all your own functions, or can group functions together associated with a publication and share that as a zip file for others to use. I found this blog a much easier way in to building a package (&lt;a href=&#34;https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/&#34; class=&#34;uri&#34;&gt;https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/&lt;/a&gt;)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Hunters as citizen scientists: contributions to biodiversity monitoring in Europe</title>
       <link>/publication/hunters-as-citizen-scientists/</link>
       <pubDate>Sun, 01 Mar 2020 00:00:00 +0100</pubDate>
@@ -384,7 +444,7 @@ rules &amp;lt;- apriori (tData, parameter = list(supp = 0.03, conf = 0.8)) # run
 ## set transactions ...[1770 item(s), 21864 transaction(s)] done [0.09s].
 ## sorting and recoding items ... [173 item(s)] done [0.00s].
 ## creating transaction tree ... done [0.01s].
-## checking subsets of size 1 2 3 4 5 done [0.05s].
+## checking subsets of size 1 2 3 4 5 done [0.04s].
 ## writing ... [1400 rule(s)] done [0.00s].
 ## creating S4 object  ... done [0.00s].&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;kable(inspect(head(rules, 3))) %&amp;gt;% 
@@ -993,24 +1053,6 @@ We need to test this with real datasets. Can we use the association rules to giv
       
       <guid>/project/external-project/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Internal Project</title>
-      <link>/project/internal-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0200</pubDate>
-      
-      <guid>/project/internal-project/</guid>
-      <description>&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p&gt;
-
-&lt;p&gt;Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p&gt;
-
-&lt;p&gt;Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p&gt;
-
-&lt;p&gt;Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p&gt;
-
-&lt;p&gt;Aliquam in turpis accumsan, malesuada nibh ut, hendrerit justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque sed erat nec justo posuere suscipit. Donec ut efficitur arcu, in malesuada neque. Nunc dignissim nisl massa, id vulputate nunc pretium nec. Quisque eget urna in risus suscipit ultricies. Pellentesque odio odio, tincidunt in eleifend sed, posuere a diam. Nam gravida nisl convallis semper elementum. Morbi vitae felis faucibus, vulputate orci placerat, aliquet nisi. Aliquam erat volutpat. Maecenas sagittis pulvinar purus, sed porta quam laoreet at.&lt;/p&gt;
-</description>
     </item>
     
   </channel>
