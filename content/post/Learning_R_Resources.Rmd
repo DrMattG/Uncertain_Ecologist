@@ -1,8 +1,16 @@
 ---
-title: "Learning R resources"
-author: "Matt"
-date: "22 3 2020"
-output: html_document
+title: Learning R resources
+author: Matt
+date: '2020-03-23'
+slug: Learning-R-resources
+categories: []
+tags:
+  - Rstats
+  - Learning
+  
+image:
+  caption: ''
+  focal_point: ''
 ---
 
 ```{r setup, include=FALSE}
