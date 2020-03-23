@@ -22,5 +22,14 @@
 Unsurprisingly a lot of effort in machine-learning has been focused on increasing sales. One area where this has shown rapid growth is in grocery shops where loyalty cards have allowed data to be collected on our transactions.</description>
     </item>
     
+    <item>
+      <title>Learning R resources</title>
+      <link>/post/learning_r_resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/learning_r_resources/</guid>
+      <description>Learning R: where to startSwirl (https://swirlstats.com/)I really like the swirl package in R that has several modules available for learning and understanding how R works. It leads you by the hand through straight forward courses that are carried out through the R console. There are a number of additional courses available (see: https://github.com/swirldev/swirl_courses#swirl-courses). Adventr is another package that does a similar thing - interactive tutorials, but I have not used that one.</description>
+    </item>
+    
   </channel>
 </rss>
