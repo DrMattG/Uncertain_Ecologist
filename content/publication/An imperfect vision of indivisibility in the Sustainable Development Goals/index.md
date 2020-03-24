@@ -1,10 +1,10 @@
 +++
-title = "An imperfect vision of indivisibility in the Sustainable Development Goals"
-date = 2018-12-17T00:00:00
+title = "Evidence synthesis for tackling research waste"
+date = 2020-03-23T00:00:00
 draft = false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Philip McGowan", "Gavin Stewart", "Graham Long", "Matthew Grainger"]
+authors = ["Matthew Grainger", "Friederike Bolam", "Gavin Stewart", "Erlend Nilsen"]
  
 # Publication type.
 # Legend:
@@ -18,11 +18,11 @@ authors = ["Philip McGowan", "Gavin Stewart", "Graham Long", "Matthew Grainger"]
 publication_types = ["1"]
 
 # Publication name and optional abbreviated version.
-publication = "Nature Sustainability"
-publication_short = "In *Nature Sustainability*"
+publication = "Nature Ecology and Evolution"
+publication_short = "In *Nature Ecology & Evolution*"
 
 # Abstract and optional shortened version.
-abstract = """The Sustainable Development Goals (SDGs) are presented as highly connected: an ‘interrelated’ and ‘indivisible’ agenda with need of policy coherence for implementation. We analyse the relationships among SDGs using formal systems analysis and find that the connections between Goals are uneven, with a failure to integrate gender equality, and peace and governance concerns. This incoherence may undermine policy initiatives aimed to develop approaches to implement the SDGs."""
+abstract = """There is an immediate need for a change in research workflows so that pre-existing knowledge is better used in designing new research. A formal assessment of the accumulated knowledge prior to research approval would reduce the waste of already limited resources caused by asking low priority questions. """
 
 # Is this a selected publication? (true/false)
 selected = true
@@ -40,9 +40,9 @@ projects = ["internal-project"]
 tags = []
 
 # Links (optional).
-url_pdf = "https://www.nature.com/articles/s41893-018-0190-1"
-url_preprint = "#"
-url_code = "#"
+url_pdf = "https://www.nature.com/articles/s41559-020-1141-6"
+url_preprint = "https://ecoevorxiv.org/42fkh/"
+url_code = "https://osf.io/e4krq/"
 url_dataset = "#"
 url_project = "#"
 url_slides = "#"
@@ -52,10 +52,10 @@ url_source = "#"
 
 # Custom links (optional).
 #   Uncomment line below to enable. For multiple links, use the form `[{...}, {...}, {...}]`.
-url_custom = [{name = "Link", url = "https://www.nature.com/articles/s41893-018-0190-1"}]
+#url_custom = [{name = "Link", url = "https://www.nature.com/articles/s41893-018-0190-1"}]
 
 # Digital Object Identifier (DOI)
-doi = "https://doi.org/10.1038/s41893-018-0190-1"
+doi = "https://doi.org/10.1038/s41559-020-1141-6"
 
 # Does this page contain LaTeX math? (true/false)
 math = true
@@ -64,7 +64,7 @@ math = true
 # To use, add an image named `featured.jpg/png` to your page's folder. 
 [image]
   # Caption (optional)
-  caption = "Figure One: Variation in the network characteristics of the Sustainable Development Goals. Goals are scaled in relation to scores for Degree, Strength, Closeness and Betweenness centrality metrics (see Supplementary Methods 1). The number of each Goal is adjacent to the nodes and numbering is as follows: No Poverty (Goal 1); Reducing Hunger (Goal 2); Good Health and Well-being (Goal 3); Quality Education (Goal 4); Gender Equality (Goal 5); Clean Water and Sanitation (Goal 6); Affordable and Clean Energy (Goal 7); Decent Work and Economic Growth (Goal 8); Industry, Innovation and Infrastructure (Goal 9); Reduced Inequalities (Goal 10); Sustainable Cities and Communities (Goal 11) ; Responsible Production and Consumption (Goal 12); Climate Action (Goal 13); Life Below Water (Goal 14); Life on Land (Goal 15);Peace, Justice and Strong Institutions (Goal 16). Goal 17 (Partnerships for the Goals) was not included in the analysis."
+  caption = "The research process stages, examples of potential research waste and how ecology and conservation can limit these."
 
   # Focal point (optional)
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
