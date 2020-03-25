@@ -15,7 +15,7 @@ authors = ["Neal R Haddaway", "Andrew Feierman", "Matthew J Grainger", "Charles 
 # 4 = Report
 # 5 = Book
 # 6 = Book section
-publication_types = ["1"]
+publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
 publication = "Environmental Evidence"

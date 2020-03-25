@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rstats on Uncertain Ecologist</title>
-    <link>/tags/rstats/</link>
-    <description>Recent content in Rstats on Uncertain Ecologist</description>
+    <title>ShinyDashboard on Uncertain Ecologist</title>
+    <link>/tags/shinydashboard/</link>
+    <description>Recent content in ShinyDashboard on Uncertain Ecologist</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
     <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/shinydashboard/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,15 +21,6 @@
       <description>Building an Academic CV ShinyDashboardInspired by Prof. Mark Reed’s infographic CV (see: https://www.fasttrackimpact.com/post/2019/06/06/how-to-make-an-infographic-cv-featuring-impact-that-you-could-actually-submit-with-your-n) I decided to see if I could make a ShinyDashboard version. My first attempt can be found at: https://drmatt.shinyapps.io/AcademicCVShinyDashboard/
 It still needs a lot of work to make it more visually appealling, but I think its a good starting point.
 </description>
-    </item>
-    
-    <item>
-      <title>Learning R resources</title>
-      <link>/post/learning-r-resources/</link>
-      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/learning-r-resources/</guid>
-      <description>Learning R: where to startSwirl (https://swirlstats.com/)I really like the swirl package in R that has several modules available for learning and understanding how R works. It leads you by the hand through straight forward courses that are carried out through the R console. There are a number of additional courses available (see: https://github.com/swirldev/swirl_courses#swirl-courses). Adventr is another package that does a similar thing - interactive tutorials, but I have not used that one.</description>
     </item>
     
   </channel>

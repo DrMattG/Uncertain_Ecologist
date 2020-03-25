@@ -11,6 +11,24 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Academic Shinydashboard CV</title>
+      <link>/post/academic_r_shiny/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/post/academic_r_shiny/</guid>
+      <description>
+
+
+&lt;div id=&#34;building-an-academic-cv-shinydashboard&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Building an Academic CV ShinyDashboard&lt;/h2&gt;
+&lt;p&gt;Inspired by Prof. Mark Reed’s infographic CV (see: &lt;a href=&#34;https://www.fasttrackimpact.com/post/2019/06/06/how-to-make-an-infographic-cv-featuring-impact-that-you-could-actually-submit-with-your-n&#34; class=&#34;uri&#34;&gt;https://www.fasttrackimpact.com/post/2019/06/06/how-to-make-an-infographic-cv-featuring-impact-that-you-could-actually-submit-with-your-n&lt;/a&gt;) I decided to see if I could make a ShinyDashboard version. My first attempt can be found at: &lt;a href=&#34;https://drmatt.shinyapps.io/AcademicCVShinyDashboard/&#34; class=&#34;uri&#34;&gt;https://drmatt.shinyapps.io/AcademicCVShinyDashboard/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It still needs a lot of work to make it more visually appealling, but I think its a good starting point.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;Dashboard.png&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Learning R resources</title>
       <link>/post/learning-r-resources/</link>
       <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
@@ -114,20 +132,20 @@
     
     <item>
       <title>Offshore refuges support higher densities and show slower population declines of wintering Ruddy Turnstones Arenaria interpres</title>
-      <link>/publication/discrete-event-simulation/</link>
+      <link>/publication/offshore-refuges/</link>
       <pubDate>Thu, 30 Jan 2020 00:00:00 +0100</pubDate>
       
-      <guid>/publication/discrete-event-simulation/</guid>
+      <guid>/publication/offshore-refuges/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Discrete event simulation; machine learning; Bayesian networks; agent-based modelling; and mass balance estimation</title>
-      <link>/publication/offshore-refuges/</link>
+      <link>/publication/discrete-event-simulation/</link>
       <pubDate>Mon, 13 Jan 2020 00:00:00 +0100</pubDate>
       
-      <guid>/publication/offshore-refuges/</guid>
+      <guid>/publication/discrete-event-simulation/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
@@ -453,7 +471,7 @@ rules &amp;lt;- apriori (tData, parameter = list(supp = 0.03, conf = 0.8)) # run
 ## Absolute minimum support count: 655 
 ## 
 ## set item appearances ...[0 item(s)] done [0.00s].
-## set transactions ...[1770 item(s), 21864 transaction(s)] done [0.09s].
+## set transactions ...[1770 item(s), 21864 transaction(s)] done [0.08s].
 ## sorting and recoding items ... [173 item(s)] done [0.00s].
 ## creating transaction tree ... done [0.01s].
 ## checking subsets of size 1 2 3 4 5 done [0.04s].
@@ -1031,30 +1049,6 @@ We need to test this with real datasets. Can we use the association rules to giv
       
       <guid>/publication/informing-decisions-on-an-extremely-data-poor-species-facing-imminent-extinction/</guid>
       <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Example Talk</title>
-      <link>/talk/example/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0100</pubDate>
-      
-      <guid>/talk/example/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;p&gt;Click on the &lt;strong&gt;Slides&lt;/strong&gt; button above to view the built-in slides feature.&lt;/p&gt;
-
-&lt;/div&gt;
-
-
-&lt;p&gt;Slides can be added in a few ways:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Create&lt;/strong&gt; slides using Academic&amp;rsquo;s &lt;em&gt;Slides&lt;/em&gt; feature and link using &lt;code&gt;url_slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Upload&lt;/strong&gt; an existing slide deck to &lt;code&gt;static/&lt;/code&gt; and link using &lt;code&gt;url_slides&lt;/code&gt; parameter in the front matter of the talk file&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Embed&lt;/strong&gt; your slides (e.g. Google Slides) or presentation video on this page using &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Further talk details can easily be added to this page using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     

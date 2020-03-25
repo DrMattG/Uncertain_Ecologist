@@ -15,7 +15,7 @@ authors = ["Rike Bolam", "Matt Grainger", "Kerrie Mengersen", "Gavin Stewart", "
 # 4 = Report
 # 5 = Book
 # 6 = Book section
-publication_types = ["1"]
+publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
 publication = "Biological Reviews"
