@@ -1,10 +1,10 @@
 +++
-title = "Discrete event simulation; machine learning; Bayesian networks; agent-based modelling; and mass balance estimation"
-date = 2020-01-13T00:00:00
+title = "Offshore refuges support higher densities and show slower population declines of wintering Ruddy Turnstones Arenaria interpres"
+date = 2020-01-30T00:00:00
 draft = false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Cansu Kandemir", "Christian Reynolds", "Monika Verma", "Matthew Grainger", "Gavin Stewart", "Simone Righi", "Simone Piras", "Marco Setti", "Matteo Vittuari", "Tom Quested"]
+authors = ["Mark J Whittingham", "Ailsa J McKenzie", "Richard M Francksen", "David Feige", "Tom Cadwallender", "Matthew Grainger", "Nadheer Fazaa", "Caroline Rhymer", "Catherine Wilkinson"," Pauline Lloyd", "Ben Smurthwaite", "Steve M Percival", "Tammy Morris-Hale", "Clare Rawcliffe", "Claire Dewson", "Sarah Woods", "Gavin B Stewart", "Elizabeth Oughton"]
 
 # Publication type.
 # Legend:
@@ -15,14 +15,22 @@ authors = ["Cansu Kandemir", "Christian Reynolds", "Monika Verma", "Matthew Grai
 # 4 = Report
 # 5 = Book
 # 6 = Book section
-publication_types = ["6"]
+publication_types = ["1"]
 
 # Publication name and optional abbreviated version.
-publication = "Routlegde Handbook of Food Waste"
-publication_short = "In *Routledge*"
+publication = "Bird Study"
+publication_short = "In *Bird study*"
 
 # Abstract and optional shortened version.
-abstract = """Food waste is a complex phenomenon. Food gets wasted for a range of different reasons, which are affected by a range of factors: to give a few examples at the household level, how people shop, what they buy, how those items are packaged, the time devoted to foodrelated activities, skills and capabilities relating to cooking and food management in the home, and attitudes to food safety (Quested et al., 2013). Given this complexity, there are many challenges and questions that need answering for those wishing to prevent food from being wasted or estimating the quantity of food being wasted. Ideally, empirical data would be obtained, but this is currently lacking, mainly due to the monetary and time cost of obtaining such data. Therefore, system-based simulation methods and modelling approaches are being developed using currently available data, as they can incorporate these complexities and allow these challenging questions to be answered. Numerous methods have been used to infer the amount of food loss, waste or surplus. This chapter introduces four of the most exciting contemporary food waste prediction and prevention approaches including discrete event simulation (DES), agent-based modelling, machine learning and Bayesian networks, and mass balance estimation (quantification of food waste using food availability, metabolism and calories consumed). 
+abstract = """Capsule: Wintering Ruddy Turnstones Arenaria interpres occur in higher densities and their populations decline less on, or close to, offshore refuges than on mainland sites subject to greater levels of human disturbance.
+
+Aim: To compare wintering densities of Ruddy Turnstones and changes in counts across time from sites with differing levels of human disturbance.
+
+Methods: Long-term counts of Ruddy Turnstones (1998/1999 to 2015/2016) were used from 19 sites (two offshore refuges and 17 mainland sites subject to higher levels of human disturbance) in northeast England. No direct measure of human disturbance was available for our mainland sites; instead we used questionnaires (n= 690) to understand how far people travelled to visit the coast and then used this distance with human population densities in a buffer around each site as a proxy for human disturbance levels.
+
+Results: After controlling for the extent of their preferred habitat at each site (rocky shore) we found: (i) the closer each of the 19 sites was to the nearest offshore refuge the higher the density of Ruddy Turnstones and (ii) bird counts were stable at the two refuge sites, whereas, on average, counts declined at the 17 mainland sites. However, no relationship was found between Ruddy Turnstone counts from 17 mainland sites and human population densities within differing distances from each site (up to 10km).
+
+Conclusions: Our work suggests that Ruddy Turnstones made greater use of relatively undisturbed areas (offshore refuges) than those subject to greater disturbance by humans (mainland sites). Although the use of refuges and mainland in our study area was not well known, observations from 11 radio-tagged Ruddy Turnstones suggest that individual birds did use both locations. In a broader context, our work concurs with other studies that highlight the need for refuges with limited or no human access.
 
 """
 
@@ -42,7 +50,7 @@ projects = ["internal-project"]
 tags = []
 
 # Links (optional).
-url_pdf = "https://www.tandfonline.com/doi/full/10.1080/00063657.2020.1713725"
+url_pdf = "#"
 url_preprint = "#"
 url_code = "#"
 url_dataset = "#"
@@ -74,3 +82,4 @@ math = true
 +++
 
 More detail can easily be written here using *Markdown* and $\rm \LaTeX$ math code.
+

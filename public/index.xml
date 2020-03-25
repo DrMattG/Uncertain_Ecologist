@@ -73,6 +73,16 @@
     </item>
     
     <item>
+      <title>Evidence synthesis for tackling research waste</title>
+      <link>/publication/evidence-synthesis-for-tackling-research-waste/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0100</pubDate>
+      
+      <guid>/publication/evidence-synthesis-for-tackling-research-waste/</guid>
+      <description>&lt;p&gt;More detail can easily be written here using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Hunters as citizen scientists: contributions to biodiversity monitoring in Europe</title>
       <link>/publication/hunters-as-citizen-scientists/</link>
       <pubDate>Sun, 01 Mar 2020 00:00:00 +0100</pubDate>
@@ -443,7 +453,7 @@ rules &amp;lt;- apriori (tData, parameter = list(supp = 0.03, conf = 0.8)) # run
 ## Absolute minimum support count: 655 
 ## 
 ## set item appearances ...[0 item(s)] done [0.00s].
-## set transactions ...[1770 item(s), 21864 transaction(s)] done [0.08s].
+## set transactions ...[1770 item(s), 21864 transaction(s)] done [0.09s].
 ## sorting and recoding items ... [173 item(s)] done [0.00s].
 ## creating transaction tree ... done [0.01s].
 ## checking subsets of size 1 2 3 4 5 done [0.04s].
@@ -1046,15 +1056,6 @@ We need to test this with real datasets. Can we use the association rules to giv
 
 &lt;p&gt;Further talk details can easily be added to this page using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
-    </item>
-    
-    <item>
-      <title>External Project</title>
-      <link>/project/external-project/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0200</pubDate>
-      
-      <guid>/project/external-project/</guid>
-      <description></description>
     </item>
     
   </channel>

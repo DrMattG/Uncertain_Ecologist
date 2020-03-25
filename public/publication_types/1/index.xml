@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Sat, 01 Feb 2020 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="/publication_types/1/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Evidence synthesis for tackling research waste</title>
+      <link>/publication/evidence-synthesis-for-tackling-research-waste/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0100</pubDate>
+      
+      <guid>/publication/evidence-synthesis-for-tackling-research-waste/</guid>
+      <description>More detail can easily be written here using Markdown and $\rm \LaTeX$ math code.</description>
+    </item>
     
     <item>
       <title>Conservation decision‐making under uncertainty: Identifying when to reintroduce tiger Panthera tigris to Cambodia</title>
