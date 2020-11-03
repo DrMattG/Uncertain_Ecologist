@@ -1,25 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Learning on Uncertain Ecologist</title>
-    <link>/tags/learning/</link>
-    <description>Recent content in Learning on Uncertain Ecologist</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <copyright>&amp;copy; 2018</copyright>
-    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/learning/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Learning R resources</title>
-      <link>/post/learning-r-resources/</link>
-      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/learning-r-resources/</guid>
-      <description>Learning R: where to startSwirl (https://swirlstats.com/)I really like the swirl package in R that has several modules available for learning and understanding how R works. It leads you by the hand through straight forward courses that are carried out through the R console. There are a number of additional courses available (see: https://github.com/swirldev/swirl_courses#swirl-courses). Adventr is another package that does a similar thing - interactive tutorials, but I have not used that one.</description>
-    </item>
-    
-  </channel>
-</rss>

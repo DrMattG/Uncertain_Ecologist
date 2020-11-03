@@ -1,0 +1,95 @@
+---
+title: "Sharing sensitive biodiversity data"
+author: Matt
+date: "2020-11-03"
+slug: Data encryption for location data
+categories: []
+tags:
+  - GBIF
+  - Location data
+  - Encryption
+image:
+  caption: ''
+  focal_point: ''
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Perhaps one of the main concerns that conservation ecologists have about data sharing is the risk of inadvertently increasing the level of persecution by highlighting the geographic locations of vulnerable species or the sites that they inhabit (e.g. roost sites for bats). David Lindenmayer and Ben Scheele highlighted this in their Science Perspective article in 2015 (https://science.sciencemag.org/content/356/6340/800.full). The increase availability of data and the relative ease by which data can be accessed digitally means that "poachers" can find vulnerable populations of species and put them at risk. Likewise publicly available data on species locations could attract tourism and threatened species through disturbance or trampling. 
+
+Ayesha Tulloch and colleagues provide a decision support tool (a decision tree) to help data holders decide when it is appropriate to share location data publicly (https://www.nature.com/articles/s41559-018-0608-1). This encompasses much of the information presented by Chapman (2020; Current Best Practices for Generalizing Sensitive Species Occurrence Data (Community review draft). Version 2. Copenhagen: GBIF Secretariat. https://doi.org/10.15468/doc-5jp4-5g10. ) which also aims to provide guidance on when to share location data publicly or when to distort or remove location data for publishing data with GBIF (GBIF.org).
+
+An important point made by Chapman (2020) is that data from a highly sensitive species (i.e. one at high risk of exploitation or disturbance if location data were to be shared) can (and perhaps should) be shared if the locations are masked in some way. There will, potentially, be other important and useful data in the dataset that will not expose the species to potential threats. For example, a dataset on bat traits does not need to (publicly) include location data to be useful for other researchers. 
+
+## Data encryption
+
+So, if you have location data in a dataset for a highly sensitive species what can you do. The most obvious step is to remove the location data from any publicly available datasets. Another option is to encrypt those columns of data that risk exposing the species to risk (e.g. location data) with an encryption key. This approach (commonly applied to medical datasets) allows the researcher to share data openly but also to provide a secure key to trusted collaborators. Here is an example from the {encryptr} R package (Cameron Fairfield, Riinu Ots, Stephen Knight, Tom Drake and Ewen Harrison
+  (2019). encryptr: Easily Encrypt and Decrypt Data Frame/Tibble Columns or Files
+  using RSA Public/Private Keys. R package version 0.1.3.
+  https://CRAN.R-project.org/package=encryptr).
+
+```{r load packages, message=FALSE, warning=FALSE}
+# A "#" idicates a "comment". This will not run as code. 
+# To install the packages you can delete the comment (#) and run the code as normal
+#install.packages("encryptr")
+#install.packages("devtools")
+#devtools::install_github("LivingNorway/LivingNorwayData")
+#install.packages("tidyverse")
+library(encryptr) # This package is for encrypting data 
+library(devtools) # This package is for installing packages from GitHub
+library(LivingNorwayData) # This package has some datasets in it that we would like to use
+library(tidyverse) # This package has lots of functions for "wrangling" datasets and is compatibile with {encryptr}
+
+```
+
+
+```{r get some data}
+RP<-LivingNorwayData::Rock_ptarmigan
+names(RP)
+
+```
+
+You can see in the Rock ptarmigan dataset that there are two columns location data ("X.koordinat","Y.koordinat"). 
+
+Imagine if these species were highly sensitive and that publicly sharing the location data could do them, other species and/or humans harm. If we still want to be able to share our data and collaborate with trusted researchers or resource managers we could encrypt the locations. 
+
+```{r generate some keys, eval=FALSE}
+encryptr::genkeys()
+
+```
+
+The encryptr::genkeys() function generates a password protected public and private key pair. 
+Without the password none of the encrypted data can be recovered - the advice from {encryptr} is "Keep this safe and secure. Do not share it without a lot of thought on the implications".
+
+
+
+```{r encrypt the data, eval=FALSE}
+RP_encrypt<-RP %>% 
+  encrypt(X.koordinat, Y.koordinat)
+
+```
+
+```{r use saved data, echo=FALSE, warning=FALSE, message=FALSE}
+library(here)
+RP_encrypt <- readRDS(paste0(here(), "/content/post/RP_encrypt.RDS"))
+
+```
+
+
+```{r compare the encrypted to decrypted data}
+df<-data.frame("not_encrypted"=RP$X.koordinat, "encrypted"=RP_encrypt$X.koordinat)
+head(df,1)
+
+```
+
+If we want to decrypt the data we can use the password we set when using the encryptr::genkeys() function. We could provide this password to trusted collaborators to decrypt the data. 
+
+```{r decrypt, eval=FALSE}
+RP_encrypt %>% 
+  decrypt(X.koordinat, Y.koordinat)
+
+```
+
+
