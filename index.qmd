@@ -1,5 +1,19 @@
 ---
-title: "The Uncertain Ecologist"
+title: "Dr Matthew J Grainger"
+image: images/ProfilePic.png
+about:
+  template: trestles
+  links:
+    - text: Google Scholar
+      href: "https://scholar.google.com/citations?user=aZ4E5I4AAAAJ&hl=en&authuser=1"
+    - text: Twitter
+      href: "https://twitter.com/Ed_pheasant"
+    - text: GitHub
+      href: "https://github.com/DrMattG/"
+    - text: ResearchGate
+      href: "https://www.researchgate.net/profile/Matthew-Grainger"
+    - text: Email
+      href: "mailto:matthew.grainger@nina.no"
 ---
 
 Biography
