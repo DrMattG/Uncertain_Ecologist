@@ -1,0 +1,23 @@
+---
+title: "Publications"
+---
+
+The full list of my publications can be found on [GoogleScholar](https://scholar.google.com/citations?user=aZ4E5I4AAAAJ&hl=en&authuser=1 "Publications for Matthew J Grainger"). If you can not find an open access version of any of my publications please get in contact and I will send you one.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(scholar)
+library(tidyverse)
+library(kableExtra)
+p<-get_publications("aZ4E5I4AAAAJ&hl")
+p<-p %>% 
+  select(author, year, title,journal,number  ) |> 
+  arrange(-year)
+
+p %>% 
+  kableExtra::kable() %>% 
+  kableExtra::kable_styling()
+
+```
