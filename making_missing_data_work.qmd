@@ -198,9 +198,9 @@ Let's assume we are monitoring birds at 5 locations over a number of years to as
 
 We can set up a simulation to look at the effects of imputing data.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 # Load mice
-library(mice)
+library(mice, quietly = TRUE)
 
 # Set seed for reproducibility
 set.seed(123)
