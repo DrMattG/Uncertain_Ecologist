@@ -12,6 +12,8 @@ website:
         text: Publications
       - href: making_missing_data_work.qmd
         text: Missing data
+      - href: Ecology_SR.qmd
+        text: Rapid review short-cuts
 
 format:
   html:
