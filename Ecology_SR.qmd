@@ -5,6 +5,10 @@ number-sections: true
 toc-depth: 5
 ---
 
+::: {.callout-tip title="TL;DR"}
+*Reviews in ecology often take short-cuts in the review process - the effect this has on the risk of bias is unknown and could be quite severe. A recent paper showed (in health) that some short-cuts can be carried out with minimal effect on the review. Many ecological reviews make short-cuts that can actually increase the risk of bias.*
+:::
+
 ## Rapid reviews
 
 There is a clear demand from policy-makers for rapid evidence synthesis. "Rapid Reviews" are a type of systematic review where one or more of the review processes are simplified, sped-up (through, for example, AI tools to assist screening) or completely omitted. There is not a unified definition of what a "Rapid Review" is, and authors tend to take different "short-cuts" depending on resource constraints or the knowledge/experience of the review team.
