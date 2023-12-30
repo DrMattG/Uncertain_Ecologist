@@ -457,20 +457,20 @@ TL;DR
                                        Petal.Width                   
                               (1)                      (2)           
 ---------------------------------------------------------------------
-Sepal.Length               -0.207***                 -0.187**        
+Sepal.Length               -0.207***                -0.216***        
                             (0.048)                  (0.059)         
-Sepal.Width                 0.223***                 0.188**         
-                            (0.049)                  (0.058)         
-Petal.Length                0.524***                 0.516***        
-                            (0.024)                  (0.030)         
-Constant                     -0.240                   -0.218         
-                            (0.178)                  (0.211)         
+Sepal.Width                 0.223***                 0.214**         
+                            (0.049)                  (0.064)         
+Petal.Length                0.524***                 0.529***        
+                            (0.024)                  (0.031)         
+Constant                     -0.240                   -0.174         
+                            (0.178)                  (0.221)         
 ---------------------------------------------------------------------
 Observations                  150                      105           
-R2                           0.938                    0.941          
-Adjusted R2                  0.937                    0.940          
-Residual Std. Error     0.192 (df = 146)         0.197 (df = 101)    
-F Statistic         734.389*** (df = 3; 146) 541.387*** (df = 3; 101)
+R2                           0.938                    0.930          
+Adjusted R2                  0.937                    0.928          
+Residual Std. Error     0.192 (df = 146)         0.205 (df = 101)    
+F Statistic         734.389*** (df = 3; 146) 446.920*** (df = 3; 101)
 =====================================================================
 Note:                                   *p&lt;0.05; **p&lt;0.01; ***p&lt;0.001</code></pre>
 </div>
@@ -512,7 +512,7 @@ Variances:
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>miss_model2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(<span class="st">'Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length'</span>, <span class="at">data=</span>iris_MCAR, <span class="at">missing=</span><span class="st">"ML"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(miss_model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6.16 ended normally after 40 iterations
+<pre><code>lavaan 0.6.16 ended normally after 10 iterations
 
   Estimator                                         ML
   Optimization method                           NLMINB
@@ -535,17 +535,17 @@ Parameter Estimates:
 Regressions:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
   Petal.Width ~                                       
-    Sepal.Length     -0.187    0.058   -3.250    0.001
-    Sepal.Width       0.188    0.057    3.320    0.001
-    Petal.Length      0.516    0.030   17.391    0.000
+    Sepal.Length     -0.216    0.058   -3.710    0.000
+    Sepal.Width       0.214    0.063    3.414    0.001
+    Petal.Length      0.529    0.030   17.477    0.000
 
 Intercepts:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-   .Petal.Width      -0.218    0.207   -1.057    0.291
+   .Petal.Width      -0.174    0.216   -0.803    0.422
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-   .Petal.Width       0.037    0.005    7.246    0.000</code></pre>
+   .Petal.Width       0.040    0.006    7.246    0.000</code></pre>
 </div>
 </div>
 <p>Adding the argument ‘missing = “ML”’ to the sem() function estimates a likelihood function for each row based on the variables that are present so that all the available data are used. You can see that the lm() uses only 105 observations whereas the sem() uses all 150 observations.</p>

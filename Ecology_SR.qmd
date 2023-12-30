@@ -9,6 +9,9 @@ toc-depth: 5
 *Reviews in ecology often take short-cuts in the review process - the effect this has on the risk of bias is unknown and could be quite severe. A recent paper showed (in health) that some short-cuts can be carried out with minimal effect on the review. Many ecological reviews make short-cuts that can actually increase the risk of bias.*
 :::
 
+This post was inspired by the recent [ESHackathon](https://www.eshackathon.org/events/2023-12-newcastle.html) event hosted by the [Innovation Observitory](https://www.io.nihr.ac.uk/) at Newcastle University where one of the projects was to update [PredicTER](https://predicter.github.io/) so that we can predict the potential time saving of different common short-cuts used in rapid reviews.  
+
+
 ## Rapid reviews
 
 There is a clear demand from policy-makers for rapid evidence synthesis. "Rapid Reviews" are a type of systematic review where one or more of the review processes are simplified, sped-up (through, for example, AI tools to assist screening) or completely omitted. There is not a unified definition of what a "Rapid Review" is, and authors tend to take different "short-cuts" depending on resource constraints or the knowledge/experience of the review team.
@@ -18,7 +21,7 @@ A paper published in Research Synthesis Methods, [Haby et al. (2023)](https://on
 [Haby et al. (2023)](https://onlinelibrary.wiley.com/doi/10.1002/jrsm.1664) provide a really useful guide to what short-cuts one can take in a Rapid Review. Their Table 2 (recreated below) lists each commonly used short-cut and the potential impact on the risk of bias.
 
 | Possible “short-cuts” categorised by review step                                                                                                                                                                    | Recommended (yes/no) | Potential impact on risk of bias if done | Supporting evidence within Haby et al. |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|------------------------------------------|----------------------------------------|
+|---------------------------------------|-----------|-----------|-----------|
 | **Preparation of a protocol**                                                                                                                                                                                       |                      |                                          |                                        |
 | Omit protocol                                                                                                                                                                                                       | No                   | ↑                                        | ✗                                      |
 | Prepare a protocol and make publicly available (e.g., PROSPERO or Open Science Framework). Limit included information to the key aspects that allow a complete assessment of risk of bias (with AMSTAR 2 or ROBIS). | Yes                  | ↓                                        | ✗                                      |
@@ -77,3 +80,7 @@ What strikes me from [Haby et al. (2023)](https://onlinelibrary.wiley.com/doi/10
 Searching a single database increases the risk of bias because not all journals are indexed on each database. A quick look at the results from two databases will show you that there are always (sometimes quite large) differences between the results of a search.
 
 I also found it interesting that dropping grey literature from a review can have minimal effect (although it is noted that the effect size might be overestimated) on the risk of bias. I wonder if grey literature is more important in ecology than in health? In ecology we have a large number of commissioned reports or "unpublished" reports (technical reports from NGOs etc. might be "unpublished" but still widely available on websites) that are important sources of evidence.
+
+## Conclusion
+
+Ecological reviews often take short-cuts that increase the risk of bias in the reported findings - it is important that we recognise this risk and highlight it to stakeholders and policy makers. 
