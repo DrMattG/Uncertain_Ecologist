@@ -201,10 +201,10 @@ TL;DR
 <table class="table">
 <caption>Table 1. The potential risk of bias for each short-cut as shown by Haby et al.&nbsp;(2023) in their Table 2.</caption>
 <colgroup>
-<col style="width: 67%">
-<col style="width: 6%">
-<col style="width: 13%">
-<col style="width: 12%">
+<col style="width: 39%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -483,10 +483,28 @@ TL;DR
 </table>
 <section id="what-does-this-mean-for-ecological-reviews" class="level3" data-number="1.1">
 <h3 data-number="1.1" class="anchored" data-anchor-id="what-does-this-mean-for-ecological-reviews"><span class="header-section-number">1.1</span> What does this mean for ecological reviews?</h3>
-<p>In ecology authors of reviews (sometimes incorrectly labelled systematic reviews or meta-analysis) often take short-cuts such as only searching a single database, not assessing risk of bias or using only single reviewers (see this great paper by <a href="https://www.nature.com/articles/s41559-020-01295-x">Haddaway et al.&nbsp;2020</a> for a list of common problems with reviews and how to fix them).</p>
+<p>In ecology authors of reviews (sometimes incorrectly labelled systematic reviews or meta-analysis) often take short-cuts such as only searching a single source, not assessing risk of bias or using only single reviewers (see this great paper by <a href="https://www.nature.com/articles/s41559-020-01295-x">Haddaway et al.&nbsp;2020</a> for a list of common problems with reviews and how to fix them).</p>
 <p>What strikes me from <a href="https://onlinelibrary.wiley.com/doi/10.1002/jrsm.1664">Haby et al.&nbsp;(2023)</a> is that most of the short-cuts authors take in ecology are those that increase the risk of bias. For example, it is common to see a statement such as this in ecological reviews:</p>
-<p>“We conducted a search of the ISI Web of Science database on [DATE], using the following key words…”</p>
-<p>Searching a single database increases the risk of bias because not all journals are indexed on each database. A quick look at the results from two databases will show you that there are always (sometimes quite large) differences between the results of a search. For example, searching for peer-reviewed articles on Lake spawning Brown Trout in Web of Science (WOS) versus searching in Lens.org leads to a total of 1385 records, but only 69 of these are duplicated across databases. If we only used WOS there is a risk that we might miss important sources of evidence.</p>
+<p>“We conducted a search of the ISI Web of Science database* on [DATE], using the following key words…”</p>
+<div id="NotaDatabase" class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+*WOS is NOT a database
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is important to note that the Web Of Science platform is not a database, but rather a collection of databases. Each institution might have different subscriptions. Thus it is important that review authors list the databases that their institution has access to.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://x.com/nealhaddaway/status/1093810798793814016?s=20"><img src="images/WoS.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Searching a single source increases the risk of bias because not all journals are indexed on each platform. A quick look at the results from two sources will show you that there are always (sometimes quite large) differences between the results of a search. For example, searching for peer-reviewed articles on Lake spawning Brown Trout in Web of Science (<a href="https://www.webofscience.com/wos/woscc/summary/61932120-b894-463a-8bce-f40e84abd8f6-c1c4b68a/relevance/1">WOS</a>) versus searching in <a href="https://link.lens.org/xwHHibSWKGj">Lens.org</a> leads to a total of 1385 records, but only 69 of these are duplicated across sources. If we only used WOS there is a risk that we might miss important evidence.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#https://github.com/ESHackathon/CiteSource</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#remotes::install_github("ESHackathon/CiteSource")</span></span>
@@ -518,7 +536,7 @@ TL;DR
 </div>
 </div>
 </div>
-<p>I also found it interesting that dropping grey literature from a review can have minimal effect (although it is noted that the effect size might be overestimated) on the risk of bias. I wonder if grey literature is more important in ecology than in health? In ecology we have a large number of commissioned reports or “unpublished” reports (technical reports from NGOs etc. might be “unpublished” but still widely available on websites) that are important sources of evidence.</p>
+<p>I also found it interesting that dropping grey literature from a review can have minimal effect (although it is noted that the effect size might be overestimated) on the risk of bias. I wonder if grey literature is more important in ecology than in health? In ecology we have a large number of commissioned reports or “unpublished” reports (technical reports from NGOs etc. might be “unpublished” but still widely available on websites) that are important sources of evidence. For example, in a systematic review by <a href="https://doi.org/10.1186/s13750-015-0032-9">Bernes et al.(2015)</a> grey literature made up over 20% of the studies included in the synthesis. This represents a large proportion of the evidence-base in this particular case.</p>
 </section>
 </section>
 <section id="conclusion" class="level2" data-number="2">

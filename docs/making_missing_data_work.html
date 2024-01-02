@@ -461,20 +461,20 @@ TL;DR
                                        Petal.Width                   
                               (1)                      (2)           
 ---------------------------------------------------------------------
-Sepal.Length               -0.207***                -0.211***        
-                            (0.048)                  (0.055)         
-Sepal.Width                 0.223***                 0.213***        
-                            (0.049)                  (0.056)         
-Petal.Length                0.524***                 0.523***        
-                            (0.024)                  (0.028)         
-Constant                     -0.240                   -0.186         
-                            (0.178)                  (0.215)         
+Sepal.Length               -0.207***                 -0.172**        
+                            (0.048)                  (0.061)         
+Sepal.Width                 0.223***                 0.216***        
+                            (0.049)                  (0.058)         
+Petal.Length                0.524***                 0.513***        
+                            (0.024)                  (0.031)         
+Constant                     -0.240                   -0.381         
+                            (0.178)                  (0.232)         
 ---------------------------------------------------------------------
 Observations                  150                      105           
-R2                           0.938                    0.939          
-Adjusted R2                  0.937                    0.937          
-Residual Std. Error     0.192 (df = 146)         0.193 (df = 101)    
-F Statistic         734.389*** (df = 3; 146) 515.707*** (df = 3; 101)
+R2                           0.938                    0.932          
+Adjusted R2                  0.937                    0.930          
+Residual Std. Error     0.192 (df = 146)         0.201 (df = 101)    
+F Statistic         734.389*** (df = 3; 146) 463.469*** (df = 3; 101)
 =====================================================================
 Note:                                   *p&lt;0.05; **p&lt;0.01; ***p&lt;0.001</code></pre>
 </div>
@@ -539,17 +539,17 @@ Parameter Estimates:
 Regressions:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
   Petal.Width ~                                       
-    Sepal.Length     -0.211    0.054   -3.882    0.000
-    Sepal.Width       0.213    0.055    3.889    0.000
-    Petal.Length      0.523    0.028   18.785    0.000
+    Sepal.Length     -0.172    0.059   -2.893    0.004
+    Sepal.Width       0.216    0.057    3.764    0.000
+    Petal.Length      0.513    0.031   16.739    0.000
 
 Intercepts:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-   .Petal.Width      -0.186    0.211   -0.882    0.378
+   .Petal.Width      -0.381    0.227   -1.673    0.094
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-   .Petal.Width       0.036    0.005    7.246    0.000</code></pre>
+   .Petal.Width       0.039    0.005    7.246    0.000</code></pre>
 </div>
 </div>
 <p>Adding the argument ‘missing = “ML”’ to the sem() function estimates a likelihood function for each row based on the variables that are present so that all the available data are used. You can see that the lm() uses only 105 observations whereas the sem() uses all 150 observations.</p>
