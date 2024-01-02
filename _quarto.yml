@@ -8,6 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: listing.qmd
+        text: Index of posts
       - href: Publications.qmd
         text: Publications
       - href: making_missing_data_work.qmd

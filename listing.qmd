@@ -1,0 +1,7 @@
+---
+title: "Posts"
+listing:
+  sort-ui: [title, date]
+  
+reading-time: true
+---
