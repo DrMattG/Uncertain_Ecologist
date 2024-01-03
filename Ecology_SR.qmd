@@ -21,7 +21,7 @@ A paper published in Research Synthesis Methods, [Haby et al. (2023)](https://on
 [Haby et al. (2023)](https://onlinelibrary.wiley.com/doi/10.1002/jrsm.1664) provide a really useful guide to what short-cuts one can take in a Rapid Review. Their Table 2 (recreated below) lists each commonly used short-cut and the potential impact on the risk of bias.
 
 | Possible “short-cuts” categorised by review step                                                                                                                                                                    | Recommended (yes/no) | Potential impact on risk of bias if done | Supporting evidence within Haby et al. |
-|-------------------------|----------------|----------------|----------------|
+|--------------------|------------------|------------------|------------------|
 | **Preparation of a protocol**                                                                                                                                                                                       |                      |                                          |                                        |
 | Omit protocol                                                                                                                                                                                                       | No                   | ↑                                        | ✗                                      |
 | Prepare a protocol and make publicly available (e.g., PROSPERO or Open Science Framework). Limit included information to the key aspects that allow a complete assessment of risk of bias (with AMSTAR 2 or ROBIS). | Yes                  | ↓                                        | ✗                                      |
@@ -114,6 +114,17 @@ plot_source_overlap_heatmap(source_comparison)
 
 I also found it interesting that dropping grey literature from a review can have minimal effect (although it is noted that the effect size might be overestimated) on the risk of bias. I wonder if grey literature is more important in ecology than in health? In ecology we have a large number of commissioned reports or "unpublished" reports (technical reports from NGOs etc. might be "unpublished" but still widely available on websites) that are important sources of evidence. For example, in a systematic review by [Bernes et al.(2015)](https://doi.org/10.1186/s13750-015-0032-9) grey literature made up over 20% of the studies included in the synthesis. This represents a large proportion of the evidence-base in this particular case.
 
+[Haby et al. (2023)](https://onlinelibrary.wiley.com/doi/10.1002/jrsm.1664) suggest that limiting the search to English language publications has a minimal effect on the potential risk of bias. The evidence that [Haby et al. (2023)](https://onlinelibrary.wiley.com/doi/10.1002/jrsm.1664) base their suggestion on is from epidemiology and health technology ([Morrison et al. 2012](https://doi:10.1017/S0266462312000086), [Nussbaumer-Streit et al. 2019](https://doi.org/10.1016/j.jclinepi.2019.10.011)). In ecology a relatively large proportion of studies on the effectiveness of biodiversity conservation interventions are in a non-English language (see this great paper that addresses this issue - [Amano et al. 2021](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3001296)).
+
+Ignoring grey literature or non-English studies in ecological reviews would most likely have a high potential impact on the risk of bias.
+
 ## Conclusion
 
 Ecological reviews often take short-cuts that increase the risk of bias in the reported findings - it is important that we recognise this risk and highlight it to stakeholders and policy makers.
+
+::: {.callout-note appearance="simple" icon="false"}
+## Acknowledgements
+
+This blogpost was greatly improved by comments from Neal Haddaway and Ross Mounce.
+:::
+
