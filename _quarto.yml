@@ -16,6 +16,8 @@ website:
         text: Missing data
       - href: Ecology_SR.qmd
         text: Rapid review short-cuts
+      - href: ESHackathon.qmd
+        text: What is the ESHackathon?
 
 format:
   html:

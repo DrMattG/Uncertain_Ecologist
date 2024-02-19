@@ -1,0 +1,103 @@
+---
+title: "ESHackathon: Unlocking Evidence Synthesis Through Innovation!"
+toc: true
+number-sections: true
+toc-depth: 5
+reading-time: true
+---
+
+![](images/esh_hex_final-01.png){fig-align="center" width="480"}
+
+*Embark on an innovative journey with ESHackathon* *– where our workshops promote inclusive dynamic spaces for collaboration in evidence synthesis*.
+
+Originating as an open software development event in 2018, ESHackathon has evolved into a conference, training courses and hackathons, uniting diverse talents to tackle complex challenges in identifying and summarising evidence.
+
+### **Why is Technology Vital for Evidence Synthesis?**
+
+In a world of constantly expanding literature, ESTech revolutionises the way we synthesise the literature. Through text analysis, machine learning, and collaborative coding, we automate tasks, cut costs, and enhance global accessibility, making rigorous evidence synthesis efficient.
+
+### **Hackathon Highlights:**
+
+-   <div>
+
+    Diverse Participation: All are welcome - coders, health researchers, environmental scientists, social scientists, statisticians and more!
+
+    </div>
+
+-   <div>
+
+    Problem-Solving: It's not just for programmers! Combine technology and evidence synthesis expertise to develop novel frameworks and tackle fundamental evidence synthesis challenges.
+
+    </div>
+
+-   <div>
+
+    Global Collaboration: Unite with talents worldwide to create impactful solutions for evidence synthesis challenges.
+
+    </div>
+
+### **Get Involved:**
+
+-   <div>
+
+    Stay Connected: Follow us for updates and details at [ https://www.eshackathon.org/](https://www.eshackathon.org/) 
+
+    </div>
+
+-   <div>
+
+    Sign-up for Courses: Elevate your skills with our evidence synthesis training courses <https://opencollective.com/esmarconf/events> 
+
+    </div>
+
+-   <div>
+
+    Relive ESMARConf: Revisit the experience with all sessions available forever on YouTube <https://esmarconf.org/recordings>  
+
+    </div>
+
+-   Get in contact with us if you have a need for bespoke evidence synthesis solutions [eshackathon\@gmail.com](mailto:eshackathon@gmail.com) 
+
+-   ESHackathon relies on generous funding from our supporters to progress our goals of making evidence synthesis faster, cheaper, and more reliable. If you are interested in supporting our activities then please donate here <https://opencollective.com/esmarconf/contribute> 
+
+### **ESHackathon Project Highlights**
+
+Participants in ESH have produced 11 fully functional tools, many of which have non-coding user interfaces. Tools include:
+
+-   [citationchaser](https://www.eshackathon.org/software/citationchaser.html) - conducts forward and backward citation chasing for systematic searching
+
+-   [EviAtlas](https://www.eshackathon.org/software/eviatlas.html) - creates interactive visualisations of geographical evidence map data
+
+-   [robvis](https://www.eshackathon.org/software/robvis.html) - visualises risk of bias assessments
+
+-   [metafor::reports](https://www.eshackathon.org/software/metafor-reports.html) - produces methods and results text based on meta-analytic model inputs
+
+-   [sysrevdata](https://www.eshackathon.org/software/sysrevdata.html) - converts between evidence synthesis database formats (long, wide, condensed)
+
+-   [PRISMA2020](https://www.eshackathon.org/software/PRISMA2020.html) - produces PRISMA-compliant flow diagrams (\>6000 monthly users)
+
+-   [ROSESflowchart](http://rosesflowchart) - produces ROSES-compliant flow diagrams
+
+-   [bibfix](https://www.eshackathon.org/software/bibfix.html) - corrects and compiles bibliographic files
+
+-   [metadat](https://www.eshackathon.org/software/metadat.html) - an R repository of meta-analytic datasets
+
+-   [PredicTER](https://www.eshackathon.org/software/predicter.html) - estimates the time requirement for evidence synthesis projects
+
+We have also published 8 academic papers as a result of ESH working group discussions, with several more in preparation:
+
+-   [Nakagawa, Shinichi, et al. “A new ecosystem for evidence synthesis.” Nature Ecology & Evolution 4.4 (2020): 498-501](https://www.nature.com/articles/s41559-020-1153-2?proof=true)
+
+-   [Haddaway, Neal R., et al. "The evidence synthesis and meta-analysis in R conference (ESMARConf): levelling the playing field of conference accessibility and equitability." Systematic Reviews 11.1 (2022): 1-9.](https://systematicreviewsjournal.biomedcentral.com/articles/10.1186/s13643-022-01985-6)
+
+-   [Haddaway, Neal R., et al. "EviAtlas: a tool for visualising evidence synthesis databases." Environmental Evidence 8.1 (2019): 1-10.](https://environmentalevidencejournal.biomedcentral.com/articles/10.1186/s13750-019-0167-1)
+
+-   [Haddaway, Neal R., and Martin J. Westgate. "Creating and curating a community of practice: introducing the evidence synthesis Hackathon and a special series in evidence synthesis technology." Environmental Evidence 9.1 (2020): 1-4.](https://environmentalevidencejournal.biomedcentral.com/articles/10.1186/s13750-020-00212-w)
+
+-   [Haddaway, Neal R., Matthew J. Grainger, and Charles T. Gray. "Citationchaser: A tool for transparent and efficient forward and backward citation chasing in systematic searching." Research Synthesis Methods 13.4 (2022): 533-545.](https://onlinelibrary.wiley.com/doi/abs/10.1002/jrsm.1563)
+
+-   [Haddaway, Neal R., Charles T. Gray, and Matthew Grainger. "Novel tools and methods for designing and wrangling multifunctional, machine-readable evidence synthesis databases." Environmental Evidence 10.1 (2021): 5.](https://environmentalevidencejournal.biomedcentral.com/articles/10.1186/s13750-021-00219-x)
+
+-   [Hennessy, Emily A., et al. "Ensuring prevention science research is synthesis-ready for immediate and lasting scientific impact." Prevention Science 23.5 (2022): 809-820.](https://link.springer.com/epdf/10.1007/s11121-021-01279-8?sharing_token=8qQSY9SgftLanniQOHfKLfe4RwlQNchNByi7wbcMAY6T7LgODtpYnXw7qHU1XIhUf0PKkWXU1kftkKNSXV6YVtQAHwOcE59gOPI_mPlSUm16qjPwm94DA-flDI6wLOPNIBba6tAZhsxf5LyDNEETU6j-uiwgLYQP28c_Hunswus%3D)
+
+-   [Haddaway, Neal R., et al. "PRISMA2020: An R package and Shiny app for producing PRISMA 2020‐compliant flow diagrams, with interactivity for optimised digital transparency and Open Synthesis." Campbell Systematic Reviews 18.2 (2022): e1230.](https://onlinelibrary.wiley.com/doi/full/10.1002/cl2.1230)
