@@ -1,0 +1,71 @@
+---
+title: "What makes a 'good' systematic evidence synthesis?"
+toc: true
+number-sections: true
+toc-depth: 5
+reading-time: true
+---
+
+::: {.callout-tip title="TL;DR"}
+There are lots of "bad" evidence syntheses published but what makes a "good" one and how can we spot them?
+:::
+
+## What makes a good systematic evidence synthesis?
+
+There has been an proliferation of studies claiming to be systematic evidence syntheses. Many of these studies are of poor quality and have a high risk of bias. Systematic evidence synthesis strives to reduce bias and poor quality syntheses could be misleading and waste valuable resources. As pointed out by [Haddaway et al. (2020)](https://doi.org/10.1038/s41559-020-01295-x) these poor quality syntheses could be eroding trust in "evidence synthesis as an academic endeavour". I would go as far as to suggest that they ***are*** eroding trust in evidence synthesis.
+
+### Identifying a good evidence synthesis
+
+Here are some simple criteria to help you identify a good synthesis:
+
+#### ***A Clear Research Question:*** 
+
+A good synthesis has a well-defined research question that guides the entire review process. Often a good synthesis will use a question formulation framework/tool to help them identify the key elements. For example, a common approach is to identify the PICO elements of a question; Population, Intervention, Control, Outcome.
+
+#### ***Transparent Methods:*** 
+
+Look for transparency in the methodology section. A good synthesis should clearly outline its search strategy, inclusion and exclusion criteria, data extraction methods, and quality assessment criteria.
+
+#### ***Comprehensive Search Strategy:*** 
+
+A comprehensive search strategy is essential to ensure that all relevant studies are identified. Look for details on the databases searched, search terms used, and any other sources consulted (e.g., grey literature, conference proceedings). Multiple databases should be searched and unpublished (i.e. grey literature) sources should be consulted.
+
+#### ***Inclusion Criteria:*** 
+
+Ensure that the synthesis clearly states the criteria used to include or exclude studies. This helps in understanding the scope of the synthesis and the generalisability of its findings.
+
+#### ***Quality Assessment:*** 
+
+Look for information on how the quality of included studies was assessed. This could involve evaluating study design, risk of bias, and other relevant factors. This is a vital element that is often missed.
+
+#### ***Data Synthesis*****:** 
+
+A good synthesis should provide a clear synthesis of the evidence, including any statistical analysis or qualitative synthesis methods used. Open data and open code, where appropriate, should be available to readers.
+
+#### ***Risk of Bias Assessment:*** 
+
+The synthesis should address the risk of bias in the included studies. Look for methods used to minimise bias and consider how potential biases might impact the review findings. Risk of bias are things in the conduct of a study that could lead to misleading results. For example a small sample size might mean a study does not have enough statistical power to determine the size or direction of an effect.
+
+#### ***Discussion of Limitations*****:** 
+
+A good synthesis should discuss its limitations openly. This could include limitations related to the search strategy, study quality, or other factors that may impact the validity of the findings.
+
+#### ***Conclusion Supported by Evidence*****:** 
+
+Ensure that the conclusions drawn in the review are supported by the evidence presented. Look for consistency between the review findings and the data synthesised from the included studies. Do not just rely on the abstract or the lay summary.
+
+### Conclusion
+
+By carefully assessing these criteria, you can better distinguish between good and bad syntheses and make more informed decisions about their reliability and validity.
+
+[Donnelly et al. (2018)](https://www.nature.com/articles/d41586-018-05414-4) provided a much simpler schema which condenses the criteria above in to four principles - Inclusive, Rigorous, Transparent and Accessible.
+
+[![Figure from Donnelly et al. (2018) Four principles to make evidence synthesis more useful for policy](images/d41586-018-05414-4_15853308.webp)](https://www.nature.com/articles/d41586-018-05414-4)
+
+It is not easy identifying good evidence synthesis. Sometimes the criteria/principles outlined above are hard to identify. It can be tough to know if a synthesis only achieves some of the criteria how much it can be trusted.
+
+There are many organisations whose purpose it is to help produce and share robust, high quality evidence syntheses. In the environmental field there is [The Collaboration for Environmental Evidence](https://environmentalevidence.org/). If you need help please reach out.
+
+::: {.callout-note appearance="simple" icon="false"}
+## Acknowledgements
+:::

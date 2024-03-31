@@ -18,6 +18,8 @@ website:
         text: Rapid review short-cuts
       - href: ESHackathon.qmd
         text: What is the ESHackathon?
+      - href: What_makes_a_good_systematic_review
+        text: What makes a good evidence synthesis?
 
 format:
   html:

@@ -139,6 +139,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./ESHackathon.html" rel="" target="">
  <span class="menu-text">What is the ESHackathon?</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./What_makes_a_good_systematic_review" rel="" target="">
+ <span class="menu-text">What makes a good evidence synthesis?</span></a>
+  </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto">
 </div>
@@ -465,20 +469,20 @@ TL;DR
                                        Petal.Width                   
                               (1)                      (2)           
 ---------------------------------------------------------------------
-Sepal.Length               -0.207***                -0.228***        
-                            (0.048)                  (0.055)         
-Sepal.Width                 0.223***                 0.246***        
-                            (0.049)                  (0.055)         
-Petal.Length                0.524***                 0.529***        
-                            (0.024)                  (0.029)         
-Constant                     -0.240                   -0.208         
-                            (0.178)                  (0.197)         
+Sepal.Length               -0.207***                  -0.116         
+                            (0.048)                  (0.064)         
+Sepal.Width                 0.223***                 0.176**         
+                            (0.049)                  (0.059)         
+Petal.Length                0.524***                 0.479***        
+                            (0.024)                  (0.032)         
+Constant                     -0.240                  -0.463*         
+                            (0.178)                  (0.219)         
 ---------------------------------------------------------------------
 Observations                  150                      105           
-R2                           0.938                    0.940          
-Adjusted R2                  0.937                    0.938          
-Residual Std. Error     0.192 (df = 146)         0.184 (df = 101)    
-F Statistic         734.389*** (df = 3; 146) 523.838*** (df = 3; 101)
+R2                           0.938                    0.936          
+Adjusted R2                  0.937                    0.934          
+Residual Std. Error     0.192 (df = 146)         0.193 (df = 101)    
+F Statistic         734.389*** (df = 3; 146) 491.793*** (df = 3; 101)
 =====================================================================
 Note:                                   *p&lt;0.05; **p&lt;0.01; ***p&lt;0.001</code></pre>
 </div>
@@ -520,7 +524,7 @@ Variances:
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>miss_model2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(<span class="st">'Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length'</span>, <span class="at">data=</span>iris_MCAR, <span class="at">missing=</span><span class="st">"ML"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(miss_model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6.16 ended normally after 19 iterations
+<pre><code>lavaan 0.6.16 ended normally after 14 iterations
 
   Estimator                                         ML
   Optimization method                           NLMINB
@@ -543,17 +547,17 @@ Parameter Estimates:
 Regressions:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
   Petal.Width ~                                       
-    Sepal.Length     -0.228    0.054   -4.212    0.000
-    Sepal.Width       0.246    0.054    4.547    0.000
-    Petal.Length      0.529    0.029   18.423    0.000
+    Sepal.Length     -0.116    0.063   -1.844    0.065
+    Sepal.Width       0.176    0.058    3.026    0.002
+    Petal.Length      0.479    0.032   15.150    0.000
 
 Intercepts:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-   .Petal.Width      -0.208    0.193   -1.075    0.282
+   .Petal.Width      -0.463    0.215   -2.152    0.031
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-   .Petal.Width       0.032    0.004    7.246    0.000</code></pre>
+   .Petal.Width       0.036    0.005    7.246    0.000</code></pre>
 </div>
 </div>
 <p>Adding the argument ‘missing = “ML”’ to the sem() function estimates a likelihood function for each row based on the variables that are present so that all the available data are used. You can see that the lm() uses only 105 observations whereas the sem() uses all 150 observations.</p>
