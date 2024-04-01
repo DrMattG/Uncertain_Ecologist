@@ -18,41 +18,41 @@ There has been an proliferation of studies claiming to be systematic evidence sy
 
 Here are some simple criteria to help you identify a good synthesis:
 
-#### ***A Clear Research Question:*** 
+#### ***A Clear Research Question:***
 
 A good synthesis has a well-defined research question that guides the entire review process. Often a good synthesis will use a question formulation framework/tool to help them identify the key elements. For example, a common approach is to identify the PICO elements of a question; Population, Intervention, Control, Outcome.
 
-#### ***Transparent Methods:*** 
+#### ***Transparent Methods:***
 
 Look for transparency in the methodology section. A good synthesis should clearly outline its search strategy, inclusion and exclusion criteria, data extraction methods, and quality assessment criteria.
 
-#### ***Comprehensive Search Strategy:*** 
+#### ***Comprehensive Search Strategy:***
 
 A comprehensive search strategy is essential to ensure that all relevant studies are identified. Look for details on the databases searched, search terms used, and any other sources consulted (e.g., grey literature, conference proceedings). Multiple databases should be searched and unpublished (i.e. grey literature) sources should be consulted.
 
-#### ***Inclusion Criteria:*** 
+#### ***Inclusion Criteria:***
 
 Ensure that the synthesis clearly states the criteria used to include or exclude studies. This helps in understanding the scope of the synthesis and the generalisability of its findings.
 
-#### ***Quality Assessment:*** 
+#### ***Quality Assessment:***
 
 Look for information on how the quality of included studies was assessed. This could involve evaluating study design, risk of bias, and other relevant factors. This is a vital element that is often missed.
 
-#### ***Data Synthesis*****:** 
+#### ***Data Synthesis*****:**
 
 A good synthesis should provide a clear synthesis of the evidence, including any statistical analysis or qualitative synthesis methods used. Open data and open code, where appropriate, should be available to readers.
 
-#### ***Risk of Bias Assessment:*** 
+#### ***Risk of Bias Assessment:***
 
 The synthesis should address the risk of bias in the included studies. Look for methods used to minimise bias and consider how potential biases might impact the review findings. Risk of bias are things in the conduct of a study that could lead to misleading results. For example a small sample size might mean a study does not have enough statistical power to determine the size or direction of an effect.
 
-#### ***Discussion of Limitations*****:** 
+#### ***Discussion of Limitations*****:**
 
 A good synthesis should discuss its limitations openly. This could include limitations related to the search strategy, study quality, or other factors that may impact the validity of the findings.
 
-#### ***Conclusion Supported by Evidence*****:** 
+#### ***Conclusion Supported by Evidence*****:**
 
-Ensure that the conclusions drawn in the review are supported by the evidence presented. Look for consistency between the review findings and the data synthesised from the included studies. Do not just rely on the abstract or the lay summary.
+Ensure that the conclusions drawn in the synthesis are supported by the evidence presented. Look for consistency between the findings and the data synthesised from the included studies. Do not just rely on the abstract or the lay summary.
 
 ### Conclusion
 
