@@ -24,7 +24,7 @@ A good synthesis has a well-defined research question that guides the entire rev
 
 #### ***Transparent Methods:***
 
-Look for transparency in the methodology section. A good synthesis should clearly outline its search strategy, inclusion and exclusion criteria, data extraction methods, and quality assessment criteria.
+Look for transparency in the methodology section. A good synthesis should clearly outline its search strategy, inclusion and exclusion criteria, data extraction methods, and quality assessment criteria. A predefined (before the work started on the synthesis) protocol outlining the steps and decisions to be made adds to trust in the evidence synthesis. This avoids "mission creep" where the question changes to fit the evidence found and not to answer the original question.
 
 #### ***Comprehensive Search Strategy:***
 
