@@ -29,7 +29,7 @@ sidebar:
       background: light
       collapse-level: 2
       contents:
-        - presentations/LeveragingOpenSourceTools.qmd
+        - presentations/page-reveal.html
 
 format:
   html:
