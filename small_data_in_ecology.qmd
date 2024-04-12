@@ -1,0 +1,42 @@
+---
+title: "Small data in ecology"
+toc: true
+number-sections: true
+toc-depth: 5
+reading-time: true
+---
+
+::: {.callout-tip title="TL;DR"}
+:::
+
+```{r why is sample size important}
+#Simulate some data with known effect
+# loop through 10000 simulations
+library(tidyverse)
+
+ttest_sim<-function(nSim=1000, n=6, C_mean=12, T_mean=16, C_sd=2, T_sd=2){
+out_frame<-rep(NA,nSim)
+
+for (i in seq_along(out_frame)){
+control=rnorm(n,C_mean, C_sd)
+treatment=rnorm(n,T_mean, T_sd)
+ttest<-t.test(control,treatment)
+out_frame[i]<-ttest$p.value
+}
+
+data_out<-data.frame(nSim=1:nSim,pValue=out_frame)
+
+data_out |> 
+  ggplot(aes(pValue))+
+  geom_histogram()+
+  geom_vline(xintercept = 0.05, lty=2, colour="red")+
+  ggthemes::theme_base()
+  
+}
+
+ttest_sim(nSim=1000, n=6, C_mean=12, T_mean=14, C_sd=4, T_sd=4)
+```
+
+::: {.callout-note appearance="simple" icon="false"}
+## Acknowledgements
+:::

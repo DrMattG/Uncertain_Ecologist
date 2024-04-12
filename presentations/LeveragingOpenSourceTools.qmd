@@ -1,0 +1,134 @@
+---
+title: "Leveraging Open Source Tools for accelerating Evidence Synthesis"
+format:
+  revealjs: 
+    theme: dark
+editor: visual
+---
+
+![](images/ESH.png){.absolute top="200" left="0" width="300"}
+
+![](images/CEElogo_New2020.JPG){.absolute top="50" right="50" width="450"}
+
+![](images/NINA.png){.absolute bottom="0" right="50" width="500"}
+
+## What is Evidence Synthesis Technology?
+
+-   “Technology is the collection of techniques, skills, methods, and processes…”
+
+-   Depends on when you ask – SR was a novel technology once!
+
+-   Tools to support evidence synthesis – to overcome challenges
+
+::: {style="color:#cc0000"}
+## What types of technology {background-image="images/Robot.png"}
+
+-   Computer assistance – technology-assisted reviews
+
+-   Capacity development / training
+
+-   Better / easier record keeping
+
+-   Increased efficiency / transparency / rigour
+
+-   Automation – technology-driven reviews
+:::
+
+## 
+
+Many and increasing tools available to help in systematic review
+
+-   But...Often pay-walled…
+
+    …or not supported long-term
+
+-   A lot of redundancy
+
+-   Very limited interoperability
+
+-   Tools frequently not validated (or validated by the developers)
+
+## Vienna Principles
+
+[Principles of the International Collaboration for the Automation of Systematic Reviews (ICASR). Syst Rev 7, 77 (2018)](https://doi.org/10.1186/s13643-018-0740-7)
+
+-   Ability to work with different tools at different stages
+
+-   Tools should be interoperable
+
+-   Collaboration needed to cover all synthesis stages
+
+-   Code should be Open Source
+
+-   Standardised validation
+
+## What is the ESHackathon?
+
+### Mission
+
+The ESH aims to bring together interested researchers, practitioners and coders to discuss and develop new Open Source technologies for ES applications
+
+![](images/ESH2018_group_photo.png)
+
+## Origin
+
+-   ESH started as an open software development event in 2018
+-   ESH has evolved into a conference, training courses and hackathons
+
+![](images/Neal.png){.absolute bottom="50" left="0" width="250"}
+
+![](images/Westgate-Martin.png){.absolute bottom="50" right="0" width="250"}
+
+## Hackathons
+
+![](images/Hackathon_cities.png)
+
+## Conferences
+
+![](images/ESMARConf2021_infographic.png)
+
+## Training
+
+[Our events page - opencollective.com/esmarconf/events](https://opencollective.com/esmarconf/events)
+
+![](images/Training.png)
+
+## Our tools
+
+![](images/ESHPackages.png)
+
+## [CitationChaser](https://estech.shinyapps.io/citationchaser/)
+
+[![](images/citationchaser.png)](https://estech.shinyapps.io/citationchaser/)
+
+## [EviAtlas](https://estech.shinyapps.io/eviatlas/)
+
+[![](images/eviatlas.png)](https://estech.shinyapps.io/eviatlas/)
+
+## [PRISMA2020](https://estech.shinyapps.io/prisma_flowdiagram/)
+
+[![](images/PRISMA2020.png)](https://estech.shinyapps.io/prisma_flowdiagram/)
+
+## [CiteSource](https://www.eshackathon.org/CiteSource/)
+
+[![](images/citeSource.png)](https://www.eshackathon.org/CiteSource/)
+
+## How to get involved
+
+-   Propose coding/discussion projects
+
+-   Use and test ESH tools, provide feedback
+
+-   Apply to join a future hackathon/project
+
+-   Co-host a hackathon
+
+-   Fund an ESH event (LMIC attendance)
+
+## Join our community
+
+![](images/People1.png)
+
+## 
+
+![](images/People2.png)

@@ -20,6 +20,16 @@ website:
         text: What is the ESHackathon?
       - href: What_makes_a_good_systematic_review
         text: What makes a good evidence synthesis?
+        menu: 
+          - sidebar:lev
+sidebar:
+    - id: lev
+      title: "Leveraging open tools for evidence synthesis"
+      style: "docked"
+      background: light
+      collapse-level: 2
+      contents:
+        - presentations/LeveragingOpenSourceTools.qmd
 
 format:
   html:
