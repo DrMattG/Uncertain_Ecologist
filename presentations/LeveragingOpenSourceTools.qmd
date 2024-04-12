@@ -3,6 +3,7 @@ title: "Leveraging Open Source Tools for accelerating Evidence Synthesis"
 format:
   revealjs: 
     theme: dark
+    output-file: page-reveal.html
 editor: visual
 ---
 
