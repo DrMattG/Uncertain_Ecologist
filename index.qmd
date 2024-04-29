@@ -16,7 +16,7 @@ about:
       href: "mailto:matthew.grainger@nina.no"
 ---
 
-Biography
+## Biography
 
 I am an "uncertain ecologist". My research focuses on uncertainty in conservation decision making and how best to make use of it in statistical models and in communication with stakeholders. I have a footing in evidence synthesis and a strong sideline in pheasants.
 
