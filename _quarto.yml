@@ -3,34 +3,35 @@ project:
   output-dir: docs
 
 website:
-  title: "The Uncertain ecologist"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: listing.qmd
-        text: Index of posts
-      - href: Publications.qmd
-        text: Publications
-      - href: making_missing_data_work.qmd
-        text: Missing data
-      - href: Ecology_SR.qmd
-        text: Rapid review short-cuts
-      - href: ESHackathon.qmd
-        text: What is the ESHackathon?
-      - href: What_makes_a_good_systematic_review
-        text: What makes a good evidence synthesis?
-        menu: 
-          - sidebar:lev
-sidebar:
-    - id: lev
-      title: "Leveraging open tools for evidence synthesis"
-      style: "docked"
-      background: light
-      collapse-level: 2
-      contents:
-        - presentations/page-reveal.html
-
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - section: "About me"
+        contents:
+          - href: index.qmd
+            text: Home
+          - href: listing.qmd
+            text: Index of posts
+          - href: Publications.qmd
+            text: Publications
+      - section: "Posts"
+        contents:
+          - href: making_missing_data_work.qmd
+            text: Missing data
+          - href: Ecology_SR.qmd
+            text: Rapid review short-cuts
+          - href: ESHackathon.qmd
+            text: What is the ESHackathon?
+          - href: What_makes_a_good_systematic_review
+            text: What makes a good evidence synthesis?
+          - href: OpenAlex.qmd
+            text: Using OpenAlex to get publication metadata
+      - section: "Presentations"
+        contents:
+          - href: presentations/page-reveal.html
+            text: Leveraging open tools for evidence synthesis
+        
 format:
   html:
     theme: darkly
