@@ -6,9 +6,11 @@ toc-depth: 5
 reading-time: true
 ---
 
-I have been playing around with the [OpenAlexR](https://docs.ropensci.org/openalexR/index.html) package which interfaces with the [OpenAlex API](https://openalex.org/). This allows you to get bibliographic information about publications, authors, institutions, sources, funders, publishers, topics and concepts. 
+I have been playing around with the [OpenAlexR](https://docs.ropensci.org/openalexR/index.html) package which interfaces with the [OpenAlex API](https://openalex.org/). This allows you to get bibliographic information about publications, authors, institutions, sources, funders, publishers, topics and concepts.
 
 Here I first look at the proportion of open publications published by [NINA](www.nina.no) over time.
+
+First we need to look for the Institution ID.
 
 ```{r load libraries}
 #| echo: true
@@ -17,8 +19,6 @@ Here I first look at the proportion of open publications published by [NINA](www
 library(openalexR, quietly = TRUE)
 library(tidyverse, quietly = TRUE)
 ```
-
-
 
 ```{r look for institution name}
 #| echo: true
@@ -30,6 +30,7 @@ oa_fetch( entity = "inst", # same as "institutions"
   knitr::kable()
 ```
 
+Then we can get a dataframe of the publications.
 
 ```{r Get the papers}
 #| echo: true
@@ -50,7 +51,8 @@ uf_df <- closed_access |>
   full_join(open_access, by = "key", suffix = c("_ca", "_oa"))
 
 ```
- 
+
+Now we can plot the data.
 
 ```{r plot the data}
 #| echo: true
@@ -74,14 +76,11 @@ uf_df  |>  filter(key <= 2024) |> # we do not yet have complete data for 2024
 
 ## Extract the topics
 
-The "topic" for each record is a description of the subject matter of the publication determined by using a large language model. The example from the [OpenAlex topics page](https://help.openalex.org/how-it-works/topics) is: 
+The "topic" for each record is a description of the subject matter of the publication determined by using a large language model. The example from the [OpenAlex topics page](https://help.openalex.org/how-it-works/topics) is:
 
-**Example Topic**: "Artificial Intelligence in Medicine"
-**Domain**: "Health Sciences"
-**Field**: "Medicine"
-**Subfield**: "Health Informatics"
+**Example Topic**: "Artificial Intelligence in Medicine" **Domain**: "Health Sciences" **Field**: "Medicine" **Subfield**: "Health Informatics"
 
-Each topic is made up of a subfield, a field and a domain. The model scores each documents topics, with the highest topic score being considered the "primary" topic. 
+Each topic is made up of a subfield, a field and a domain. The model scores each documents topics, with the highest topic score being considered the "primary" topic.
 
 ### All topics
 
@@ -103,6 +102,7 @@ wordcloud2::wordcloud2(word_df)
 ```
 
 ### Primary topics
+
 ```{r get the top topics}
 #| echo: true
 #| message: false
@@ -143,6 +143,12 @@ topics_df<-top_topics |>
   group_by(top_topic_display_name) |> 
   tally()
 
-wordcloud2::wordcloud2(topics_df)
+
 ```
 
+```{r Wordcloud primary topics}
+#| echo: true
+#| message: false
+#| warning: false
+wordcloud2::wordcloud2(topics_df)
+```
