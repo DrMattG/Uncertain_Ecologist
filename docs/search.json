@@ -74,7 +74,7 @@
     "href": "index.html",
     "title": "Dr Matthew J Grainger",
     "section": "",
-    "text": "Biography\nI am an “uncertain ecologist”. My research focuses on uncertainty in conservation decision making and how best to make use of it in statistical models and in communication with stakeholders. I have a footing in evidence synthesis and a strong sideline in pheasants.\nI am currently employed as a Researcher at theNorwegian Institute for Nature Research, based in the head office in Trondheim. A list of my publications can be found here."
+    "text": "I am an “uncertain ecologist”. My research focuses on uncertainty in conservation decision making and how best to make use of it in statistical models and in communication with stakeholders. I have a footing in evidence synthesis and a strong sideline in pheasants.\n\n\n\nEdwards’s pheasant\n\n\nI am currently employed as a Researcher at theNorwegian Institute for Nature Research, based in the head office in Trondheim. A list of my publications can be found here."
   },
   {
     "objectID": "index.html#interests",
@@ -229,5 +229,12 @@
     "title": "Small data in ecology",
     "section": "",
     "text": "TL;DR\n\n\n\n\n\n\n\n#Simulate some data with known effect\n# loop through 10000 simulations\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.3     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.3     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nttest_sim&lt;-function(nSim=1000, n=6, C_mean=12, T_mean=16, C_sd=2, T_sd=2){\nout_frame&lt;-rep(NA,nSim)\n\nfor (i in seq_along(out_frame)){\ncontrol=rnorm(n,C_mean, C_sd)\ntreatment=rnorm(n,T_mean, T_sd)\nttest&lt;-t.test(control,treatment)\nout_frame[i]&lt;-ttest$p.value\n}\n\ndata_out&lt;-data.frame(nSim=1:nSim,pValue=out_frame)\n\ndata_out |&gt; \n  ggplot(aes(pValue))+\n  geom_histogram()+\n  geom_vline(xintercept = 0.05, lty=2, colour=\"red\")+\n  ggthemes::theme_base()\n  \n}\n\nttest_sim(nSim=1000, n=6, C_mean=12, T_mean=14, C_sd=4, T_sd=4)\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\nAcknowledgements"
+  },
+  {
+    "objectID": "index.html#biography",
+    "href": "index.html#biography",
+    "title": "Dr Matthew J Grainger",
+    "section": "",
+    "text": "I am an “uncertain ecologist”. My research focuses on uncertainty in conservation decision making and how best to make use of it in statistical models and in communication with stakeholders. I have a footing in evidence synthesis and a strong sideline in pheasants.\n\n\n\nEdwards’s pheasant\n\n\nI am currently employed as a Researcher at theNorwegian Institute for Nature Research, based in the head office in Trondheim. A list of my publications can be found here."
   }
 ]
