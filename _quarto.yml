@@ -28,7 +28,7 @@ website:
           - href: OpenAlex.qmd
             text: Using OpenAlex to get publication metadata
           - href: Dynamic_Meta_analysis.qmd
-            text: Dynamic Meta-analysis: When Transparency Meets Multiplicity
+            text: Dynamic Meta-analysis - When Transparency Meets Multiplicity
       - section: "Presentations"
         contents:
           - href: presentations/page-reveal.html
