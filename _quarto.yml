@@ -23,10 +23,12 @@ website:
             text: Rapid review short-cuts
           - href: ESHackathon.qmd
             text: What is the ESHackathon?
-          - href: What_makes_a_good_systematic_review
+          - href: What_makes_a_good_systematic_review.qmd
             text: What makes a good evidence synthesis?
           - href: OpenAlex.qmd
             text: Using OpenAlex to get publication metadata
+          - href: Dynamic_Meta_analysis.qmd
+            text: Dynamic Meta-analysis: When Transparency Meets Multiplicity
       - section: "Presentations"
         contents:
           - href: presentations/page-reveal.html

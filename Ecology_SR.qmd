@@ -20,52 +20,52 @@ A paper published in Research Synthesis Methods, [Haby et al. (2023)](https://on
 
 [Haby et al. (2023)](https://onlinelibrary.wiley.com/doi/10.1002/jrsm.1664) provide a really useful guide to what short-cuts one can take in a Rapid Review. Their Table 2 (recreated below) lists each commonly used short-cut and the potential impact on the risk of bias.
 
-| Possible “short-cuts” categorised by review step                                                                                                                                                                    | Recommended (yes/no) | Potential impact on risk of bias if done | Supporting evidence within Haby et al. |
-|--------------------|------------------|------------------|------------------|
-| **Preparation of a protocol**                                                                                                                                                                                       |                      |                                          |                                        |
-| Omit protocol                                                                                                                                                                                                       | No                   | ↑                                        | ✗                                      |
-| Prepare a protocol and make publicly available (e.g., PROSPERO or Open Science Framework). Limit included information to the key aspects that allow a complete assessment of risk of bias (with AMSTAR 2 or ROBIS). | Yes                  | ↓                                        | ✗                                      |
-| **Question formulation**                                                                                                                                                                                            |                      |                                          |                                        |
-| Limit the number of questions and sub-questions and limit the scope of the question/s                                                                                                                               | Yes                  | None expected                            | ✗                                      |
-| Limit the number of outcomes                                                                                                                                                                                        | Yes                  | None expected                            | ✗                                      |
-| **Inclusion criteria**                                                                                                                                                                                              |                      |                                          |                                        |
-| Limit publication language to English but provide justification                                                                                                                                                     | Yes                  | Minimal                                  | ✓                                      |
-| Exclude gray/unpublished literature but provide justification and note that it may lead to an overestimation of effect                                                                                              | Yes                  | Minimal                                  | ✓                                      |
-| Restrictions based on publication date, for example, last 5, 1 , or 2  years (unless it is known that relevant studies could only have been reported since a specific date)                                         | No                   | ↑                                        | ✓                                      |
-| Limit to papers available electronically                                                                                                                                                                            | No                   | ↑                                        | ✓                                      |
-| Restrict study types to systematic reviews                                                                                                                                                                          | Yes                  | None expected                            | ✗                                      |
-| Restrict study types to randomized controlled trials or controlled clinical trials                                                                                                                                  |                      |                                          |                                        |
-| **Searching**                                                                                                                                                                                                       |                      |                                          |                                        |
-| Use of a single database for searching (e.g., PubMed)                                                                                                                                                               | No                   | ↑                                        | ✓                                      |
-| Limit number of databases searched to at least two and one supplementary source (e.g., reference lists of included studies). If searching for RCTs search Medline/PubMed, EMBASE, and CENTRAL).                     | Yes                  | None                                     | ✓                                      |
-| Use the Polyglot Search Translator to translate search strings across multiple databases, though noting its limitations: https://sr-accelerator.com/#/help/polyglot                                                 | Yes                  | None                                     | ✓                                      |
-| Use of the Cochrane RCT Classifier for systematic reviews of RCTs to reduce screening burden (if available for your review)a                                                                                        | Yes                  | None                                     | ✓                                      |
-| Use of existing methodological filters for observational or diagnostic studies                                                                                                                                      | No                   | ↑                                        | ✓                                      |
-| Selection                                                                                                                                                                                                           |                      |                                          |                                        |
-| One reviewer screens titles and abstracts                                                                                                                                                                           | No                   | ↑                                        | ✓                                      |
-| Title-only screening using keyword searches based on population, intervention, and comparison (PICo)                                                                                                                | No                   | ↑                                        | ✓                                      |
-| One reviewer selects based on full text                                                                                                                                                                             | No                   | ↑                                        | ✓                                      |
-| Use of dual computer monitors for selection                                                                                                                                                                         | No                   | None                                     | ✓                                      |
-| **Data extraction**                                                                                                                                                                                                 |                      |                                          |                                        |
-| One reviewer extracts data                                                                                                                                                                                          | No                   | ↑                                        | ✓                                      |
-| One reviewer extracts data with verification by a second reviewer                                                                                                                                                   | Yes                  | Minimal                                  | ✓ but evidence is limited              |
-| Data extraction limited to key characteristics, results, conflicts of interest                                                                                                                                      | Yes                  | None expected                            | ✗                                      |
-| Use of dual computer monitors for data extraction                                                                                                                                                                   | Yes                  | None                                     | ✓                                      |
-| Use of Google Translate for data extraction from non-English trials                                                                                                                                                 | No                   | ↑                                        | ✓                                      |
-| Not contacting study authors to obtain missing information                                                                                                                                                          | Yes                  | Minimal                                  | ✓                                      |
-| **Risk of bias assessment**                                                                                                                                                                                         |                      |                                          |                                        |
-| Limit or omit risk of bias assessment                                                                                                                                                                               | No                   | ↑                                        | ✗                                      |
-| Not using blinding for risk of bias assessment                                                                                                                                                                      | Yes                  | None                                     | ✓                                      |
-| One reviewer does risk of bias assessment                                                                                                                                                                           | No                   | ?                                        | ✗                                      |
-| One reviewer does risk of bias assessment with checking by a second reviewer                                                                                                                                        | ?                    | ?                                        | ✗                                      |
-| Omit assessment of reporting/publication bias                                                                                                                                                                       | ?                    | ?                                        | ✗                                      |
-| **Synthesis**                                                                                                                                                                                                       |                      |                                          |                                        |
-| Narrative synthesis only (no meta-analysis)                                                                                                                                                                         | Yes                  | None                                     | ✗                                      |
-| If data and time permit conduct a meta-analysis of one primary outcome only                                                                                                                                         | Yes                  | None                                     | ✗                                      |
-| **Reporting**                                                                                                                                                                                                       |                      |                                          |                                        |
-| Include a methods section, even if added as an appendix                                                                                                                                                             | Yes                  | ↓                                        | ✗                                      |
-| Limit included information to the key aspects that allow a complete assessment of risk of bias (with AMSTAR 2 or ROBIS)                                                                                             | Yes                  | None                                     | ✗                                      |
-| Consider using a checklist to report the key aspects of the methods rather than narrative reporting                                                                                                                 | Yes                  | None                                     | ✗                                      |
+| Possible “short-cuts” categorised by review step | Recommended (yes/no) | Potential impact on risk of bias if done | Supporting evidence within Haby et al. |
+|----|----|----|----|
+| **Preparation of a protocol** |  |  |  |
+| Omit protocol | No | ↑ | ✗ |
+| Prepare a protocol and make publicly available (e.g., PROSPERO or Open Science Framework). Limit included information to the key aspects that allow a complete assessment of risk of bias (with AMSTAR 2 or ROBIS). | Yes | ↓ | ✗ |
+| **Question formulation** |  |  |  |
+| Limit the number of questions and sub-questions and limit the scope of the question/s | Yes | None expected | ✗ |
+| Limit the number of outcomes | Yes | None expected | ✗ |
+| **Inclusion criteria** |  |  |  |
+| Limit publication language to English but provide justification | Yes | Minimal | ✓ |
+| Exclude gray/unpublished literature but provide justification and note that it may lead to an overestimation of effect | Yes | Minimal | ✓ |
+| Restrictions based on publication date, for example, last 5, 1 , or 2  years (unless it is known that relevant studies could only have been reported since a specific date) | No | ↑ | ✓ |
+| Limit to papers available electronically | No | ↑ | ✓ |
+| Restrict study types to systematic reviews | Yes | None expected | ✗ |
+| Restrict study types to randomized controlled trials or controlled clinical trials |  |  |  |
+| **Searching** |  |  |  |
+| Use of a single database for searching (e.g., PubMed) | No | ↑ | ✓ |
+| Limit number of databases searched to at least two and one supplementary source (e.g., reference lists of included studies). If searching for RCTs search Medline/PubMed, EMBASE, and CENTRAL). | Yes | None | ✓ |
+| Use the Polyglot Search Translator to translate search strings across multiple databases, though noting its limitations: https://sr-accelerator.com/#/help/polyglot | Yes | None | ✓ |
+| Use of the Cochrane RCT Classifier for systematic reviews of RCTs to reduce screening burden (if available for your review)a | Yes | None | ✓ |
+| Use of existing methodological filters for observational or diagnostic studies | No | ↑ | ✓ |
+| Selection |  |  |  |
+| One reviewer screens titles and abstracts | No | ↑ | ✓ |
+| Title-only screening using keyword searches based on population, intervention, and comparison (PICo) | No | ↑ | ✓ |
+| One reviewer selects based on full text | No | ↑ | ✓ |
+| Use of dual computer monitors for selection | No | None | ✓ |
+| **Data extraction** |  |  |  |
+| One reviewer extracts data | No | ↑ | ✓ |
+| One reviewer extracts data with verification by a second reviewer | Yes | Minimal | ✓ but evidence is limited |
+| Data extraction limited to key characteristics, results, conflicts of interest | Yes | None expected | ✗ |
+| Use of dual computer monitors for data extraction | Yes | None | ✓ |
+| Use of Google Translate for data extraction from non-English trials | No | ↑ | ✓ |
+| Not contacting study authors to obtain missing information | Yes | Minimal | ✓ |
+| **Risk of bias assessment** |  |  |  |
+| Limit or omit risk of bias assessment | No | ↑ | ✗ |
+| Not using blinding for risk of bias assessment | Yes | None | ✓ |
+| One reviewer does risk of bias assessment | No | ? | ✗ |
+| One reviewer does risk of bias assessment with checking by a second reviewer | ? | ? | ✗ |
+| Omit assessment of reporting/publication bias | ? | ? | ✗ |
+| **Synthesis** |  |  |  |
+| Narrative synthesis only (no meta-analysis) | Yes | None | ✗ |
+| If data and time permit conduct a meta-analysis of one primary outcome only | Yes | None | ✗ |
+| **Reporting** |  |  |  |
+| Include a methods section, even if added as an appendix | Yes | ↓ | ✗ |
+| Limit included information to the key aspects that allow a complete assessment of risk of bias (with AMSTAR 2 or ROBIS) | Yes | None | ✗ |
+| Consider using a checklist to report the key aspects of the methods rather than narrative reporting | Yes | None | ✗ |
 
 : Table 1. The potential risk of bias for each short-cut as shown by Haby et al. (2023) in their Table 2.
 
@@ -127,4 +127,3 @@ Ecological reviews often take short-cuts that increase the risk of bias in the r
 
 This blogpost was greatly improved by comments from Neal Haddaway and Ross Mounce.
 :::
-
