@@ -29,6 +29,8 @@ website:
             text: Using OpenAlex to get publication metadata
           - href: Dynamic_Meta_analysis.qmd
             text: Dynamic Meta-analysis - When Transparency Meets Multiplicity
+          - href: Ecology_is_not_medicine.qmd
+            text: Ecology is not medicine 
       - section: "Presentations"
         contents:
           - href: presentations/page-reveal.html
