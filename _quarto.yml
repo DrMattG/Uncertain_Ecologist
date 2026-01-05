@@ -6,6 +6,7 @@ website:
   sidebar:
     style: "docked"
     search: true
+    collapse-level: 3
     contents:
       - section: "About me"
         contents:
