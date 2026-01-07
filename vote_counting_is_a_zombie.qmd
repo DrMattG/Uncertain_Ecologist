@@ -1,0 +1,217 @@
+---
+title: "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology"
+toc: true
+number-sections: true
+toc-depth: 4
+reading-time: true
+execute:
+  warning: false
+  message: false
+format:
+  html:
+    code-fold: show
+    code-summary: "Code"
+---
+
+## The persistence of a method we all know is wrong
+
+Vote counting is one of those methods that most evidence synthesis guidelines discourage and yet it keeps reappearing in ecological and conservation reviews.
+
+Sometimes it appears explicitly ("X studies found a positive effect, Y found none").  
+Sometimes implicitly ("most studies suggest...").  
+Sometimes visually, through heatmaps or bar charts that invite the reader to *mentally tally* directions or significance.
+
+This persistence is not because reviewers are careless. It is because vote counting feels intuitive under uncertainty especially when data are heterogeneous, sample sizes are small, and formal meta-analysis feels overconfident.
+
+In this post, I show why vote counting is especially misleading under the conditions that dominate ecological evidence bases, and why different forms of vote counting can lead to mutually contradictory conclusions from the *same* data.
+
+## What do we mean by "vote counting"?
+
+Although it comes in different guises, vote counting usually boils down to one of three approaches.
+
+### Direction-based vote counting
+
+> "Most studies report a positive effect."
+
+Each study contributes one vote based on the *sign* of its estimated effect.
+
+### Significance-based vote counting
+
+> "Only X studies found a statistically significant effect."
+
+Each study contributes one vote based on whether *p* < 0.05.
+
+### Visual vote counting
+
+Forest plots, heatmaps, or summary figures are presented with minimal synthesis, inviting the reader to visually tally directions or "significant" results.
+
+These approaches differ in presentation, but they share a critical assumption:
+
+> **Each study contributes one equal vote, regardless of precision, power, or context.**
+
+## Why vote counting feels reasonable in ecology
+
+Vote counting is often defended (explicitly or implicitly) because:
+
+- Effect sizes are hard to compare across systems
+- Sample sizes vary wildly
+- Heterogeneity is extreme
+- Review authors want to avoid "over-interpretation"
+
+In highly heterogeneous ecological data, vote counting can feel like the *conservative* choice.
+
+Unfortunately, it is usually the *least informative* one.
+
+## A simple simulation: the conditions where vote counting thrives
+
+To make this concrete, I simulate a small ecological evidence base with:
+
+- A **real, non-zero effect**
+- **High heterogeneity** across studies
+- **Low and variable power**
+
+
+```{r}
+#| code-summary: "Simulation of heterogeneous, low-powered studies"
+
+library(tidyverse)
+library(metafor)
+
+set.seed(2)
+
+simulate_studies <- function(
+  k = 30,
+  mu = 0.3,
+  tau = 0.4,
+  vi_range = c(0.05, 0.30)
+) {
+  vi <- runif(k, vi_range[1], vi_range[2])
+  theta <- rnorm(k, mu, tau)
+  yi <- rnorm(k, theta, sqrt(vi))
+
+  tibble(
+    study = seq_len(k),
+    yi = yi,
+    vi = vi,
+    se = sqrt(vi),
+    z = yi / se,
+    p = 2 * pnorm(-abs(z)),
+    direction = if_else(yi > 0, "positive", "negative"),
+    significant = p < 0.05
+  )
+}
+
+dat <- simulate_studies()
+```
+
+## What direction-based vote counting concludes
+
+```{r}
+dat |> count(direction)
+```
+
+A clear majority of studies estimate a positive effect.
+
+A common narrative conclusion would be:
+
+> "Most studies suggest a positive effect, although results are mixed."
+
+This sounds cautious and reasonable.
+
+## What significance-based vote counting concludes
+
+```{r}
+dat |> count(significant)
+```
+
+Now we see something very different: only a small minority of studies are statistically significant.
+
+A common narrative conclusion here would be:
+
+> "Most studies found no significant effect."
+
+## Two conclusions from the same data
+
+These two conclusions are:
+
+- Based on the same evidence
+- Both commonly used in ecological reviews
+- Logically incompatible
+
+The contradiction arises because vote counting answers the wrong question:
+
+> *How many studies "found" an effect?*
+
+instead of:
+
+> *What does the evidence imply about the distribution of effects?*
+
+## The meta-analytic reality check
+
+Now we fit a standard random-effects meta-analysis to the same data.
+
+```{r}
+#| code-summary: "Random-effects meta-analysis"
+
+m <- rma(yi, vi, data = dat, method = "REML")
+predict(m)
+```
+
+The result is:
+
+- A non-zero pooled mean
+- A wide prediction interval
+
+In other words:
+
+> The effect exists, but its direction and magnitude vary strongly by context.
+
+Vote counting cannot express this.
+
+## Why vote counting fails under ecological conditions
+
+Vote counting does not merely discard information, it systematically distorts it when power is low and heterogeneity is high.
+
+Mechanistically:
+
+- Low power => non-significant != no effect
+- Equal votes ignore precision
+- Direction ignores magnitude
+- Significance thresholds create false dichotomies
+- Heterogeneity is collapsed into counts
+
+Under these conditions, vote counting is biased against detecting real but variable effects.
+
+## When is vote counting defensible?
+
+There are limited cases where vote counting may be acceptable:
+
+- Purely scoping exercises
+- Binary outcomes with very similar designs
+- Explicitly descriptive summaries with no inferential claims
+
+Even then, it should never be used to infer:
+
+- Strength of effects
+- Generality
+- Expected outcomes in new contexts
+
+## Better alternatives
+
+Depending on the question, better options include:
+
+- Random-effects meta-analysis with prediction intervals
+- Magnitude-based synthesis
+- Meta-regression focused on context, not averages
+- Decision-analytic framing
+
+These approaches do not eliminate uncertainty, they represent it honestly.
+
+## A zombie idea worth retiring
+
+Vote counting persists not because it works, but because it feels intuitive under uncertainty. In ecology, that intuition is usually misleading.
+
+The uncomfortable truth is this:
+
+> When evidence is heterogeneous and underpowered, counting studies is one of the worst ways to summarise it.
+

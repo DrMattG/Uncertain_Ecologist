@@ -29,6 +29,8 @@ website:
                 text: Ecology is not medicine
               - href: Dynamic_Meta_analysis.qmd
                 text: Dynamic Meta-analysis - When Transparency Meets Multiplicity
+              - href: vote_counting_is_a_zombie.qmd
+                text: Vote counting is a zombie method
 
           - section: "Data & tools"
             contents:

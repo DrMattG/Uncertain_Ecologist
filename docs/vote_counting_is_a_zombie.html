@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Why Ecology Is Not Medicine: The Structural Mismatch in Evidence Synthesis</title>
+<title>Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="./Ecology_SR.html">Evidence synthesis</a></li><li class="breadcrumb-item"><a href="./Ecology_is_not_medicine.html">Ecology is not medicine</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="./Ecology_SR.html">Evidence synthesis</a></li><li class="breadcrumb-item"><a href="./vote_counting_is_a_zombie.html">Vote counting is a zombie method</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -197,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Ecology_is_not_medicine.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Ecology_is_not_medicine.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ecology is not medicine</span></a>
   </div>
 </li>
@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vote_counting_is_a_zombie.html" class="sidebar-item-text sidebar-link">
+  <a href="./vote_counting_is_a_zombie.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Vote counting is a zombie method</span></a>
   </div>
 </li>
@@ -284,20 +284,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-uncomfortable-truth" id="toc-the-uncomfortable-truth" class="nav-link active" data-scroll-target="#the-uncomfortable-truth"><span class="header-section-number">1</span> The uncomfortable truth</a></li>
-  <li><a href="#a-simple-simulation-two-worlds" id="toc-a-simple-simulation-two-worlds" class="nav-link" data-scroll-target="#a-simple-simulation-two-worlds"><span class="header-section-number">2</span> A simple simulation: two worlds</a></li>
-  <li><a href="#fit-the-same-meta-analysis-in-both-worlds" id="toc-fit-the-same-meta-analysis-in-both-worlds" class="nav-link" data-scroll-target="#fit-the-same-meta-analysis-in-both-worlds"><span class="header-section-number">3</span> Fit the same meta-analysis in both worlds</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">4</span> Interpretation:</a></li>
-  <li><a href="#a-practical-rule-of-thumb" id="toc-a-practical-rule-of-thumb" class="nav-link" data-scroll-target="#a-practical-rule-of-thumb"><span class="header-section-number">5</span> A practical rule of thumb:</a></li>
+  <li><a href="#the-persistence-of-a-method-we-all-know-is-wrong" id="toc-the-persistence-of-a-method-we-all-know-is-wrong" class="nav-link active" data-scroll-target="#the-persistence-of-a-method-we-all-know-is-wrong"><span class="header-section-number">1</span> The persistence of a method we all know is wrong</a></li>
+  <li><a href="#what-do-we-mean-by-vote-counting" id="toc-what-do-we-mean-by-vote-counting" class="nav-link" data-scroll-target="#what-do-we-mean-by-vote-counting"><span class="header-section-number">2</span> What do we mean by “vote counting”?</a>
+  <ul>
+  <li><a href="#direction-based-vote-counting" id="toc-direction-based-vote-counting" class="nav-link" data-scroll-target="#direction-based-vote-counting"><span class="header-section-number">2.1</span> Direction-based vote counting</a></li>
+  <li><a href="#significance-based-vote-counting" id="toc-significance-based-vote-counting" class="nav-link" data-scroll-target="#significance-based-vote-counting"><span class="header-section-number">2.2</span> Significance-based vote counting</a></li>
+  <li><a href="#visual-vote-counting" id="toc-visual-vote-counting" class="nav-link" data-scroll-target="#visual-vote-counting"><span class="header-section-number">2.3</span> Visual vote counting</a></li>
+  </ul></li>
+  <li><a href="#why-vote-counting-feels-reasonable-in-ecology" id="toc-why-vote-counting-feels-reasonable-in-ecology" class="nav-link" data-scroll-target="#why-vote-counting-feels-reasonable-in-ecology"><span class="header-section-number">3</span> Why vote counting feels reasonable in ecology</a></li>
+  <li><a href="#a-simple-simulation-the-conditions-where-vote-counting-thrives" id="toc-a-simple-simulation-the-conditions-where-vote-counting-thrives" class="nav-link" data-scroll-target="#a-simple-simulation-the-conditions-where-vote-counting-thrives"><span class="header-section-number">4</span> A simple simulation: the conditions where vote counting thrives</a></li>
+  <li><a href="#what-direction-based-vote-counting-concludes" id="toc-what-direction-based-vote-counting-concludes" class="nav-link" data-scroll-target="#what-direction-based-vote-counting-concludes"><span class="header-section-number">5</span> What direction-based vote counting concludes</a></li>
+  <li><a href="#what-significance-based-vote-counting-concludes" id="toc-what-significance-based-vote-counting-concludes" class="nav-link" data-scroll-target="#what-significance-based-vote-counting-concludes"><span class="header-section-number">6</span> What significance-based vote counting concludes</a></li>
+  <li><a href="#two-conclusions-from-the-same-data" id="toc-two-conclusions-from-the-same-data" class="nav-link" data-scroll-target="#two-conclusions-from-the-same-data"><span class="header-section-number">7</span> Two conclusions from the same data</a></li>
+  <li><a href="#the-meta-analytic-reality-check" id="toc-the-meta-analytic-reality-check" class="nav-link" data-scroll-target="#the-meta-analytic-reality-check"><span class="header-section-number">8</span> The meta-analytic reality check</a></li>
+  <li><a href="#why-vote-counting-fails-under-ecological-conditions" id="toc-why-vote-counting-fails-under-ecological-conditions" class="nav-link" data-scroll-target="#why-vote-counting-fails-under-ecological-conditions"><span class="header-section-number">9</span> Why vote counting fails under ecological conditions</a></li>
+  <li><a href="#when-is-vote-counting-defensible" id="toc-when-is-vote-counting-defensible" class="nav-link" data-scroll-target="#when-is-vote-counting-defensible"><span class="header-section-number">10</span> When is vote counting defensible?</a></li>
+  <li><a href="#better-alternatives" id="toc-better-alternatives" class="nav-link" data-scroll-target="#better-alternatives"><span class="header-section-number">11</span> Better alternatives</a></li>
+  <li><a href="#a-zombie-idea-worth-retiring" id="toc-a-zombie-idea-worth-retiring" class="nav-link" data-scroll-target="#a-zombie-idea-worth-retiring"><span class="header-section-number">12</span> A zombie idea worth retiring</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="./Ecology_SR.html">Evidence synthesis</a></li><li class="breadcrumb-item"><a href="./Ecology_is_not_medicine.html">Ecology is not medicine</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="./Ecology_SR.html">Evidence synthesis</a></li><li class="breadcrumb-item"><a href="./vote_counting_is_a_zombie.html">Vote counting is a zombie method</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Why Ecology Is Not Medicine: The Structural Mismatch in Evidence Synthesis</h1>
+<h1 class="title">Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology</h1>
 </div>
 
 
@@ -314,202 +326,227 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="the-uncomfortable-truth" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="the-uncomfortable-truth"><span class="header-section-number">1</span> The uncomfortable truth</h2>
-<p>A lot of evidence synthesis workflows in ecology and conservation are inherited (directly or indirectly) from medicine. That is not inherently bad, meta-analysis is meta-analysis, but it becomes a problem when we quietly import <em>assumptions</em> that do not hold.</p>
-<p>In medicine, many meta-analyses are built around relatively comparable interventions and outcomes, and heterogeneity is often treated as a complication to explain away.</p>
-<p>In ecology, heterogeneity is often the <em>whole story</em>: context dependence, non-independence, different systems, different scales, different proxies, and (often) small sample sizes.</p>
-<p>This post uses a simple simulation to show how “standard-looking” meta-analysis outputs can mean very different things in these two worlds.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># for reproducibility</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<section id="the-persistence-of-a-method-we-all-know-is-wrong" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="the-persistence-of-a-method-we-all-know-is-wrong"><span class="header-section-number">1</span> The persistence of a method we all know is wrong</h2>
+<p>Vote counting is one of those methods that most evidence synthesis guidelines discourage and yet it keeps reappearing in ecological and conservation reviews.</p>
+<p>Sometimes it appears explicitly (“X studies found a positive effect, Y found none”).<br>
+Sometimes implicitly (“most studies suggest…”).<br>
+Sometimes visually, through heatmaps or bar charts that invite the reader to <em>mentally tally</em> directions or significance.</p>
+<p>This persistence is not because reviewers are careless. It is because vote counting feels intuitive under uncertainty especially when data are heterogeneous, sample sizes are small, and formal meta-analysis feels overconfident.</p>
+<p>In this post, I show why vote counting is especially misleading under the conditions that dominate ecological evidence bases, and why different forms of vote counting can lead to mutually contradictory conclusions from the <em>same</em> data.</p>
 </section>
-<section id="a-simple-simulation-two-worlds" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="a-simple-simulation-two-worlds"><span class="header-section-number">2</span> A simple simulation: two worlds</h2>
-<p>We simulate two evidence bases with the same true average effect but different structure:</p>
-<p>Medical-like world: low heterogeneity (studies are fairly comparable)</p>
-<p>Ecological world: high heterogeneity (effects vary substantially by context)</p>
-<p>We will generate effect sizes (Hedges’ g-like) and sampling variances, then fit a random-effects model to each.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>simulate_world <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">k =</span> <span class="dv">30</span>, <span class="at">mu =</span> <span class="fl">0.3</span>, <span class="at">tau =</span> <span class="fl">0.1</span>, <span class="at">vi_range =</span> <span class="fu">c</span>(<span class="fl">0.02</span>, <span class="fl">0.15</span>), <span class="at">label =</span> <span class="st">"World"</span>) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  vi <span class="ot">&lt;-</span> <span class="fu">runif</span>(k, <span class="at">min =</span> vi_range[<span class="dv">1</span>], <span class="at">max =</span> vi_range[<span class="dv">2</span>]) <span class="co"># sampling variances</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  theta_i <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(k, <span class="at">mean =</span> mu, <span class="at">sd =</span> tau) <span class="co"># true study effects (heterogeneity)</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  yi <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(k, <span class="at">mean =</span> theta_i, <span class="at">sd =</span> <span class="fu">sqrt</span>(vi)) <span class="co"># observed effects</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">world =</span> label, <span class="at">study =</span> <span class="fu">paste0</span>(<span class="st">"Study "</span>, <span class="fu">seq_len</span>(k)), <span class="at">yi =</span> yi, <span class="at">vi =</span> vi)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(<span class="fu">simulate_world</span>(<span class="at">k =</span> <span class="dv">30</span>, <span class="at">mu =</span> <span class="fl">0.3</span>, <span class="at">tau =</span> <span class="fl">0.08</span>, <span class="at">label =</span> <span class="st">"Medical-like (low heterogeneity)"</span>), <span class="fu">simulate_world</span>(<span class="at">k =</span> <span class="dv">30</span>, <span class="at">mu =</span> <span class="fl">0.3</span>, <span class="at">tau =</span> <span class="fl">0.45</span>, <span class="at">label =</span> <span class="st">"Ecological (high heterogeneity)"</span>))</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>dat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 60 × 4
-   world                            study        yi     vi
-   &lt;chr&gt;                            &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
- 1 Medical-like (low heterogeneity) Study 1   0.131 0.0545
- 2 Medical-like (low heterogeneity) Study 2   0.394 0.0684
- 3 Medical-like (low heterogeneity) Study 3   0.612 0.0945
- 4 Medical-like (low heterogeneity) Study 4   0.324 0.138 
- 5 Medical-like (low heterogeneity) Study 5   0.537 0.0462
- 6 Medical-like (low heterogeneity) Study 6   0.521 0.137 
- 7 Medical-like (low heterogeneity) Study 7   0.131 0.143 
- 8 Medical-like (low heterogeneity) Study 8   0.417 0.106 
- 9 Medical-like (low heterogeneity) Study 9  -0.219 0.102 
-10 Medical-like (low heterogeneity) Study 10  0.590 0.0280
-# ℹ 50 more rows</code></pre>
-</div>
-</div>
+<section id="what-do-we-mean-by-vote-counting" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="what-do-we-mean-by-vote-counting"><span class="header-section-number">2</span> What do we mean by “vote counting”?</h2>
+<p>Although it comes in different guises, vote counting usually boils down to one of three approaches.</p>
+<section id="direction-based-vote-counting" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="direction-based-vote-counting"><span class="header-section-number">2.1</span> Direction-based vote counting</h3>
+<blockquote class="blockquote">
+<p>“Most studies report a positive effect.”</p>
+</blockquote>
+<p>Each study contributes one vote based on the <em>sign</em> of its estimated effect.</p>
 </section>
-<section id="fit-the-same-meta-analysis-in-both-worlds" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="fit-the-same-meta-analysis-in-both-worlds"><span class="header-section-number">3</span> Fit the same meta-analysis in both worlds</h2>
-<p>We fit a random-effects model (rma) and compute:</p>
+<section id="significance-based-vote-counting" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="significance-based-vote-counting"><span class="header-section-number">2.2</span> Significance-based vote counting</h3>
+<blockquote class="blockquote">
+<p>“Only X studies found a statistically significant effect.”</p>
+</blockquote>
+<p>Each study contributes one vote based on whether <em>p</em> &lt; 0.05.</p>
+</section>
+<section id="visual-vote-counting" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="visual-vote-counting"><span class="header-section-number">2.3</span> Visual vote counting</h3>
+<p>Forest plots, heatmaps, or summary figures are presented with minimal synthesis, inviting the reader to visually tally directions or “significant” results.</p>
+<p>These approaches differ in presentation, but they share a critical assumption:</p>
+<blockquote class="blockquote">
+<p><strong>Each study contributes one equal vote, regardless of precision, power, or context.</strong></p>
+</blockquote>
+</section>
+</section>
+<section id="why-vote-counting-feels-reasonable-in-ecology" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="why-vote-counting-feels-reasonable-in-ecology"><span class="header-section-number">3</span> Why vote counting feels reasonable in ecology</h2>
+<p>Vote counting is often defended (explicitly or implicitly) because:</p>
 <ul>
-<li><p>the pooled mean and 95% CI (what people often quote)</p></li>
-<li><p>the estimated heterogeneity (tau)</p></li>
-<li><p>the 95% prediction interval (what you should care about for “what might happen in a new context”)</p></li>
+<li>Effect sizes are hard to compare across systems</li>
+<li>Sample sizes vary wildly</li>
+<li>Heterogeneity is extreme</li>
+<li>Review authors want to avoid “over-interpretation”</li>
+</ul>
+<p>In highly heterogeneous ecological data, vote counting can feel like the <em>conservative</em> choice.</p>
+<p>Unfortunately, it is usually the <em>least informative</em> one.</p>
+</section>
+<section id="a-simple-simulation-the-conditions-where-vote-counting-thrives" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="a-simple-simulation-the-conditions-where-vote-counting-thrives"><span class="header-section-number">4</span> A simple simulation: the conditions where vote counting thrives</h2>
+<p>To make this concrete, I simulate a small ecological evidence base with:</p>
+<ul>
+<li>A <strong>real, non-zero effect</strong></li>
+<li><strong>High heterogeneity</strong> across studies</li>
+<li><strong>Low and variable power</strong></li>
 </ul>
 <div class="cell">
 <details open="" class="code-fold">
+<summary>Simulation of heterogeneous, low-powered studies</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metafor)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>simulate_studies <span class="ot">&lt;-</span> <span class="cf">function</span>(</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">k =</span> <span class="dv">30</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">mu =</span> <span class="fl">0.3</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">tau =</span> <span class="fl">0.4</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vi_range =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.30</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>) {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  vi <span class="ot">&lt;-</span> <span class="fu">runif</span>(k, vi_range[<span class="dv">1</span>], vi_range[<span class="dv">2</span>])</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  theta <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(k, mu, tau)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  yi <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(k, theta, <span class="fu">sqrt</span>(vi))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">study =</span> <span class="fu">seq_len</span>(k),</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">yi =</span> yi,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">vi =</span> vi,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="fu">sqrt</span>(vi),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">z =</span> yi <span class="sc">/</span> se,</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">p =</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">abs</span>(z)),</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">direction =</span> <span class="fu">if_else</span>(yi <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="st">"positive"</span>, <span class="st">"negative"</span>),</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">significant =</span> p <span class="sc">&lt;</span> <span class="fl">0.05</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">simulate_studies</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="what-direction-based-vote-counting-concludes" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="what-direction-based-vote-counting-concludes"><span class="header-section-number">5</span> What direction-based vote counting concludes</h2>
+<div class="cell">
+<details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>worlds <span class="ot">&lt;-</span> <span class="fu">unique</span>(dat<span class="sc">$</span>world)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>summ_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="fu">length</span>(worlds))</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(summ_list) <span class="ot">&lt;-</span> worlds</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (w <span class="cf">in</span> worlds) {</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  df <span class="ot">&lt;-</span> dat[dat<span class="sc">$</span>world <span class="sc">==</span> w, ]</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  m  <span class="ot">&lt;-</span> <span class="fu">rma</span>(<span class="at">yi =</span> df<span class="sc">$</span>yi, <span class="at">vi =</span> df<span class="sc">$</span>vi, <span class="at">method =</span> <span class="st">"REML"</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  pr <span class="ot">&lt;-</span> <span class="fu">predict</span>(m)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  summ_list[[w]] <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">world   =</span> w,</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">k       =</span> m<span class="sc">$</span>k,</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mu_hat  =</span> <span class="fu">as.numeric</span>(m<span class="sc">$</span>b),</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_lb   =</span> <span class="fu">as.numeric</span>(m<span class="sc">$</span>ci.lb),</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_ub   =</span> <span class="fu">as.numeric</span>(m<span class="sc">$</span>ci.ub),</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">tau     =</span> <span class="fu">sqrt</span>(<span class="fu">as.numeric</span>(m<span class="sc">$</span>tau2)),</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">tau2    =</span> <span class="fu">as.numeric</span>(m<span class="sc">$</span>tau2),</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">pi_lb   =</span> <span class="fu">as.numeric</span>(pr<span class="sc">$</span>pi.lb[<span class="dv">1</span>]),</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">pi_ub   =</span> <span class="fu">as.numeric</span>(pr<span class="sc">$</span>pi.ub[<span class="dv">1</span>]),</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> <span class="cn">NULL</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>summ <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, summ_list)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>summ</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">|&gt;</span> <span class="fu">count</span>(direction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>                                                            world  k    mu_hat
-Medical-like (low heterogeneity) Medical-like (low heterogeneity) 30 0.3584064
-Ecological (high heterogeneity)   Ecological (high heterogeneity) 30 0.2598028
-                                      ci_lb     ci_ub       tau       tau2
-Medical-like (low heterogeneity) 0.24426636 0.4725465 0.1694701 0.02872013
-Ecological (high heterogeneity)  0.09098831 0.4286173 0.3727368 0.13893269
-                                        pi_lb     pi_ub
-Medical-like (low heterogeneity)  0.007186916 0.7096259
-Ecological (high heterogeneity)  -0.489998859 1.0096045</code></pre>
+<pre><code># A tibble: 2 × 2
+  direction     n
+  &lt;chr&gt;     &lt;int&gt;
+1 negative     12
+2 positive     18</code></pre>
 </div>
 </div>
-<p>Figure 1: the same pooled estimate can imply very different decision-relevance A common failure mode in ecological synthesis is to focus on the pooled mean and its significance while ignoring that the prediction interval may span meaningful positive and negative outcomes.</p>
-<p>This figure draws (1) the pooled mean + 95% CI and (2) the 95% prediction interval for both worlds.</p>
+<p>A clear majority of studies estimate a positive effect.</p>
+<p>A common narrative conclusion would be:</p>
+<blockquote class="blockquote">
+<p>“Most studies suggest a positive effect, although results are mixed.”</p>
+</blockquote>
+<p>This sounds cautious and reasonable.</p>
+</section>
+<section id="what-significance-based-vote-counting-concludes" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="what-significance-based-vote-counting-concludes"><span class="header-section-number">6</span> What significance-based vote counting concludes</h2>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>summ_long <span class="ot">&lt;-</span> summ <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">cols =</span> <span class="fu">c</span>(ci_lb, ci_ub, pi_lb, pi_ub),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"interval"</span>, <span class="st">"bound"</span>),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">names_pattern =</span> <span class="st">"(ci|pi)_(lb|ub)"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">values_to =</span> <span class="st">"value"</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> bound, <span class="at">values_from =</span> value) <span class="sc">|&gt;</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">interval =</span> <span class="fu">recode</span>(interval, <span class="at">ci =</span> <span class="st">"95% CI (mean effect)"</span>, <span class="at">pi =</span> <span class="st">"95% Prediction interval"</span>))</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(summ_long, <span class="fu">aes</span>(<span class="at">y =</span> world, <span class="at">x =</span> mu_hat)) <span class="sc">+</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lb, <span class="at">xmax =</span> ub, <span class="at">linewidth =</span> interval), <span class="at">height =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.4</span>) <span class="sc">+</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_linewidth_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"95% CI (mean effect)"</span> <span class="ot">=</span> <span class="fl">1.2</span>, <span class="st">"95% Prediction interval"</span> <span class="ot">=</span> <span class="fl">0.7</span>)) <span class="sc">+</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="at">x =</span> <span class="st">"Effect size (standardised units; e.g., Hedges' g)"</span>,</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="at">y =</span> <span class="cn">NULL</span>,</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="at">title =</span> <span class="st">"Same workflow, different meaning"</span>,</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="at">subtitle =</span> stringr<span class="sc">::</span><span class="fu">str_wrap</span>(</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="st">"In high-heterogeneity ecology-like data, the prediction interval can dominate interpretation"</span>,</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="at">width =</span> <span class="dv">60</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>),</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="at">linewidth =</span> <span class="cn">NULL</span></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="fu">theme</span>(<span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">|&gt;</span> <span class="fu">count</span>(significant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Ecology_is_not_medicine_files/figure-html/plot-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  significant     n
+  &lt;lgl&gt;       &lt;int&gt;
+1 FALSE          22
+2 TRUE            8</code></pre>
 </div>
 </div>
-</div>
+<p>Now we see something very different: only a small minority of studies are statistically significant.</p>
+<p>A common narrative conclusion here would be:</p>
+<blockquote class="blockquote">
+<p>“Most studies found no significant effect.”</p>
+</blockquote>
 </section>
-<section id="interpretation" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">4</span> Interpretation:</h2>
-<p>In the medical-like world, the prediction interval is reasonably tight: a new study is likely to be in the same ballpark.</p>
-<p>In the ecological world, the prediction interval may span large negative to large positive effects. The pooled mean still exists, but it is a weak guide to what happens in a new place/time/species/system.</p>
-<p>Figure 2: forest plots that look similar can hide very different structure Next we draw a lightweight “forest-plot-like” figure for both worlds using ggplot.</p>
+<section id="two-conclusions-from-the-same-data" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="two-conclusions-from-the-same-data"><span class="header-section-number">7</span> Two conclusions from the same data</h2>
+<p>These two conclusions are:</p>
+<ul>
+<li>Based on the same evidence</li>
+<li>Both commonly used in ecological reviews</li>
+<li>Logically incompatible</li>
+</ul>
+<p>The contradiction arises because vote counting answers the wrong question:</p>
+<blockquote class="blockquote">
+<p><em>How many studies “found” an effect?</em></p>
+</blockquote>
+<p>instead of:</p>
+<blockquote class="blockquote">
+<p><em>What does the evidence imply about the distribution of effects?</em></p>
+</blockquote>
+</section>
+<section id="the-meta-analytic-reality-check" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="the-meta-analytic-reality-check"><span class="header-section-number">8</span> The meta-analytic reality check</h2>
+<p>Now we fit a standard random-effects meta-analysis to the same data.</p>
 <div class="cell">
 <details open="" class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dat_plot <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">study_num =</span> readr<span class="sc">::</span><span class="fu">parse_number</span>(study)  </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(world) <span class="sc">|&gt;</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">w =</span> <span class="dv">1</span> <span class="sc">/</span> vi,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="fu">sqrt</span>(vi),</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_lb =</span> yi <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci_ub =</span> yi <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">study =</span> forcats<span class="sc">::</span><span class="fu">fct_reorder</span>(study, study_num)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat_plot, <span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">fct_rev</span>(study), <span class="at">x =</span> yi)) <span class="sc">+</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> ci_lb, <span class="at">xmax =</span> ci_ub), <span class="at">height =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> w)) <span class="sc">+</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="fl">1.2</span>, <span class="fl">3.8</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>world, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Effect size"</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">title =</span> <span class="st">"Study-level effects in two evidence worlds"</span>, <span class="at">subtitle =</span> <span class="st">"Both are 'meta-analysable' — but only one behaves like many people expect"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Random-effects meta-analysis</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">rma</span>(yi, vi, <span class="at">data =</span> dat, <span class="at">method =</span> <span class="st">"REML"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Ecology_is_not_medicine_files/figure-html/forest plot-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   pred     se   ci.lb  ci.ub   pi.lb  pi.ub 
+ 0.2334 0.1209 -0.0036 0.4704 -0.8263 1.2931 </code></pre>
 </div>
 </div>
-</div>
-<p>What this means in practice (especially for conservation decisions) If you are synthesising ecological evidence and your heterogeneity is high (common!), then:</p>
-<p>“The pooled effect is significant” may be scientifically correct but decision-irrelevant.</p>
-<p>Prediction intervals are often more honest for “what might happen next time”.</p>
-<p>Meta-regression and multilevel models can help, but they do not magically fix structural mismatch (small k, correlated moderators, measurement proxies).</p>
+<p>The result is:</p>
+<ul>
+<li>A non-zero pooled mean</li>
+<li>A wide prediction interval</li>
+</ul>
+<p>In other words:</p>
+<blockquote class="blockquote">
+<p>The effect exists, but its direction and magnitude vary strongly by context.</p>
+</blockquote>
+<p>Vote counting cannot express this.</p>
 </section>
-<section id="a-practical-rule-of-thumb" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="a-practical-rule-of-thumb"><span class="header-section-number">5</span> A practical rule of thumb:</h2>
-<p>If the prediction interval crosses zero widely, the review’s main conclusion should not be phrased as a single-direction claim without a strong context qualification.</p>
+<section id="why-vote-counting-fails-under-ecological-conditions" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="why-vote-counting-fails-under-ecological-conditions"><span class="header-section-number">9</span> Why vote counting fails under ecological conditions</h2>
+<p>Vote counting does not merely discard information, it systematically distorts it when power is low and heterogeneity is high.</p>
+<p>Mechanistically:</p>
+<ul>
+<li>Low power =&gt; non-significant != no effect</li>
+<li>Equal votes ignore precision</li>
+<li>Direction ignores magnitude</li>
+<li>Significance thresholds create false dichotomies</li>
+<li>Heterogeneity is collapsed into counts</li>
+</ul>
+<p>Under these conditions, vote counting is biased against detecting real but variable effects.</p>
+</section>
+<section id="when-is-vote-counting-defensible" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="when-is-vote-counting-defensible"><span class="header-section-number">10</span> When is vote counting defensible?</h2>
+<p>There are limited cases where vote counting may be acceptable:</p>
+<ul>
+<li>Purely scoping exercises</li>
+<li>Binary outcomes with very similar designs</li>
+<li>Explicitly descriptive summaries with no inferential claims</li>
+</ul>
+<p>Even then, it should never be used to infer:</p>
+<ul>
+<li>Strength of effects</li>
+<li>Generality</li>
+<li>Expected outcomes in new contexts</li>
+</ul>
+</section>
+<section id="better-alternatives" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="better-alternatives"><span class="header-section-number">11</span> Better alternatives</h2>
+<p>Depending on the question, better options include:</p>
+<ul>
+<li>Random-effects meta-analysis with prediction intervals</li>
+<li>Magnitude-based synthesis</li>
+<li>Meta-regression focused on context, not averages</li>
+<li>Decision-analytic framing</li>
+</ul>
+<p>These approaches do not eliminate uncertainty, they represent it honestly.</p>
+</section>
+<section id="a-zombie-idea-worth-retiring" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="a-zombie-idea-worth-retiring"><span class="header-section-number">12</span> A zombie idea worth retiring</h2>
+<p>Vote counting persists not because it works, but because it feels intuitive under uncertainty. In ecology, that intuition is usually misleading.</p>
+<p>The uncomfortable truth is this:</p>
+<blockquote class="blockquote">
+<p>When evidence is heterogeneous and underpowered, counting studies is one of the worst ways to summarise it.</p>
+</blockquote>
 
 
 </section>
