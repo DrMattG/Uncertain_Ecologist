@@ -1,0 +1,415 @@
+---
+title: "Magnitude Matters: When Direction Is the Wrong Question"
+toc: true
+number-sections: true
+toc-depth: 4
+reading-time: true
+execute:
+  warning: false
+  message: false
+format:
+  html:
+    code-fold: show
+    code-summary: "Code"
+---
+## When “no overall effect” hides the real signal
+
+In the previous posts in this series, I have argued that two common responses to messy ecological evidence often fail us:
+
+- Counting studies instead of synthesising them  
+- Relying on pooled averages even when heterogeneity dominates  
+
+At this point, a natural question arises:
+
+> *If direction is inconsistent and averages can be misleading, what should we be looking at instead?*
+
+One answer *could* be **magnitude**.
+
+This post is about why, in many ecological questions, *direction is contingent* but *magnitude is informative* and about what must change statistically before magnitude-based synthesis is defensible.
+
+## The cancellation problem
+
+Consider a simple and very common situation.
+
+- Some studies report strong positive effects  
+- Some report strong negative effects  
+- The pooled mean effect is close to zero  
+
+A standard meta-analysis might reasonably conclude:
+
+> “There is no overall effect.”
+
+But in ecology, this conclusion can be deeply misleading.
+
+A system in which effects are sometimes strongly positive and sometimes strongly negative is not *unresponsive*. It is *highly responsive* just in context-dependent ways.
+
+The problem is not the statistics.  
+The problem is the question being asked.
+
+## A concrete ecological example: grazing and plant diversity
+
+Consider the effects of **grazing intensity on plant species richness** one of the most studied relationships in terrestrial ecology.
+
+Across studies and systems, grazing has been shown to:
+
+- **Increase plant diversity** at low to moderate intensity  
+  (by reducing dominance and opening space for subordinates)
+- **Decrease plant diversity** at high intensity  
+  (through biomass removal, trampling, and soil degradation)
+
+Now imagine a meta-analysis that pools studies across:
+
+- Different livestock species  
+- Different productivity gradients  
+- Different baseline disturbance regimes  
+- Different management histories  
+
+Some studies report strong positive effects of grazing on richness.  
+Others report strong negative effects.
+
+When combined, the mean effect size may sit very close to zero.
+
+A standard random-effects meta-analysis might conclude:
+
+> “Grazing has no overall effect on plant species richness.”
+
+Statistically, that statement may be correct. Ecologically, it is almost meaningless.
+
+A driver that can *strongly increase* or *strongly decrease* biodiversity depending on context is not benign. 
+
+The problem here is not heterogeneity.  
+The problem is asking the wrong first question.
+
+Before asking *whether grazing increases or decreases diversity on average*, a more fundamental question is:
+
+> *Does grazing produce large changes in community structure at all?*
+
+That is a question about **magnitude**, not direction.
+
+## A simple simulation
+
+To make this concrete, we simulate an evidence base where:
+
+- Effects are often large  
+- The sign of effects varies across studies  
+- Sampling error and heterogeneity are realistic  
+
+```{r}
+#| code-summary: "Simulating bidirectional but strong effects"
+
+library(tidyverse)
+library(metafor)
+
+set.seed(4)
+
+simulate_bidirectional <- function(
+  k = 30,
+  magnitude = 0.5,
+  tau = 0.3,
+  vi_range = c(0.05, 0.25)
+) {
+  vi <- runif(k, vi_range[1], vi_range[2])
+  signs <- sample(c(-1, 1), k, replace = TRUE)
+  theta <- signs * magnitude + rnorm(k, 0, tau)
+  yi <- rnorm(k, theta, sqrt(vi))
+
+  tibble(
+    study = seq_len(k),
+    yi = yi,
+    vi = vi,
+    sei = sqrt(vi)
+  )
+}
+
+dat <- simulate_bidirectional()
+```
+
+## What standard meta-analysis concludes
+
+We first fit a conventional random-effects meta-analysis.
+
+```{r}
+#| code-summary: "Standard random-effects meta-analysis"
+
+m_signed <- rma(yi, vi, data = dat, method = "REML")
+predict(m_signed)
+```
+
+We get:
+
+- A pooled effect near zero  
+- A confidence interval that overlaps zero  
+- A conclusion of “no overall effect”  
+
+This conclusion is statistically defensible but ecologically incomplete.
+
+## The temptation: synthesising absolute effects
+
+A natural response is to say:
+
+> *If direction cancels out, why not synthesise the size of effects instead?*
+
+This leads to the idea of magnitude-based synthesis, often operationalised by taking absolute values of effect sizes.
+
+However, this step requires care.
+
+Naïvely meta-analysing absolute effect sizes **violates the assumptions of standard meta-analysis** and will generally produce biased results if done without adjustment.
+
+## Why naïve magnitude meta-analysis is invalid
+
+Transforming effect sizes to absolute values breaks several core assumptions at once:
+
+1. **Systematic upward bias**  
+   Even when true effects are zero, the expected absolute value of noisy estimates is positive. Noise becomes signal.
+
+2. **Non-normal sampling distributions**  
+   Absolute values follow a folded distribution that is skewed and asymmetric, not approximately normal.
+
+3. **Invalid variances**  
+   The original sampling variances no longer describe uncertainty in the transformed effects, leading to incorrect weighting.
+
+Put simply:
+
+> *A naïve meta-analysis of absolute effect sizes will almost always suggest an effect, even when none exists.*
+
+## What must change for magnitude-based synthesis to be defensible
+
+If magnitude is the question, then the **estimand and model must change**. At least one of the following adjustments is required.
+
+### Option 1: Bias-corrected magnitudes 
+
+For normally distributed sampling error, the expected absolute value under a true null effect is:
+
+$$
+E(|y_i| \mid \theta = 0) = \sqrt{\frac{2 v_i}{\pi}}
+$$
+
+A simple bias-corrected magnitude is therefore:
+
+$$
+|y_i| - \sqrt{\frac{2 v_i}{\pi}}
+$$
+
+This removes the expected contribution of sampling noise and ensures that zero effects map approximately to zero.
+
+This approach is imperfect, but vastly preferable to naïve absolute-value synthesis.
+
+### Option 2: Explicit modelling of magnitude (folded-normal)
+
+A cleaner solution is to model magnitude with an appropriate likelihood that acknowledges the transformation.
+
+Conceptually:
+
+- Signed effects are generated with normal error  
+- Magnitudes follow a folded distribution  
+- The target of inference is the distribution of *true* effect magnitudes  
+
+This approach avoids violated assumptions and makes uncertainty explicit.
+
+Below is a minimal working example using `rstan`, treating the sampling standard errors as known.
+
+```{r}
+#| code-summary: "Folded-normal magnitude model (rstan)"
+
+library(rstan)
+library(posterior)
+
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+
+abs_yi <- abs(dat$yi)
+sei    <- dat$sei
+
+stan_code <- "
+functions {
+  real folded_normal_lpdf(real y, real mu, real sigma) {
+    // y >= 0; folded normal = mixture of N(+mu,sigma) and N(-mu,sigma)
+    return log_sum_exp(
+      normal_lpdf(y |  mu, sigma),
+      normal_lpdf(y | -mu, sigma)
+    );
+  }
+}
+data {
+  int<lower=1> N;
+  vector<lower=0>[N] y;       // observed magnitudes |yi|
+  vector<lower=0>[N] se;      // known sampling SDs
+}
+parameters {
+  real<lower=0> mu_mag;       // population mean magnitude
+  real<lower=0> tau_mag;      // heterogeneity (SD) among true magnitudes
+  vector<lower=0>[N] m;       // true study magnitudes
+}
+model {
+  // Priors (tweak as needed for your effect-size scale)
+  mu_mag ~ normal(0, 1);
+  tau_mag ~ exponential(2);
+
+  // Hierarchical distribution of true magnitudes
+  m ~ normal(mu_mag, tau_mag);
+
+  // Observation model: folded normal
+  for (n in 1:N) {
+    target += folded_normal_lpdf(y[n] | m[n], se[n]);
+  }
+}
+generated quantities {
+  // Posterior predictive: a new study's true magnitude
+  real m_new = fabs(normal_rng(mu_mag, tau_mag));
+}
+"
+
+stan_data <- list(
+  N  = nrow(dat),
+  y  = abs_yi,
+  se = sei
+)
+
+fit <- stan(
+  model_code = stan_code,
+  data = stan_data,
+  chains = 4,
+  iter = 2000,
+  warmup = 1000,
+  seed = 1
+)
+
+print(fit, pars = c("mu_mag", "tau_mag", "m_new"), probs = c(0.025, 0.5, 0.975))
+```
+
+To summarise the posterior more neatly:
+
+```{r}
+#| code-summary: "Posterior summaries for key magnitude parameters"
+
+draws <- as_draws_df(fit, pars = c("mu_mag", "tau_mag", "m_new"))
+
+summary_df <- tibble(
+  param = c("mu_mag", "tau_mag", "m_new"),
+  mean  = c(mean(draws$mu_mag), mean(draws$tau_mag), mean(draws$m_new)),
+  q025  = c(quantile(draws$mu_mag, 0.025), quantile(draws$tau_mag, 0.025), quantile(draws$m_new, 0.025)),
+  q50   = c(quantile(draws$mu_mag, 0.5),   quantile(draws$tau_mag, 0.5),   quantile(draws$m_new, 0.5)),
+  q975  = c(quantile(draws$mu_mag, 0.975), quantile(draws$tau_mag, 0.975), quantile(draws$m_new, 0.975))
+)
+
+summary_df
+```
+
+
+## A visual comparison: naïve |yi| meta-analysis vs folded-normal magnitude model
+
+To make the difference concrete, we can compare:
+
+- A *naïve* random-effects meta-analysis of `abs(yi)` using `vi` as if nothing changed (this is not valid!)
+- The posterior distribution for `mu_mag` from the folded-normal model
+
+```{r}
+#| code-summary: "Plot: naive magnitude meta-analysis vs folded-normal posterior"
+
+library(ggplot2)
+
+# Naïve magnitude meta-analysis (illustrative only; violates assumptions)
+m_naive_abs <- rma(abs(dat$yi), dat$vi, method = "REML")
+naive_est <- as.numeric(m_naive_abs$b)
+naive_ci  <- c(as.numeric(m_naive_abs$ci.lb), as.numeric(m_naive_abs$ci.ub))
+
+# Posterior for mean true magnitude from folded-normal model
+mu_draws <- draws$mu_mag
+mu_ci <- quantile(mu_draws, probs = c(0.025, 0.5, 0.975))
+
+# Density data for plotting
+dens <- density(mu_draws)
+dens_df <- tibble(x = dens$x, y = dens$y)
+
+# Build the plot
+ggplot(dens_df, aes(x = x, y = y)) +
+  geom_line(linewidth = 1) +
+  labs(
+    x = "Mean true magnitude (mu_mag)",
+    y = "Posterior density",
+    title = "Magnitude inference: folded-normal model vs naive |yi| meta-analysis",
+    subtitle = "Naive approach treats |yi| as Gaussian with variance vi (illustrative only)"
+  ) +
+  # Posterior median and 95% credible interval
+  geom_vline(xintercept = mu_ci[2], linetype = "solid", linewidth = 0.8) +
+  geom_vline(xintercept = mu_ci[c(1, 3)], linetype = "dashed", linewidth = 0.8) +
+  # Naive point estimate and CI
+  geom_vline(xintercept = naive_est, linetype = "dotdash", linewidth = 0.8) +
+  geom_vline(xintercept = naive_ci, linetype = "dotted", linewidth = 0.8) +
+  annotate("text", x = mu_ci[2], y = max(dens$y), vjust = -0.5,
+           label = "Folded-normal posterior median", size = 3.2) +
+  annotate("text", x = naive_est, y = max(dens$y)*0.85, vjust = -0.5,
+           label = "Naive |yi| estimate", size = 3.2) +
+  coord_cartesian(ylim = c(0, max(dens$y)*1.1))
+```
+
+In this figure:
+
+- The **solid line** is the posterior density for the mean true magnitude (`mu_mag`) from the folded-normal model.
+- The **solid vertical line** is the posterior median; **dashed** lines show the 95% credible interval.
+- The **dot-dash** vertical line is the naïve random-effects estimate from meta-analysing `abs(yi)` directly; **dotted** lines show its 95% CI.
+
+The point is not that the naïve approach is always “wildly wrong” in every dataset. The point is that it is answering the question using an invalid sampling model and when sampling variances differ, that can materially change inference.
+
+### Option 3: Shift the estimand entirely
+
+In many cases, it is more informative to estimate quantities such as:
+
+- The probability that effects exceed a meaningful threshold  
+- The median or upper quantiles of effect magnitude  
+- The proportion of contexts with large responses  
+
+These quantities align naturally with decision-making and avoid cancellation without relying on problematic averages.
+
+## What magnitude-based synthesis is (and isn’t)
+
+Magnitude-based synthesis is **not**:
+
+- Ignoring direction permanently  
+- Claiming all effects are beneficial or harmful  
+- A shortcut around careful modelling  
+
+It **is**:
+
+- A way to detect responsiveness  
+- A guard against misleading cancellation  
+- A complement to directional and context-specific analyses  
+
+Used appropriately, it helps answer the question:
+
+> *Does this driver produce changes large enough to matter?*
+
+## When magnitude is the right question
+
+Magnitude-based synthesis is particularly informative when:
+
+- Effects are expected to be bidirectional  
+- Context dependence is strong  
+- Management decisions hinge on *risk*, not mean response  
+
+Common ecological examples include:
+
+- Disturbance regimes  
+- Climate variability  
+- Light, nutrients, or grazing intensity  
+- Invasive species impacts  
+
+In these cases, “no average effect” is often the wrong conclusion.
+
+## From magnitude to context
+
+Magnitude tells us *whether* systems respond.  
+Context tells us *how* they respond.
+
+Once we know that effects are large, the most important question becomes:
+
+> *Under what conditions do outcomes differ?*
+
+Answering that requires treating heterogeneity as signal, not noise.
+
+## Closing thought
+
+A synthesis that averages away large but opposing effects is not neutral it is blind to the very dynamics ecologists often care about most.
+
+Magnitude-based synthesis can reveal those dynamics but only if the statistical model is aligned with the question being asked.
+

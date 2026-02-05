@@ -31,6 +31,8 @@ website:
                 text: Dynamic Meta-analysis - When Transparency Meets Multiplicity
               - href: vote_counting_is_a_zombie.qmd
                 text: Vote counting is a zombie method
+              - href: magnatude.qmd
+                text: Meta-analysis of magnitude
 
           - section: "Data & tools"
             contents:
