@@ -1,0 +1,887 @@
+[
+  {
+    "objectID": "What_makes_a_good_systematic_review.html",
+    "href": "What_makes_a_good_systematic_review.html",
+    "title": "What makes a ‘good’ systematic evidence synthesis?",
+    "section": "",
+    "text": "TipTL;DR\n\n\n\nThere are lots of “bad” evidence syntheses published but what makes a “good” one and how can we spot them?",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "What makes a good evidence synthesis?"
+    ]
+  },
+  {
+    "objectID": "What_makes_a_good_systematic_review.html#what-makes-a-good-systematic-evidence-synthesis",
+    "href": "What_makes_a_good_systematic_review.html#what-makes-a-good-systematic-evidence-synthesis",
+    "title": "What makes a ‘good’ systematic evidence synthesis?",
+    "section": "1 What makes a good systematic evidence synthesis?",
+    "text": "1 What makes a good systematic evidence synthesis?\nThere has been an proliferation of studies claiming to be systematic evidence syntheses. Many of these studies are of poor quality and have a high risk of bias. Systematic evidence synthesis strives to reduce bias and poor quality syntheses could be misleading and waste valuable resources. As pointed out by Haddaway et al. (2020) these poor quality syntheses could be eroding trust in “evidence synthesis as an academic endeavour”. I would go as far as to suggest that they are eroding trust in evidence synthesis.\n\n1.1 Identifying a good evidence synthesis\nHere are some simple criteria to help you identify a good synthesis:\n\n1.1.1 A Clear Research Question:\nA good synthesis has a well-defined research question that guides the entire review process. Often a good synthesis will use a question formulation framework/tool to help them identify the key elements. For example, a common approach is to identify the PICO elements of a question; Population, Intervention, Control, Outcome.\n\n\n1.1.2 Transparent Methods:\nLook for transparency in the methodology section. A good synthesis should clearly outline its search strategy, inclusion and exclusion criteria, data extraction methods, and quality assessment criteria. A predefined (before the work started on the synthesis) protocol outlining the steps and decisions to be made adds to trust in the evidence synthesis. This avoids “mission creep” where the question changes to fit the evidence found and not to answer the original question.\n\n\n1.1.3 Comprehensive Search Strategy:\nA comprehensive search strategy is essential to ensure that all relevant studies are identified. Look for details on the databases searched, search terms used, and any other sources consulted (e.g., grey literature, conference proceedings). Multiple databases should be searched and unpublished (i.e. grey literature) sources should be consulted.\n\n\n1.1.4 Inclusion Criteria:\nEnsure that the synthesis clearly states the criteria used to include or exclude studies. This helps in understanding the scope of the synthesis and the generalisability of its findings.\n\n\n1.1.5 Quality Assessment:\nLook for information on how the quality of included studies was assessed. This could involve evaluating study design, risk of bias, and other relevant factors. This is a vital element that is often missed.\n\n\n1.1.6 Data Synthesis:\nA good synthesis should provide a clear synthesis of the evidence, including any statistical analysis or qualitative synthesis methods used. Open data and open code, where appropriate, should be available to readers.\n\n\n1.1.7 Risk of Bias Assessment:\nThe synthesis should address the risk of bias in the included studies. Look for methods used to minimise bias and consider how potential biases might impact the review findings. Risk of bias are things in the conduct of a study that could lead to misleading results. For example a small sample size might mean a study does not have enough statistical power to determine the size or direction of an effect.\n\n\n1.1.8 Discussion of Limitations:\nA good synthesis should discuss its limitations openly. This could include limitations related to the search strategy, study quality, or other factors that may impact the validity of the findings.\n\n\n1.1.9 Conclusion Supported by Evidence:\nEnsure that the conclusions drawn in the synthesis are supported by the evidence presented. Look for consistency between the findings and the data synthesised from the included studies. Do not just rely on the abstract or the lay summary.\n\n\n\n1.2 Conclusion\nBy carefully assessing these criteria, you can better distinguish between good and bad syntheses and make more informed decisions about their reliability and validity.\nDonnelly et al. (2018) provided a much simpler schema which condenses the criteria above in to four principles - Inclusive, Rigorous, Transparent and Accessible.\n\n\n\nFigure from Donnelly et al. (2018) Four principles to make evidence synthesis more useful for policy\n\n\nIt is not easy identifying good evidence synthesis. Sometimes the criteria/principles outlined above are hard to identify. It can be tough to know if a synthesis only achieves some of the criteria how much it can be trusted.\nThere are many organisations whose purpose it is to help produce and share robust, high quality evidence syntheses. In the environmental field there is The Collaboration for Environmental Evidence. If you need help please reach out.\n\n\n\n\n\n\nNoteAcknowledgements",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "What makes a good evidence synthesis?"
+    ]
+  },
+  {
+    "objectID": "small_data_in_ecology.html",
+    "href": "small_data_in_ecology.html",
+    "title": "Small data in ecology",
+    "section": "",
+    "text": "TipTL;DR\n\n\n\n\n\n\n\n#Simulate some data with known effect\n# loop through 10000 simulations\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.2\n✔ ggplot2   4.0.0     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.2.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nttest_sim&lt;-function(nSim=1000, n=6, C_mean=12, T_mean=16, C_sd=2, T_sd=2){\nout_frame&lt;-rep(NA,nSim)\n\nfor (i in seq_along(out_frame)){\ncontrol=rnorm(n,C_mean, C_sd)\ntreatment=rnorm(n,T_mean, T_sd)\nttest&lt;-t.test(control,treatment)\nout_frame[i]&lt;-ttest$p.value\n}\n\ndata_out&lt;-data.frame(nSim=1:nSim,pValue=out_frame)\n\ndata_out |&gt; \n  ggplot(aes(pValue))+\n  geom_histogram()+\n  geom_vline(xintercept = 0.05, lty=2, colour=\"red\")+\n  ggthemes::theme_base()\n  \n}\n\nttest_sim(nSim=1000, n=6, C_mean=12, T_mean=14, C_sd=4, T_sd=4)\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteAcknowledgements"
+  },
+  {
+    "objectID": "presentations/page-reveal.html#what-is-evidence-synthesis-technology",
+    "href": "presentations/page-reveal.html#what-is-evidence-synthesis-technology",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "What is Evidence Synthesis Technology?",
+    "text": "What is Evidence Synthesis Technology?\n\n“Technology is the collection of techniques, skills, methods, and processes…”\nDepends on when you ask – SR was a novel technology once!\nTools to support evidence synthesis – to overcome challenges",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#what-types-of-technology",
+    "href": "presentations/page-reveal.html#what-types-of-technology",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "What types of technology",
+    "text": "What types of technology\n\nComputer assistance – technology-assisted reviews\nCapacity development / training\nBetter / easier record keeping\nIncreased efficiency / transparency / rigour\nAutomation – technology-driven reviews",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#section",
+    "href": "presentations/page-reveal.html#section",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "",
+    "text": "Many and increasing tools available to help in systematic review\n\nBut…Often pay-walled…\n…or not supported long-term\nA lot of redundancy\nVery limited interoperability\nTools frequently not validated (or validated by the developers)",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#vienna-principles",
+    "href": "presentations/page-reveal.html#vienna-principles",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "Vienna Principles",
+    "text": "Vienna Principles\nPrinciples of the International Collaboration for the Automation of Systematic Reviews (ICASR). Syst Rev 7, 77 (2018)\n\nAbility to work with different tools at different stages\nTools should be interoperable\nCollaboration needed to cover all synthesis stages\nCode should be Open Source\nStandardised validation",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#what-is-the-eshackathon",
+    "href": "presentations/page-reveal.html#what-is-the-eshackathon",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "What is the ESHackathon?",
+    "text": "What is the ESHackathon?\nMission\nThe ESH aims to bring together interested researchers, practitioners and coders to discuss and develop new Open Source technologies for ES applications",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#origin",
+    "href": "presentations/page-reveal.html#origin",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "Origin",
+    "text": "Origin\n\nESH started as an open software development event in 2018\nESH has evolved into a conference, training courses and hackathons",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#hackathons",
+    "href": "presentations/page-reveal.html#hackathons",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "Hackathons",
+    "text": "Hackathons",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#conferences",
+    "href": "presentations/page-reveal.html#conferences",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "Conferences",
+    "text": "Conferences",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#training",
+    "href": "presentations/page-reveal.html#training",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "Training",
+    "text": "Training\nOur events page - opencollective.com/esmarconf/events",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#our-tools",
+    "href": "presentations/page-reveal.html#our-tools",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "Our tools",
+    "text": "Our tools",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#citationchaser",
+    "href": "presentations/page-reveal.html#citationchaser",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "CitationChaser",
+    "text": "CitationChaser",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#eviatlas",
+    "href": "presentations/page-reveal.html#eviatlas",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "EviAtlas",
+    "text": "EviAtlas",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#prisma2020",
+    "href": "presentations/page-reveal.html#prisma2020",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "PRISMA2020",
+    "text": "PRISMA2020",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#citesource",
+    "href": "presentations/page-reveal.html#citesource",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "CiteSource",
+    "text": "CiteSource",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#how-to-get-involved",
+    "href": "presentations/page-reveal.html#how-to-get-involved",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "How to get involved",
+    "text": "How to get involved\n\nPropose coding/discussion projects\nUse and test ESH tools, provide feedback\nApply to join a future hackathon/project\nCo-host a hackathon\nFund an ESH event (LMIC attendance)",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "presentations/page-reveal.html#join-our-community",
+    "href": "presentations/page-reveal.html#join-our-community",
+    "title": "Leveraging Open Source Tools for accelerating Evidence Synthesis",
+    "section": "Join our community",
+    "text": "Join our community",
+    "crumbs": [
+      "Presentations",
+      "Leveraging open tools for evidence synthesis"
+    ]
+  },
+  {
+    "objectID": "making_missing_data_work.html",
+    "href": "making_missing_data_work.html",
+    "title": "Making missing data work for us",
+    "section": "",
+    "text": "TipTL;DR\n\n\n\nMissing data is a problem for the analysis of ecological data but we can use missing data theory to help fill in gaps in biodiversity monitoring data if the missingness is deliberately planned\n\n\nInspired by this paper and discussions over coffee at this year’s NINAdager (our annual work get-together) I thought I would further explore the use of planned missing data designs in ecological monitoring (I did a talk on this last year at an event on Threatened species in Norway).\n\n\nMissing data is normally a problem. Typically as ecologists we sweep missing data under the carpet by using a “complete case” approach to data analysis.\n\nIf you have ever written some code like this:\n\n# na.omit()\ndf &lt;- na.omit(df)\n\n# complete.cases()\ndf &lt;- df[complete.cases(df), ] \n\n# rowSums()\ndf &lt;- df[rowSums(is.na(df)) == 0, ] \n\n# drop_na()\ndf &lt;- df %&gt;% tidyr::drop_na()\n\nyou are removing missing data (NAs) from your dataset.\n\n\nBy throwing away potentially useful data (only including those rows without a NA in them) you reduce the information you are working with, reduce statistical power and introduce selection bias (invalidating any assumption of randomisation).\n\n\n\nThere are three broad categories of missing data, “Missing completely at random” (MCAR), “Missing at random” (MAR - a very confusing name!), “Missing not at random” (MNAR).\n\nMCAR - missingness is not related to any measured or unmeasured variables\nMAR - missingness is not random but related to other variables and can be accounted for by another complete variable\nMNAR - missingness is related to the missing data itself (there is a systematic reason why the data are missing within a particular variable)\n\nImagine that we are measuring rainfall at weather stations across Norway every year. If we randomly subsample the locations that we will measure in one particular year we will have data that is MCAR (Table 1 (b)). If the first three weather stations are on top of mountains and the weather conditions were too harsh for us to take a measurement we will have data that is MAR (missingness is related to the station number Table 1 (c)). Finally, if our rainfall measuring tool has a systematic error so that the largest amounts of rainfall are not measured we would have data that is MNAR (Table 1 (d)).\n\n\n\nTable 1: Missing data patterns\n\n\n\n\n\n\n\n(a) Complete data\n\n\n\n\n\nstation number\nrainfall\n\n\n\n\n1\n30\n\n\n2\n150\n\n\n3\n75\n\n\n4\n250\n\n\n5\n55\n\n\n\n\n\n\n\n\n\n\n\n(b) MCAR\n\n\n\n\n\nstation number\nrainfall\n\n\n\n\n1\n30\n\n\n2\n\n\n\n3\n\n\n\n4\n250\n\n\n5\n55\n\n\n\n\n\n\n\n\n\n\n\n\n\n(c) MAR\n\n\n\n\n\nstation number\nrainfall\n\n\n\n\n1\n\n\n\n2\n\n\n\n3\n\n\n\n4\n250\n\n\n5\n55\n\n\n\n\n\n\n\n\n\n\n\n(d) MNAR\n\n\n\n\n\nstation number\nrainfall\n\n\n\n\n1\n30\n\n\n2\n\n\n\n3\n75\n\n\n4\n\n\n\n5\n55\n\n\n\n\n\n\n\n\n\n\n\nWithout knowledge of what values are missing it can be impossible to identify MNAR.\n\n\n\nThe code block below shows the impact of different types of missingness on the observed relationship between two variables.\n\nlibrary(tidyverse, quietly = TRUE)\nlibrary(missMethods, quietly = TRUE)\nlibrary(palmerpenguins)\n\n# create datasets with levels missingness \n\npenguins_complete&lt;-penguins |&gt; \n  drop_na()\n# create a pattern of missingness \n#(30% missing completely at Random)\nmiss_penguins_MCAR&lt;-missMethods::delete_MCAR(penguins_complete, 0.3, \"flipper_length_mm\")\n# create a pattern of missingness with censoring\n#(missing value in flipper_length if body_mass is below 30% quantile of body_mass)\nmiss_penguins_MAR&lt;-missMethods::delete_MAR_censoring(penguins_complete, 0.3, \"flipper_length_mm\", \"body_mass_g\")\n# create a pattern of missingness with censoring \n#(missing value in flipper_length if flipper_length is below 30% quantile)\nmiss_penguins_MNAR&lt;-missMethods::delete_MNAR_censoring(penguins_complete, 0.3, \"flipper_length_mm\")\n\n\nall_data&lt;-bind_rows(\"Full\"=penguins_complete, \"MCAR\"= miss_penguins_MCAR, \"MAR\"= miss_penguins_MAR, \"MNAR\"=miss_penguins_MNAR, .id=\"Missingness\")\n\n\n## plot the missing data function\n\nMDplot&lt;-function(df_comp, df_mis, title){\n  df_comp$missX&lt;-is.na(df_mis$flipper_length_mm)\n  ggplot(data=df_comp,aes(x=flipper_length_mm,y=body_mass_g, colour=missX))+\n  geom_point(alpha=0.2)+\n  geom_smooth(method = \"lm\")+\n    labs(x=\"Flipper length (mm)\", y=\"Body mass (g)\")+\n    scale_color_discrete(name=\"Missing data?\")+\n    ggtitle(title)+\n    theme_bw()\n}\n \nMDplot(penguins_complete, miss_penguins_MCAR, title=\"MCAR\")\n\n\n\n\n\n\n\nMDplot(penguins_complete, miss_penguins_MAR, title=\"MAR\")\n\n\n\n\n\n\n\nMDplot(penguins_complete, miss_penguins_MNAR, title=\"MNAR\")\n\n\n\n\n\n\n\n\nWhere data are MCAR there is little impact on the estimate of the relationship between flipper length and body mass. However, MAR and MNAR can have large effects on the estimate.\n\n\n\nWith MCAR and MAR we can use multiple imputation techniques which generate simulated datasets to fill in the missing data. The imputed data are simulated by assessing the relationship between the variable with missingness and other complete variables. Typically several imputed datasets are produced and then combined to give a dataset with no missing data.\n\nIn addition, you can analyse covariance structures (in a regression framework). Using a Structured Equation Model (SEM) we can run a simple linear regression. Below is the code for running a normal linear model and a SEM model. You can see that the output is broadly equivalent.\n\nlibrary(lavaan)\n# we will use the Iris dataset for this example\ncomplete_model&lt;-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris)\n\niris_MCAR&lt;-missMethods::delete_MCAR(iris, 0.3, \"Petal.Width\")\n\nmiss_model1&lt;-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris_MCAR)\n\nWhen we use missing data we can see the difference between the regression coefficients.\n\nlibrary(stargazer, quietly = TRUE)\nstargazer(complete_model, miss_model1, \n          star.cutoffs = c(.05, .01, .001), \n  no.space = T, type = 'text')\n\n\n=====================================================================\n                                   Dependent variable:               \n                    -------------------------------------------------\n                                       Petal.Width                   \n                              (1)                      (2)           \n---------------------------------------------------------------------\nSepal.Length               -0.207***                 -0.161**        \n                            (0.048)                  (0.056)         \nSepal.Width                 0.223***                 0.225***        \n                            (0.049)                  (0.061)         \nPetal.Length                0.524***                 0.506***        \n                            (0.024)                  (0.029)         \nConstant                     -0.240                   -0.441         \n                            (0.178)                  (0.222)         \n---------------------------------------------------------------------\nObservations                  150                      105           \nR2                           0.938                    0.938          \nAdjusted R2                  0.937                    0.936          \nResidual Std. Error     0.192 (df = 146)         0.193 (df = 101)    \nF Statistic         734.389*** (df = 3; 146) 505.740*** (df = 3; 101)\n=====================================================================\nNote:                                   *p&lt;0.05; **p&lt;0.01; ***p&lt;0.001\n\n\n\ncomplete_model_lavv &lt;- sem('Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length', data=iris)\nsummary(complete_model_lavv)\n\nlavaan 0.6-21 ended normally after 1 iteration\n\n  Estimator                                         ML\n  Optimization method                           NLMINB\n  Number of model parameters                         4\n\n  Number of observations                           150\n\nModel Test User Model:\n                                                      \n  Test statistic                                 0.000\n  Degrees of freedom                                 0\n\nParameter Estimates:\n\n  Standard errors                             Standard\n  Information                                 Expected\n  Information saturated (h1) model          Structured\n\nRegressions:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n  Petal.Width ~                                       \n    Sepal.Length     -0.207    0.047   -4.422    0.000\n    Sepal.Width       0.223    0.048    4.615    0.000\n    Petal.Length      0.524    0.024   21.690    0.000\n\nVariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n   .Petal.Width       0.036    0.004    8.660    0.000\n\nmiss_model2 &lt;- sem('Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length', data=iris_MCAR, missing=\"ML\")\nsummary(miss_model2)\n\nlavaan 0.6-21 ended normally after 17 iterations\n\n  Estimator                                         ML\n  Optimization method                           NLMINB\n  Number of model parameters                         5\n\n  Number of observations                           150\n  Number of missing patterns                         2\n\nModel Test User Model:\n                                                      \n  Test statistic                                 0.000\n  Degrees of freedom                                 0\n\nParameter Estimates:\n\n  Standard errors                             Standard\n  Information                                 Observed\n  Observed information based on                Hessian\n\nRegressions:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n  Petal.Width ~                                       \n    Sepal.Length     -0.161    0.055   -2.918    0.004\n    Sepal.Width       0.225    0.060    3.785    0.000\n    Petal.Length      0.506    0.029   17.534    0.000\n\nIntercepts:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n   .Petal.Width      -0.441    0.218   -2.022    0.043\n\nVariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n   .Petal.Width       0.036    0.005    7.246    0.000\n\n\nAdding the argument ‘missing = “ML”’ to the sem() function estimates a likelihood function for each row based on the variables that are present so that all the available data are used. You can see that the lm() uses only 105 observations whereas the sem() uses all 150 observations.\nMNAR is difficult to do much with as we often can not identify the process that generates the missing data pattern.",
+    "crumbs": [
+      "Posts",
+      "Data & tools",
+      "Missing data"
+    ]
+  },
+  {
+    "objectID": "making_missing_data_work.html#planning-monitoring-with-deliberate-missing-data",
+    "href": "making_missing_data_work.html#planning-monitoring-with-deliberate-missing-data",
+    "title": "Making missing data work for us",
+    "section": "",
+    "text": "TipTL;DR\n\n\n\nMissing data is a problem for the analysis of ecological data but we can use missing data theory to help fill in gaps in biodiversity monitoring data if the missingness is deliberately planned\n\n\nInspired by this paper and discussions over coffee at this year’s NINAdager (our annual work get-together) I thought I would further explore the use of planned missing data designs in ecological monitoring (I did a talk on this last year at an event on Threatened species in Norway).\n\n\nMissing data is normally a problem. Typically as ecologists we sweep missing data under the carpet by using a “complete case” approach to data analysis.\n\nIf you have ever written some code like this:\n\n# na.omit()\ndf &lt;- na.omit(df)\n\n# complete.cases()\ndf &lt;- df[complete.cases(df), ] \n\n# rowSums()\ndf &lt;- df[rowSums(is.na(df)) == 0, ] \n\n# drop_na()\ndf &lt;- df %&gt;% tidyr::drop_na()\n\nyou are removing missing data (NAs) from your dataset.\n\n\nBy throwing away potentially useful data (only including those rows without a NA in them) you reduce the information you are working with, reduce statistical power and introduce selection bias (invalidating any assumption of randomisation).\n\n\n\nThere are three broad categories of missing data, “Missing completely at random” (MCAR), “Missing at random” (MAR - a very confusing name!), “Missing not at random” (MNAR).\n\nMCAR - missingness is not related to any measured or unmeasured variables\nMAR - missingness is not random but related to other variables and can be accounted for by another complete variable\nMNAR - missingness is related to the missing data itself (there is a systematic reason why the data are missing within a particular variable)\n\nImagine that we are measuring rainfall at weather stations across Norway every year. If we randomly subsample the locations that we will measure in one particular year we will have data that is MCAR (Table 1 (b)). If the first three weather stations are on top of mountains and the weather conditions were too harsh for us to take a measurement we will have data that is MAR (missingness is related to the station number Table 1 (c)). Finally, if our rainfall measuring tool has a systematic error so that the largest amounts of rainfall are not measured we would have data that is MNAR (Table 1 (d)).\n\n\n\nTable 1: Missing data patterns\n\n\n\n\n\n\n\n(a) Complete data\n\n\n\n\n\nstation number\nrainfall\n\n\n\n\n1\n30\n\n\n2\n150\n\n\n3\n75\n\n\n4\n250\n\n\n5\n55\n\n\n\n\n\n\n\n\n\n\n\n(b) MCAR\n\n\n\n\n\nstation number\nrainfall\n\n\n\n\n1\n30\n\n\n2\n\n\n\n3\n\n\n\n4\n250\n\n\n5\n55\n\n\n\n\n\n\n\n\n\n\n\n\n\n(c) MAR\n\n\n\n\n\nstation number\nrainfall\n\n\n\n\n1\n\n\n\n2\n\n\n\n3\n\n\n\n4\n250\n\n\n5\n55\n\n\n\n\n\n\n\n\n\n\n\n(d) MNAR\n\n\n\n\n\nstation number\nrainfall\n\n\n\n\n1\n30\n\n\n2\n\n\n\n3\n75\n\n\n4\n\n\n\n5\n55\n\n\n\n\n\n\n\n\n\n\n\nWithout knowledge of what values are missing it can be impossible to identify MNAR.\n\n\n\nThe code block below shows the impact of different types of missingness on the observed relationship between two variables.\n\nlibrary(tidyverse, quietly = TRUE)\nlibrary(missMethods, quietly = TRUE)\nlibrary(palmerpenguins)\n\n# create datasets with levels missingness \n\npenguins_complete&lt;-penguins |&gt; \n  drop_na()\n# create a pattern of missingness \n#(30% missing completely at Random)\nmiss_penguins_MCAR&lt;-missMethods::delete_MCAR(penguins_complete, 0.3, \"flipper_length_mm\")\n# create a pattern of missingness with censoring\n#(missing value in flipper_length if body_mass is below 30% quantile of body_mass)\nmiss_penguins_MAR&lt;-missMethods::delete_MAR_censoring(penguins_complete, 0.3, \"flipper_length_mm\", \"body_mass_g\")\n# create a pattern of missingness with censoring \n#(missing value in flipper_length if flipper_length is below 30% quantile)\nmiss_penguins_MNAR&lt;-missMethods::delete_MNAR_censoring(penguins_complete, 0.3, \"flipper_length_mm\")\n\n\nall_data&lt;-bind_rows(\"Full\"=penguins_complete, \"MCAR\"= miss_penguins_MCAR, \"MAR\"= miss_penguins_MAR, \"MNAR\"=miss_penguins_MNAR, .id=\"Missingness\")\n\n\n## plot the missing data function\n\nMDplot&lt;-function(df_comp, df_mis, title){\n  df_comp$missX&lt;-is.na(df_mis$flipper_length_mm)\n  ggplot(data=df_comp,aes(x=flipper_length_mm,y=body_mass_g, colour=missX))+\n  geom_point(alpha=0.2)+\n  geom_smooth(method = \"lm\")+\n    labs(x=\"Flipper length (mm)\", y=\"Body mass (g)\")+\n    scale_color_discrete(name=\"Missing data?\")+\n    ggtitle(title)+\n    theme_bw()\n}\n \nMDplot(penguins_complete, miss_penguins_MCAR, title=\"MCAR\")\n\n\n\n\n\n\n\nMDplot(penguins_complete, miss_penguins_MAR, title=\"MAR\")\n\n\n\n\n\n\n\nMDplot(penguins_complete, miss_penguins_MNAR, title=\"MNAR\")\n\n\n\n\n\n\n\n\nWhere data are MCAR there is little impact on the estimate of the relationship between flipper length and body mass. However, MAR and MNAR can have large effects on the estimate.\n\n\n\nWith MCAR and MAR we can use multiple imputation techniques which generate simulated datasets to fill in the missing data. The imputed data are simulated by assessing the relationship between the variable with missingness and other complete variables. Typically several imputed datasets are produced and then combined to give a dataset with no missing data.\n\nIn addition, you can analyse covariance structures (in a regression framework). Using a Structured Equation Model (SEM) we can run a simple linear regression. Below is the code for running a normal linear model and a SEM model. You can see that the output is broadly equivalent.\n\nlibrary(lavaan)\n# we will use the Iris dataset for this example\ncomplete_model&lt;-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris)\n\niris_MCAR&lt;-missMethods::delete_MCAR(iris, 0.3, \"Petal.Width\")\n\nmiss_model1&lt;-lm(Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length, data=iris_MCAR)\n\nWhen we use missing data we can see the difference between the regression coefficients.\n\nlibrary(stargazer, quietly = TRUE)\nstargazer(complete_model, miss_model1, \n          star.cutoffs = c(.05, .01, .001), \n  no.space = T, type = 'text')\n\n\n=====================================================================\n                                   Dependent variable:               \n                    -------------------------------------------------\n                                       Petal.Width                   \n                              (1)                      (2)           \n---------------------------------------------------------------------\nSepal.Length               -0.207***                 -0.161**        \n                            (0.048)                  (0.056)         \nSepal.Width                 0.223***                 0.225***        \n                            (0.049)                  (0.061)         \nPetal.Length                0.524***                 0.506***        \n                            (0.024)                  (0.029)         \nConstant                     -0.240                   -0.441         \n                            (0.178)                  (0.222)         \n---------------------------------------------------------------------\nObservations                  150                      105           \nR2                           0.938                    0.938          \nAdjusted R2                  0.937                    0.936          \nResidual Std. Error     0.192 (df = 146)         0.193 (df = 101)    \nF Statistic         734.389*** (df = 3; 146) 505.740*** (df = 3; 101)\n=====================================================================\nNote:                                   *p&lt;0.05; **p&lt;0.01; ***p&lt;0.001\n\n\n\ncomplete_model_lavv &lt;- sem('Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length', data=iris)\nsummary(complete_model_lavv)\n\nlavaan 0.6-21 ended normally after 1 iteration\n\n  Estimator                                         ML\n  Optimization method                           NLMINB\n  Number of model parameters                         4\n\n  Number of observations                           150\n\nModel Test User Model:\n                                                      \n  Test statistic                                 0.000\n  Degrees of freedom                                 0\n\nParameter Estimates:\n\n  Standard errors                             Standard\n  Information                                 Expected\n  Information saturated (h1) model          Structured\n\nRegressions:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n  Petal.Width ~                                       \n    Sepal.Length     -0.207    0.047   -4.422    0.000\n    Sepal.Width       0.223    0.048    4.615    0.000\n    Petal.Length      0.524    0.024   21.690    0.000\n\nVariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n   .Petal.Width       0.036    0.004    8.660    0.000\n\nmiss_model2 &lt;- sem('Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length', data=iris_MCAR, missing=\"ML\")\nsummary(miss_model2)\n\nlavaan 0.6-21 ended normally after 17 iterations\n\n  Estimator                                         ML\n  Optimization method                           NLMINB\n  Number of model parameters                         5\n\n  Number of observations                           150\n  Number of missing patterns                         2\n\nModel Test User Model:\n                                                      \n  Test statistic                                 0.000\n  Degrees of freedom                                 0\n\nParameter Estimates:\n\n  Standard errors                             Standard\n  Information                                 Observed\n  Observed information based on                Hessian\n\nRegressions:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n  Petal.Width ~                                       \n    Sepal.Length     -0.161    0.055   -2.918    0.004\n    Sepal.Width       0.225    0.060    3.785    0.000\n    Petal.Length      0.506    0.029   17.534    0.000\n\nIntercepts:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n   .Petal.Width      -0.441    0.218   -2.022    0.043\n\nVariances:\n                   Estimate  Std.Err  z-value  P(&gt;|z|)\n   .Petal.Width       0.036    0.005    7.246    0.000\n\n\nAdding the argument ‘missing = “ML”’ to the sem() function estimates a likelihood function for each row based on the variables that are present so that all the available data are used. You can see that the lm() uses only 105 observations whereas the sem() uses all 150 observations.\nMNAR is difficult to do much with as we often can not identify the process that generates the missing data pattern.",
+    "crumbs": [
+      "Posts",
+      "Data & tools",
+      "Missing data"
+    ]
+  },
+  {
+    "objectID": "making_missing_data_work.html#how-can-we-make-missing-data-work-for-us",
+    "href": "making_missing_data_work.html#how-can-we-make-missing-data-work-for-us",
+    "title": "Making missing data work for us",
+    "section": "2 How can we make missing data work for us?",
+    "text": "2 How can we make missing data work for us?\nPlanned missing data designs make use of missing data theory to reduce costs in monitoring. Randomly missing sampling occasions or some repeated measures on subjects creates a dataset that is MCAR. We can then use modelling or imputation techniques to fill the gaps and analyse trends in our data.\nLet’s assume we are monitoring birds at 5 locations over a number of years to assess regional trends but our budget is cut and we can only afford to visit 80% of the locations in any given year.\nWe can set up a simulation to look at the effects of imputing data.\n\n# Load mice\nlibrary(mice, quietly = TRUE)\n\n# Set seed for reproducibility\nset.seed(123)\n\n# Simulate data: location, year, count\nlocations &lt;- rep(1:5, each = 5)  # Assuming 5 locations\nyears &lt;- rep(2009:2023, 5)  # Assuming data for 5 years\ncount &lt;- round(rpois(25, lambda = 20))  # Simulated count data\n\n# Create a dataframe\ndata &lt;- data.frame(Location = locations, Year = years, Count = count)\n\n# Introduce missingness - Missing completely at random (MCAR)\nprop_missing &lt;- 0.2  # Example: 20% missingness\nmissing_indices &lt;- sample(1:nrow(data), prop_missing * nrow(data))\ndata$Count[missing_indices] &lt;- NA\n\n# Check the structure of the data\nstr(data)\n\n'data.frame':   75 obs. of  3 variables:\n $ Location: int  1 1 1 1 1 2 2 2 2 2 ...\n $ Year    : int  2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 ...\n $ Count   : num  17 25 12 20 27 NA 14 NA 25 21 ...\n\n\nWhen we impute the missing data we use 5 replicates and then take the mean of all 5 datasets per year.\n\n# Impute missing data using MICE\nimp &lt;- mice(data, m = 5, method = 'pmm', seed = 500)\n\n\n iter imp variable\n  1   1  Count\n  1   2  Count\n  1   3  Count\n  1   4  Count\n  1   5  Count\n  2   1  Count\n  2   2  Count\n  2   3  Count\n  2   4  Count\n  2   5  Count\n  3   1  Count\n  3   2  Count\n  3   3  Count\n  3   4  Count\n  3   5  Count\n  4   1  Count\n  4   2  Count\n  4   3  Count\n  4   4  Count\n  4   5  Count\n  5   1  Count\n  5   2  Count\n  5   3  Count\n  5   4  Count\n  5   5  Count\n\n# Analyse trends and variation in the original and imputed data\n# For illustration purposes, assuming a simple trend analysis\noriginal_trend &lt;- aggregate(data$Count, by = list(data$Year), FUN = mean, na.rm = TRUE)\nnames(original_trend)&lt;-c(\"Year\",\"Count\")\nimputed_trend &lt;- complete(imp, 'long')\nimputed_trend &lt;- aggregate(Count ~ Year, data = imputed_trend, FUN = mean)\n\n# Visualization of trends in original and imputed data\nplot_data&lt;-bind_rows(\"original\"=original_trend, \"imputed\"=imputed_trend, .id=\"Trend\")\n\nplot_data |&gt; \n  ggplot(aes(Year, Count, colour=Trend))+\n  geom_point()+\n  geom_line()+\n  theme_classic()\n\n\n\n\n\n\n\n\nThe plot shows the data with imputed values (red points and line) versus the original data (blue).\n\n2.1 Caveats\nAlthough imputing data is a viable approach to resource constraints it is undoubtedly better to have real data at every step. In addition, it is important that other forms of missing data patterns are not introduced in to the data by accident.",
+    "crumbs": [
+      "Posts",
+      "Data & tools",
+      "Missing data"
+    ]
+  },
+  {
+    "objectID": "listing.html",
+    "href": "listing.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Title\n      \n    \n  \n\n\n\n\n\n\n\n\n\n\nDr Matthew J Grainger\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDynamic Meta-analysis: When Transparency Meets Multiplicity\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nESHackathon: Unlocking Evidence Synthesis Through Innovation!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLeveraging Open Source Tools for accelerating Evidence Synthesis\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMagnitude Matters: When Direction Is the Wrong Question\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMaking missing data work for us\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPublications\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmall data in ecology\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUsing OpenAlex to get publication metadata\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat makes a ‘good’ systematic evidence synthesis?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhich shortcuts are really shortcuts in systematic reviews?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhy Ecology Is Not Medicine: The Structural Mismatch in Evidence Synthesis\n\n\n\n\n\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "About me",
+      "Index of posts"
+    ]
+  },
+  {
+    "objectID": "ESHackathon.html",
+    "href": "ESHackathon.html",
+    "title": "ESHackathon: Unlocking Evidence Synthesis Through Innovation!",
+    "section": "",
+    "text": "Embark on an innovative journey with ESHackathon – where our workshops promote inclusive dynamic spaces for collaboration in evidence synthesis.\nOriginating as an open software development event in 2018, ESHackathon has evolved into a conference, training courses and hackathons, uniting diverse talents to tackle complex challenges in identifying and summarising evidence.\n\n0.1 Why is Technology Vital for Evidence Synthesis?\nIn a world of constantly expanding literature, ESTech revolutionises the way we synthesise the literature. Through text analysis, machine learning, and collaborative coding, we automate tasks, cut costs, and enhance global accessibility, making rigorous evidence synthesis efficient.\n\n\n0.2 Hackathon Highlights:\n\n\nDiverse Participation: All are welcome - coders, health researchers, environmental scientists, social scientists, statisticians and more!\n\n\nProblem-Solving: It’s not just for programmers! Combine technology and evidence synthesis expertise to develop novel frameworks and tackle fundamental evidence synthesis challenges.\n\n\nGlobal Collaboration: Unite with talents worldwide to create impactful solutions for evidence synthesis challenges.\n\n\n\n\n0.3 Get Involved:\n\n\nStay Connected: Follow us for updates and details at  https://www.eshackathon.org/ \n\n\nSign-up for Courses: Elevate your skills with our evidence synthesis training courses https://opencollective.com/esmarconf/events \n\n\nRelive ESMARConf: Revisit the experience with all sessions available forever on YouTube https://esmarconf.org/recordings  \n\nGet in contact with us if you have a need for bespoke evidence synthesis solutions eshackathon@gmail.com \nESHackathon relies on generous funding from our supporters to progress our goals of making evidence synthesis faster, cheaper, and more reliable. If you are interested in supporting our activities then please donate here https://opencollective.com/esmarconf/contribute \n\n\n\n0.4 ESHackathon Project Highlights\nParticipants in ESH have produced 11 fully functional tools, many of which have non-coding user interfaces. Tools include:\n\ncitationchaser - conducts forward and backward citation chasing for systematic searching\nEviAtlas - creates interactive visualisations of geographical evidence map data\nrobvis - visualises risk of bias assessments\nmetafor::reports - produces methods and results text based on meta-analytic model inputs\nsysrevdata - converts between evidence synthesis database formats (long, wide, condensed)\nPRISMA2020 - produces PRISMA-compliant flow diagrams (&gt;6000 monthly users)\nROSESflowchart - produces ROSES-compliant flow diagrams\nbibfix - corrects and compiles bibliographic files\nmetadat - an R repository of meta-analytic datasets\nPredicTER - estimates the time requirement for evidence synthesis projects\n\nWe have also published 8 academic papers as a result of ESH working group discussions, with several more in preparation:\n\nNakagawa, Shinichi, et al. “A new ecosystem for evidence synthesis.” Nature Ecology & Evolution 4.4 (2020): 498-501\nHaddaway, Neal R., et al. “The evidence synthesis and meta-analysis in R conference (ESMARConf): levelling the playing field of conference accessibility and equitability.” Systematic Reviews 11.1 (2022): 1-9.\nHaddaway, Neal R., et al. “EviAtlas: a tool for visualising evidence synthesis databases.” Environmental Evidence 8.1 (2019): 1-10.\nHaddaway, Neal R., and Martin J. Westgate. “Creating and curating a community of practice: introducing the evidence synthesis Hackathon and a special series in evidence synthesis technology.” Environmental Evidence 9.1 (2020): 1-4.\nHaddaway, Neal R., Matthew J. Grainger, and Charles T. Gray. “Citationchaser: A tool for transparent and efficient forward and backward citation chasing in systematic searching.” Research Synthesis Methods 13.4 (2022): 533-545.\nHaddaway, Neal R., Charles T. Gray, and Matthew Grainger. “Novel tools and methods for designing and wrangling multifunctional, machine-readable evidence synthesis databases.” Environmental Evidence 10.1 (2021): 5.\nHennessy, Emily A., et al. “Ensuring prevention science research is synthesis-ready for immediate and lasting scientific impact.” Prevention Science 23.5 (2022): 809-820.\nHaddaway, Neal R., et al. “PRISMA2020: An R package and Shiny app for producing PRISMA 2020‐compliant flow diagrams, with interactivity for optimised digital transparency and Open Synthesis.” Campbell Systematic Reviews 18.2 (2022): e1230.",
+    "crumbs": [
+      "Posts",
+      "Community",
+      "What is the ESHackathon?"
+    ]
+  },
+  {
+    "objectID": "Ecology_is_not_medicine.html",
+    "href": "Ecology_is_not_medicine.html",
+    "title": "Why Ecology Is Not Medicine: The Structural Mismatch in Evidence Synthesis",
+    "section": "",
+    "text": "A lot of evidence synthesis workflows in ecology and conservation are inherited (directly or indirectly) from medicine. That is not inherently bad, meta-analysis is meta-analysis, but it becomes a problem when we quietly import assumptions that do not hold.\nIn medicine, many meta-analyses are built around relatively comparable interventions and outcomes, and heterogeneity is often treated as a complication to explain away.\nIn ecology, heterogeneity is often the whole story: context dependence, non-independence, different systems, different scales, different proxies, and (often) small sample sizes.\nThis post uses a simple simulation to show how “standard-looking” meta-analysis outputs can mean very different things in these two worlds.\n\n\nCode\nlibrary(tidyverse)\nlibrary(metafor)\nset.seed(1) # for reproducibility\ntheme_set(theme_minimal(base_size = 13))",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Ecology is not medicine"
+    ]
+  },
+  {
+    "objectID": "Ecology_is_not_medicine.html#the-uncomfortable-truth",
+    "href": "Ecology_is_not_medicine.html#the-uncomfortable-truth",
+    "title": "Why Ecology Is Not Medicine: The Structural Mismatch in Evidence Synthesis",
+    "section": "",
+    "text": "A lot of evidence synthesis workflows in ecology and conservation are inherited (directly or indirectly) from medicine. That is not inherently bad, meta-analysis is meta-analysis, but it becomes a problem when we quietly import assumptions that do not hold.\nIn medicine, many meta-analyses are built around relatively comparable interventions and outcomes, and heterogeneity is often treated as a complication to explain away.\nIn ecology, heterogeneity is often the whole story: context dependence, non-independence, different systems, different scales, different proxies, and (often) small sample sizes.\nThis post uses a simple simulation to show how “standard-looking” meta-analysis outputs can mean very different things in these two worlds.\n\n\nCode\nlibrary(tidyverse)\nlibrary(metafor)\nset.seed(1) # for reproducibility\ntheme_set(theme_minimal(base_size = 13))",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Ecology is not medicine"
+    ]
+  },
+  {
+    "objectID": "Ecology_is_not_medicine.html#a-simple-simulation-two-worlds",
+    "href": "Ecology_is_not_medicine.html#a-simple-simulation-two-worlds",
+    "title": "Why Ecology Is Not Medicine: The Structural Mismatch in Evidence Synthesis",
+    "section": "2 A simple simulation: two worlds",
+    "text": "2 A simple simulation: two worlds\nWe simulate two evidence bases with the same true average effect but different structure:\nMedical-like world: low heterogeneity (studies are fairly comparable)\nEcological world: high heterogeneity (effects vary substantially by context)\nWe will generate effect sizes (Hedges’ g-like) and sampling variances, then fit a random-effects model to each.\n\n\nCode\nsimulate_world &lt;- function(k = 30, mu = 0.3, tau = 0.1, vi_range = c(0.02, 0.15), label = \"World\") {\n  vi &lt;- runif(k, min = vi_range[1], max = vi_range[2]) # sampling variances\n  theta_i &lt;- rnorm(k, mean = mu, sd = tau) # true study effects (heterogeneity)\n  yi &lt;- rnorm(k, mean = theta_i, sd = sqrt(vi)) # observed effects\n\n  tibble(world = label, study = paste0(\"Study \", seq_len(k)), yi = yi, vi = vi)\n}\n\ndat &lt;- bind_rows(simulate_world(k = 30, mu = 0.3, tau = 0.08, label = \"Medical-like (low heterogeneity)\"), simulate_world(k = 30, mu = 0.3, tau = 0.45, label = \"Ecological (high heterogeneity)\"))\n\ndat\n\n\n# A tibble: 60 × 4\n   world                            study        yi     vi\n   &lt;chr&gt;                            &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;\n 1 Medical-like (low heterogeneity) Study 1   0.131 0.0545\n 2 Medical-like (low heterogeneity) Study 2   0.394 0.0684\n 3 Medical-like (low heterogeneity) Study 3   0.612 0.0945\n 4 Medical-like (low heterogeneity) Study 4   0.324 0.138 \n 5 Medical-like (low heterogeneity) Study 5   0.537 0.0462\n 6 Medical-like (low heterogeneity) Study 6   0.521 0.137 \n 7 Medical-like (low heterogeneity) Study 7   0.131 0.143 \n 8 Medical-like (low heterogeneity) Study 8   0.417 0.106 \n 9 Medical-like (low heterogeneity) Study 9  -0.219 0.102 \n10 Medical-like (low heterogeneity) Study 10  0.590 0.0280\n# ℹ 50 more rows",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Ecology is not medicine"
+    ]
+  },
+  {
+    "objectID": "Ecology_is_not_medicine.html#fit-the-same-meta-analysis-in-both-worlds",
+    "href": "Ecology_is_not_medicine.html#fit-the-same-meta-analysis-in-both-worlds",
+    "title": "Why Ecology Is Not Medicine: The Structural Mismatch in Evidence Synthesis",
+    "section": "3 Fit the same meta-analysis in both worlds",
+    "text": "3 Fit the same meta-analysis in both worlds\nWe fit a random-effects model (rma) and compute:\n\nthe pooled mean and 95% CI (what people often quote)\nthe estimated heterogeneity (tau)\nthe 95% prediction interval (what you should care about for “what might happen in a new context”)\n\n\n\nCode\nworlds &lt;- unique(dat$world)\n\nsumm_list &lt;- vector(\"list\", length(worlds))\nnames(summ_list) &lt;- worlds\n\nfor (w in worlds) {\n\n  df &lt;- dat[dat$world == w, ]\n\n  m  &lt;- rma(yi = df$yi, vi = df$vi, method = \"REML\")\n  pr &lt;- predict(m)\n\n  summ_list[[w]] &lt;- data.frame(\n    world   = w,\n    k       = m$k,\n    mu_hat  = as.numeric(m$b),\n    ci_lb   = as.numeric(m$ci.lb),\n    ci_ub   = as.numeric(m$ci.ub),\n    tau     = sqrt(as.numeric(m$tau2)),\n    tau2    = as.numeric(m$tau2),\n    pi_lb   = as.numeric(pr$pi.lb[1]),\n    pi_ub   = as.numeric(pr$pi.ub[1]),\n    row.names = NULL\n  )\n}\n\nsumm &lt;- do.call(rbind, summ_list)\n\nsumm\n\n\n                                                            world  k    mu_hat\nMedical-like (low heterogeneity) Medical-like (low heterogeneity) 30 0.3584064\nEcological (high heterogeneity)   Ecological (high heterogeneity) 30 0.2598028\n                                      ci_lb     ci_ub       tau       tau2\nMedical-like (low heterogeneity) 0.24426636 0.4725465 0.1694701 0.02872013\nEcological (high heterogeneity)  0.09098831 0.4286173 0.3727368 0.13893269\n                                        pi_lb     pi_ub\nMedical-like (low heterogeneity)  0.007186916 0.7096259\nEcological (high heterogeneity)  -0.489998859 1.0096045\n\n\nFigure 1: the same pooled estimate can imply very different decision-relevance A common failure mode in ecological synthesis is to focus on the pooled mean and its significance while ignoring that the prediction interval may span meaningful positive and negative outcomes.\nThis figure draws (1) the pooled mean + 95% CI and (2) the 95% prediction interval for both worlds.\n\n\nCode\nsumm_long &lt;- summ |&gt;\npivot_longer(\ncols = c(ci_lb, ci_ub, pi_lb, pi_ub),\nnames_to = c(\"interval\", \"bound\"),\nnames_pattern = \"(ci|pi)_(lb|ub)\",\nvalues_to = \"value\"\n) |&gt;\npivot_wider(names_from = bound, values_from = value) |&gt;\nmutate(interval = recode(interval, ci = \"95% CI (mean effect)\", pi = \"95% Prediction interval\"))\n\nggplot(summ_long, aes(y = world, x = mu_hat)) +\ngeom_vline(xintercept = 0, linetype = \"dashed\", linewidth = 0.5) +\ngeom_errorbar(aes(xmin = lb, xmax = ub, linewidth = interval), height = 0.15) +\ngeom_point(size = 2.4) +\nscale_linewidth_manual(values = c(\"95% CI (mean effect)\" = 1.2, \"95% Prediction interval\" = 0.7)) +\nlabs(\nx = \"Effect size (standardised units; e.g., Hedges' g)\",\ny = NULL,\ntitle = \"Same workflow, different meaning\",\nsubtitle = stringr::str_wrap(\n\"In high-heterogeneity ecology-like data, the prediction interval can dominate interpretation\",\nwidth = 60\n),\nlinewidth = NULL\n) +\ntheme(plot.subtitle = element_text(size = 11))",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Ecology is not medicine"
+    ]
+  },
+  {
+    "objectID": "Ecology_is_not_medicine.html#interpretation",
+    "href": "Ecology_is_not_medicine.html#interpretation",
+    "title": "Why Ecology Is Not Medicine: The Structural Mismatch in Evidence Synthesis",
+    "section": "4 Interpretation:",
+    "text": "4 Interpretation:\nIn the medical-like world, the prediction interval is reasonably tight: a new study is likely to be in the same ballpark.\nIn the ecological world, the prediction interval may span large negative to large positive effects. The pooled mean still exists, but it is a weak guide to what happens in a new place/time/species/system.\nFigure 2: forest plots that look similar can hide very different structure Next we draw a lightweight “forest-plot-like” figure for both worlds using ggplot.\n\n\nCode\ndat_plot &lt;- dat |&gt;\n  mutate(\n    study_num = readr::parse_number(study)  \n  ) |&gt;\n  group_by(world) |&gt;\n  mutate(\n    w = 1 / vi,\n    se = sqrt(vi),\n    ci_lb = yi - 1.96 * se,\n    ci_ub = yi + 1.96 * se,\n    study = forcats::fct_reorder(study, study_num)\n  ) |&gt;\n  ungroup()\n\n\nggplot(dat_plot, aes(y = fct_rev(study), x = yi)) +\n  geom_vline(xintercept = 0, linetype = \"dashed\", linewidth = 0.5) +\n  geom_errorbarh(aes(xmin = ci_lb, xmax = ci_ub), height = 0.15) +\n  geom_point(aes(size = w)) +\n  scale_size_continuous(range = c(1.2, 3.8), guide = \"none\") +\n  facet_wrap(~world, scales = \"free_y\", ncol = 1) +\n  labs(x = \"Effect size\", y = NULL, title = \"Study-level effects in two evidence worlds\", subtitle = \"Both are 'meta-analysable' — but only one behaves like many people expect\")\n\n\n\n\n\n\n\n\n\nWhat this means in practice (especially for conservation decisions) If you are synthesising ecological evidence and your heterogeneity is high (common!), then:\n“The pooled effect is significant” may be scientifically correct but decision-irrelevant.\nPrediction intervals are often more honest for “what might happen next time”.\nMeta-regression and multilevel models can help, but they do not magically fix structural mismatch (small k, correlated moderators, measurement proxies).",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Ecology is not medicine"
+    ]
+  },
+  {
+    "objectID": "Ecology_is_not_medicine.html#a-practical-rule-of-thumb",
+    "href": "Ecology_is_not_medicine.html#a-practical-rule-of-thumb",
+    "title": "Why Ecology Is Not Medicine: The Structural Mismatch in Evidence Synthesis",
+    "section": "5 A practical rule of thumb:",
+    "text": "5 A practical rule of thumb:\nIf the prediction interval crosses zero widely, the review’s main conclusion should not be phrased as a single-direction claim without a strong context qualification.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Ecology is not medicine"
+    ]
+  },
+  {
+    "objectID": "Dynamic_Meta_analysis.html",
+    "href": "Dynamic_Meta_analysis.html",
+    "title": "Dynamic Meta-analysis: When Transparency Meets Multiplicity",
+    "section": "",
+    "text": "NoteTL;DR\n\n\n\nDynamic meta-analysis makes evidence synthesis interactive and transparent — but at a cost.\nEach new filter or subset is effectively a new statistical test, multiplying the chance of false positives.\nUsed without safeguards, it can turn exploration into data dredging.\nUsed responsibly with hierarchical models, transparent logging, and strong uncertainty framing it becomes a powerful exploratory decision-support tool.\nTransparency ≠ inference.\nDynamic meta-analysis should inform decisions, not replace pre-registered analyses.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Dynamic Meta-analysis - When Transparency Meets Multiplicity"
+    ]
+  },
+  {
+    "objectID": "Dynamic_Meta_analysis.html#introduction",
+    "href": "Dynamic_Meta_analysis.html#introduction",
+    "title": "Dynamic Meta-analysis: When Transparency Meets Multiplicity",
+    "section": "1 Introduction",
+    "text": "1 Introduction\nDynamic meta-analysis tools, such as the DynaMeta app from the GLiTRS project let users interactively explore evidence: filtering by taxon, threat, location, or metric, and instantly updating effect sizes.\nIn principle, this bridges science and decision-making. It allows researchers, policymakers, or practitioners to explore context-specific results, increasing transparency and engagement.\nBut this very interactivity introduces a deep statistical challenge:\n\nEvery new filter combination is a new analysis.\n\nWhen exploration is unconstrained, we create a multiple testing problem of enormous scale.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Dynamic Meta-analysis - When Transparency Meets Multiplicity"
+    ]
+  },
+  {
+    "objectID": "Dynamic_Meta_analysis.html#what-makes-dynamic-meta-analysis-different",
+    "href": "Dynamic_Meta_analysis.html#what-makes-dynamic-meta-analysis-different",
+    "title": "Dynamic Meta-analysis: When Transparency Meets Multiplicity",
+    "section": "2 What makes dynamic meta-analysis different?",
+    "text": "2 What makes dynamic meta-analysis different?\nIn a traditional meta-analysis, analysts define: a fixed dataset, a single analysis model, and a small number of pre-specified moderators or sensitivity checks.\nIn a dynamic meta-analysis, those decisions are handed to the user. They can change filters, subsets, moderators, and see the pooled effect in real time.\nThat interactivity is powerful…but statistically dangerous.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Dynamic Meta-analysis - When Transparency Meets Multiplicity"
+    ]
+  },
+  {
+    "objectID": "Dynamic_Meta_analysis.html#the-multiple-testing-trap",
+    "href": "Dynamic_Meta_analysis.html#the-multiple-testing-trap",
+    "title": "Dynamic Meta-analysis: When Transparency Meets Multiplicity",
+    "section": "3 The multiple testing trap",
+    "text": "3 The multiple testing trap\nEach time a user applies a new filter (“show only beetles”, “exclude North America”, “compare abundance metrics”), the system re-fits a meta-analytic model.\nIf we treat each of these as an implicit hypothesis test, “is there an effect?”, we quickly perform hundreds or thousands of overlapping tests.\n\n3.1 The maths behind it\nIf each test uses a 5% significance threshold, the probability of finding at least one “significant” result after n explorations is:\n\\[\nP(\\text{at least one false positive}) = 1 - (1 - 0.05)^n\n\\]\nAfter 20 filters: 64%.\nAfter 100 filters: 99.4%.\nSo even if every true effect were zero, a dynamic meta-analysis session will almost certainly show several “significant” patterns purely by chance.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Dynamic Meta-analysis - When Transparency Meets Multiplicity"
+    ]
+  },
+  {
+    "objectID": "Dynamic_Meta_analysis.html#a-quick-simulation-in-r",
+    "href": "Dynamic_Meta_analysis.html#a-quick-simulation-in-r",
+    "title": "Dynamic Meta-analysis: When Transparency Meets Multiplicity",
+    "section": "4 A quick simulation in R",
+    "text": "4 A quick simulation in R\nThe short R simulation below shows how easily “significant” results appear by chance in a dynamic meta-analysis even when there is no true effect at all.\nWe start by generating a fake meta-analytic dataset with:\n\n600 study results (each representing an effect size such as a log response ratio),\nthree grouping factors — Taxon, Threat, and Region,\nand a true mean effect of zero (so any “effect” we detect is random noise).\n\nIn a dynamic tool, users can filter these data by group for example, “show only beetles in Europe under habitat loss”. Each filter combination corresponds to a new subset of studies and therefore a new meta-analysis.\nThe code loops over all combinations of Taxon × Threat × Region, fits a random-effects model to each subset using metafor::rma(), and stores the p-value of the estimated overall effect.\nWhen we plot those p-values, we see a roughly uniform distribution — just what you expect if there is truly no signal. However, many p-values still fall below 0.05. That’s not evidence of an effect — it’s the statistical reality of multiple testing.\nEven with perfect data and methods, exploring many subsets virtually guarantees that some will appear “significant” by chance.\nThis is why uncorrected dynamic meta-analysis can so easily generate illusory patterns.\n\n\nCode\nset.seed(234)\nlibrary(dplyr)\nlibrary(purrr)\nlibrary(metafor)\nlibrary(ggplot2)\n\n# Simulate 600 studies with true effect = 0\nsimulate_meta &lt;- function(N = 600, tau = 0.1) {\n  vi &lt;- rgamma(N, shape = 5, rate = 50)\n  yi &lt;- rnorm(N, 0, sqrt(vi + tau^2))\n  tibble(yi, vi,\n         Taxon = sample(letters[1:10], N, TRUE),\n         Threat = sample(LETTERS[1:8], N, TRUE),\n         Region = sample(1:5, N, TRUE))\n}\n\nmeta_df &lt;- simulate_meta()\n\nfit_re &lt;- function(dat) {\n  tryCatch({\n    rma(yi, vi, data = dat, method = \"REML\")$pval\n  }, error = function(e) NA)\n}\n\n# each combination of Taxon x Threat x Region = a \"user filter\"\npvals &lt;- meta_df %&gt;%\n  group_by(Taxon, Threat, Region) %&gt;%\n  group_split() %&gt;%\n  map_dbl(fit_re)\n\n#mean(pvals &lt; 0.05, na.rm = TRUE)\n\nggplot(data.frame(p=pvals), aes(x=p)) +\ngeom_histogram(bins=30, fill=\"steelblue\", colour=\"white\") +\ngeom_vline(xintercept = 0.05, linetype=\"dashed\", colour=\"red\") +\nlabs(x=\"p-value across user-defined subsets\", y=\"Count\",\ncaption=\"Under the null (true effect = 0), many subsets appear 'significant'.\")+\n  theme_classic()\n\n\n\n\n\n\n\n\n\nThe illusion of context sensitivity in Dynamic meta-analysis is often justified as context-sensitive evidence.\nThat is a good goal — we do need contextually relevant syntheses.\nHowever, the problem arises when users interpret dynamically generated results as confirmatory evidence, rather than exploratory insight.\nA “significant” effect appearing only when you filter to a specific taxon–region–threat combination could mean:\n\na real ecological interaction,\nor just a statistical artefact from dozens of filters tried.\n\nWithout careful framing, it’s impossible to tell.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Dynamic Meta-analysis - When Transparency Meets Multiplicity"
+    ]
+  },
+  {
+    "objectID": "Dynamic_Meta_analysis.html#distinguishing-dynamic-living-meta-analysis",
+    "href": "Dynamic_Meta_analysis.html#distinguishing-dynamic-living-meta-analysis",
+    "title": "Dynamic Meta-analysis: When Transparency Meets Multiplicity",
+    "section": "5 Distinguishing dynamic & living meta-analysis",
+    "text": "5 Distinguishing dynamic & living meta-analysis\nIt is worth distinguishing these.\n\n\n\n\n\n\n\n\nFeature\nDynamic meta-analysis\nLiving meta-analysis\n\n\n\n\nWhat changes\nFilters and subsets\nUnderlying data (new studies)\n\n\nWho changes it\nThe user\nThe analyst/curator\n\n\nFrequency\nPotentially hundreds of times per session\nOccasionally (as evidence accumulates)\n\n\nMain risk\nCross-sectional multiplicity (many parallel tests)\nSequential multiplicity (repeated re-looks)\n\n\nMitigation\nHierarchical shrinkage, transparency logs\nAlpha-spending, Bayesian updating\n\n\n\nLiving meta-analyses are at risk from repeated updates; Dynamic meta-analyses are at risk from infinite exploration.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Dynamic Meta-analysis - When Transparency Meets Multiplicity"
+    ]
+  },
+  {
+    "objectID": "Dynamic_Meta_analysis.html#why-this-is-especially-acute-in-ecology",
+    "href": "Dynamic_Meta_analysis.html#why-this-is-especially-acute-in-ecology",
+    "title": "Dynamic Meta-analysis: When Transparency Meets Multiplicity",
+    "section": "6 Why this is especially acute in ecology?",
+    "text": "6 Why this is especially acute in ecology?\nEcological datasets are messy, heterogeneous, and context-dependent. That makes dynamic tools look very informative — but also means spurious patterns are common.\n\nHigh heterogeneity: random subsets can look meaningfully different.\nSmall sample sizes: filtering can reduce studies per subset to very low numbers.\nMultiple correlated outcomes: abundance, richness, diversity, etc.\nStrong user bias: stakeholders may (unintentionally) “filter until significant”.\n\n\n6.1 Practical safeguards\nDynamic meta-analysis can still be used responsibly.\nHere are practical guard-rails:\n\n\n\n\n\n\n\nRisk\nMitigation\n\n\n\n\nInflated false positives\nEmphasise effect sizes and confidence intervals, not p-values.\n\n\nData dredging by users\nRecord all filters and model runs in a log.\n\n\nSmall-N subsets\nDisplay warnings (“Fewer than 10 studies – exploratory only”).\n\n\nContext interpretation\nRequire users to download model outputs with metadata and caveats.\n\n\nMultiple comparisons\nReplace separate fits with hierarchical models (partial pooling).\n\n\nReproducibility\nStamp every analysis with data and model version numbers.\n\n\nMisuse by decision-makers\nFrame as exploratory decision-support, not as inferential evidence.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Dynamic Meta-analysis - When Transparency Meets Multiplicity"
+    ]
+  },
+  {
+    "objectID": "Dynamic_Meta_analysis.html#hierarchical-shrinkage-a-simple-fix",
+    "href": "Dynamic_Meta_analysis.html#hierarchical-shrinkage-a-simple-fix",
+    "title": "Dynamic Meta-analysis: When Transparency Meets Multiplicity",
+    "section": "7 Hierarchical shrinkage: a simple fix",
+    "text": "7 Hierarchical shrinkage: a simple fix\nDynamic meta-analyses may include a hierarchical (multi-level) model, but only in the narrow sense of accounting for non-independence among effect sizes within the same study (e.g., multiple outcomes reported in one paper). This is good practice, it corrects for pseudoreplication and gives more realistic standard errors.\nHowever, this structure does not protect against the cross-sectional multiplicity created when users repeatedly subset the data by taxon, threat, or region.\nThose grouping factors are not part of the model’s random or fixed structure, they only appear as filters that generate new, separate analyses.\nSo even though each model is hierarchical at the study level, the overall framework is still many models run independently, not one coherent multilevel model that estimates group-level deviations jointly.\nIn other words, the hierarchy controls dependence within studies, not dependence across user-defined subsets.\nEach time a user filters for a new taxon or region, they are fitting a new model with new random effects. That does nothing to correct for the fact that there are dozens (or hundreds) of overlapping subset analyses happening — the source of the multiple-testing inflation.\nTo truly address multiplicity, we need a global hierarchical model with random (or fixed) effects for taxon, region, threat, etc., estimated simultaneously.\nThat model would “share strength” across groups and naturally shrink noisy subgroup estimates toward the grand mean.\nBy contrast, the per-subset approach used in dynamic apps provides no shrinkage across filters, so noisy subgroups can easily appear significant by chance.\n\n\n\n\n\n\nWarningA hierarchy in name only\n\n\n\nDynamic meta-analyses often use a “hierarchical” model,\nbut the hierarchy stops at the study level.\nIt corrects for non-independence within papers,\nnot for multiplicity across the hundreds of subsets that users can explore.\nTo control false positives, we need a meta-hierarchical model\nthat includes the moderators (taxon, threat, region) as part of the structure —\nnot as filters.\n\n\nMeta-hierarcichal models naturally mitigate multiple testing. Instead of re-fitting one model per subset, you estimate group-level deviations from a shared mean, allowing for partial pooling.\n\n\nCode\nmv &lt;- rma.mv(yi, vi, random = ~ 1 | Taxon/Threat/Region,\ndata = meta_df, method = \"REML\")\nmv\n\n\n\nMultivariate Meta-Analysis Model (k = 600; method: REML)\n\nVariance Components:\n\n            estim    sqrt  nlvls  fixed               factor \nsigma^2.1  0.0000  0.0000     10     no                Taxon \nsigma^2.2  0.0000  0.0000     80     no         Taxon/Threat \nsigma^2.3  0.0095  0.0976    312     no  Taxon/Threat/Region \n\nTest for Heterogeneity:\nQ(df = 599) = 765.6013, p-val &lt; .0001\n\nModel Results:\n\nestimate      se    zval    pval    ci.lb   ci.ub    \n  0.0095  0.0131  0.7251  0.4684  -0.0162  0.0352    \n\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nThese BLUPs (best linear unbiased predictions) are shrunken towards the grand mean reducing extreme, noisy results.\nIn short: one model, many groups beats many models, one group at a time.\n\n7.1 Communicating uncertainty\nThe danger of dynamic tools is not the maths, it is the interpretation.\nTo communicate responsibly:\n\nAvoid “significant” / “non-significant” language.\nDisplay sample size and heterogeneity (I²) prominently.\nUse colour gradients for effect magnitude, not binary flags.\nProvide confidence or credible intervals visually.\nExplain that changing filters changes the question, not just the answer.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Dynamic Meta-analysis - When Transparency Meets Multiplicity"
+    ]
+  },
+  {
+    "objectID": "Dynamic_Meta_analysis.html#final-thoughts",
+    "href": "Dynamic_Meta_analysis.html#final-thoughts",
+    "title": "Dynamic Meta-analysis: When Transparency Meets Multiplicity",
+    "section": "8 Final thoughts",
+    "text": "8 Final thoughts\nDynamic meta-analysis is a huge step forward for transparency and engagement — but also a step closer to the edge of statistical overconfidence.\nIt turns a single meta-analysis into an ecosystem of possible analyses, where exploration is cheap and inference is fragile.\nUsed carefully, it can empower context-sensitive decision-making. Used naively, it can generate an illusion of evidence.\nThe solution is not to abandon dynamic tools, but to design them responsibly:\n\nbuild in warnings, logs, and shrinkage,\nframe results as exploratory,\nand keep the philosophy of meta-analysis combining evidence, not slicing it thin at the centre.\n\nDynamic meta-analysis can democratise evidence synthesis — but only if we democratise statistical literacy alongside it.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Dynamic Meta-analysis - When Transparency Meets Multiplicity"
+    ]
+  },
+  {
+    "objectID": "Ecology_SR.html",
+    "href": "Ecology_SR.html",
+    "title": "Which shortcuts are really shortcuts in systematic reviews?",
+    "section": "",
+    "text": "TipTL;DR\n\n\n\nReviews in ecology often take short-cuts in the review process - the effect this has on the risk of bias is unknown and could be quite severe. A recent paper showed (in health) that some short-cuts can be carried out with minimal effect on the review. Many ecological reviews make short-cuts that can actually increase the risk of bias.\nThis post was inspired by the recent ESHackathon event hosted by the Innovation Observatory at Newcastle University where one of the projects was to update PredicTER so that we can predict the potential time saving of different common short-cuts used in rapid reviews.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Rapid review short-cuts"
+    ]
+  },
+  {
+    "objectID": "Ecology_SR.html#rapid-reviews",
+    "href": "Ecology_SR.html#rapid-reviews",
+    "title": "Which shortcuts are really shortcuts in systematic reviews?",
+    "section": "1 Rapid reviews",
+    "text": "1 Rapid reviews\nThere is a clear demand from policy-makers for rapid evidence synthesis. “Rapid Reviews” are a type of systematic review where one or more of the review processes are simplified, sped-up (through, for example, AI tools to assist screening) or completely omitted. There is not a unified definition of what a “Rapid Review” is, and authors tend to take different “short-cuts” depending on resource constraints or the knowledge/experience of the review team.\nA paper published in Research Synthesis Methods, Haby et al. (2023) addresses this heterogeneity in short-cuts used for Rapid Review and assess where possible the evidence about the risk of bias associated with each.\nHaby et al. (2023) provide a really useful guide to what short-cuts one can take in a Rapid Review. Their Table 2 (recreated below) lists each commonly used short-cut and the potential impact on the risk of bias.\n\nTable 1. The potential risk of bias for each short-cut as shown by Haby et al. (2023) in their Table 2.\n\n\n\n\n\n\n\n\nPossible “short-cuts” categorised by review step\nRecommended (yes/no)\nPotential impact on risk of bias if done\nSupporting evidence within Haby et al.\n\n\n\n\nPreparation of a protocol\n\n\n\n\n\nOmit protocol\nNo\n↑\n✗\n\n\nPrepare a protocol and make publicly available (e.g., PROSPERO or Open Science Framework). Limit included information to the key aspects that allow a complete assessment of risk of bias (with AMSTAR 2 or ROBIS).\nYes\n↓\n✗\n\n\nQuestion formulation\n\n\n\n\n\nLimit the number of questions and sub-questions and limit the scope of the question/s\nYes\nNone expected\n✗\n\n\nLimit the number of outcomes\nYes\nNone expected\n✗\n\n\nInclusion criteria\n\n\n\n\n\nLimit publication language to English but provide justification\nYes\nMinimal\n✓\n\n\nExclude gray/unpublished literature but provide justification and note that it may lead to an overestimation of effect\nYes\nMinimal\n✓\n\n\nRestrictions based on publication date, for example, last 5, 1 , or 2  years (unless it is known that relevant studies could only have been reported since a specific date)\nNo\n↑\n✓\n\n\nLimit to papers available electronically\nNo\n↑\n✓\n\n\nRestrict study types to systematic reviews\nYes\nNone expected\n✗\n\n\nRestrict study types to randomized controlled trials or controlled clinical trials\n\n\n\n\n\nSearching\n\n\n\n\n\nUse of a single database for searching (e.g., PubMed)\nNo\n↑\n✓\n\n\nLimit number of databases searched to at least two and one supplementary source (e.g., reference lists of included studies). If searching for RCTs search Medline/PubMed, EMBASE, and CENTRAL).\nYes\nNone\n✓\n\n\nUse the Polyglot Search Translator to translate search strings across multiple databases, though noting its limitations: https://sr-accelerator.com/#/help/polyglot\nYes\nNone\n✓\n\n\nUse of the Cochrane RCT Classifier for systematic reviews of RCTs to reduce screening burden (if available for your review)a\nYes\nNone\n✓\n\n\nUse of existing methodological filters for observational or diagnostic studies\nNo\n↑\n✓\n\n\nSelection\n\n\n\n\n\nOne reviewer screens titles and abstracts\nNo\n↑\n✓\n\n\nTitle-only screening using keyword searches based on population, intervention, and comparison (PICo)\nNo\n↑\n✓\n\n\nOne reviewer selects based on full text\nNo\n↑\n✓\n\n\nUse of dual computer monitors for selection\nNo\nNone\n✓\n\n\nData extraction\n\n\n\n\n\nOne reviewer extracts data\nNo\n↑\n✓\n\n\nOne reviewer extracts data with verification by a second reviewer\nYes\nMinimal\n✓ but evidence is limited\n\n\nData extraction limited to key characteristics, results, conflicts of interest\nYes\nNone expected\n✗\n\n\nUse of dual computer monitors for data extraction\nYes\nNone\n✓\n\n\nUse of Google Translate for data extraction from non-English trials\nNo\n↑\n✓\n\n\nNot contacting study authors to obtain missing information\nYes\nMinimal\n✓\n\n\nRisk of bias assessment\n\n\n\n\n\nLimit or omit risk of bias assessment\nNo\n↑\n✗\n\n\nNot using blinding for risk of bias assessment\nYes\nNone\n✓\n\n\nOne reviewer does risk of bias assessment\nNo\n?\n✗\n\n\nOne reviewer does risk of bias assessment with checking by a second reviewer\n?\n?\n✗\n\n\nOmit assessment of reporting/publication bias\n?\n?\n✗\n\n\nSynthesis\n\n\n\n\n\nNarrative synthesis only (no meta-analysis)\nYes\nNone\n✗\n\n\nIf data and time permit conduct a meta-analysis of one primary outcome only\nYes\nNone\n✗\n\n\nReporting\n\n\n\n\n\nInclude a methods section, even if added as an appendix\nYes\n↓\n✗\n\n\nLimit included information to the key aspects that allow a complete assessment of risk of bias (with AMSTAR 2 or ROBIS)\nYes\nNone\n✗\n\n\nConsider using a checklist to report the key aspects of the methods rather than narrative reporting\nYes\nNone\n✗\n\n\n\n\n1.1 What does this mean for ecological reviews?\nIn ecology authors of reviews (sometimes incorrectly labelled systematic reviews or meta-analysis) often take short-cuts such as only searching a single source, not assessing risk of bias or using only single reviewers (see this great paper by Haddaway et al. 2020 for a list of common problems with reviews and how to fix them).\nWhat strikes me from Haby et al. (2023) is that most of the short-cuts authors take in ecology are those that increase the risk of bias. For example, it is common to see a statement such as this in ecological reviews:\n“We conducted a search of the ISI Web of Science database* on [DATE], using the following key words…”\n\n\n\n\n\n\nImportant*WOS is NOT a database\n\n\n\nIt is important to note that the Web Of Science platform is not a database, but rather a collection of databases. Each institution might have different subscriptions. Thus it is important that review authors list the databases that their institution has access to.\n\n\n\n\n\n\n\nSearching a single source increases the risk of bias because not all journals are indexed on each platform. A quick look at the results from two sources will show you that there are always (sometimes quite large) differences between the results of a search. For example, searching for peer-reviewed articles on Lake spawning Brown Trout in Web of Science (WOS) versus searching in Lens.org leads to a total of 1385 records, but only 69 of these are duplicated across the sources. If we only used WOS there is a risk that we might miss important evidence.\n\n#https://github.com/ESHackathon/CiteSource\n#remotes::install_github(\"ESHackathon/CiteSource\")\nlibrary(CiteSource)\n#Import citation files from a folder\ncitation_files &lt;- list.files(path = file.path(\"data\"), full.names = TRUE)\n\ncitations &lt;- read_citations(citation_files,\n                            cite_sources = c(\"lens.org\", \"WOS\"),verbose = FALSE)\n\n\n#Deduplicate citations. \nunique_citations &lt;- dedup_citations(citations)\n\n#Count number of unique and non-unique citations from different sources  \nn_unique &lt;- count_unique(unique_citations)\n\n#For each unique citation, determine which sources were present\nsource_comparison &lt;- compare_sources(unique_citations, comp_type = \"sources\")\n\n#Generate source comparison heatmap\nplot_source_overlap_heatmap(source_comparison)\n\n\n\n\nComparision of two databases (WOS & lens.org) when searching for ecological evidence\n\n\n\n\nI also found it interesting that dropping grey literature from a review can have minimal effect (although it is noted that the effect size might be overestimated) on the risk of bias. I wonder if grey literature is more important in ecology than in health? In ecology we have a large number of commissioned reports or “unpublished” reports (technical reports from NGOs etc. might be “unpublished” but still widely available on websites) that are important sources of evidence. For example, in a systematic review by Bernes et al.(2015) grey literature made up over 20% of the studies included in the synthesis. This represents a large proportion of the evidence-base in this particular case.\nHaby et al. (2023) suggest that limiting the search to English language publications has a minimal effect on the potential risk of bias. The evidence that Haby et al. (2023) base their suggestion on is from epidemiology and health technology (Morrison et al. 2012, Nussbaumer-Streit et al. 2019). In ecology a relatively large proportion of studies on the effectiveness of biodiversity conservation interventions are in a non-English language (see this great paper that addresses this issue - Amano et al. 2021).\nIgnoring grey literature or non-English studies in ecological reviews would most likely have a high potential impact on the risk of bias.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Rapid review short-cuts"
+    ]
+  },
+  {
+    "objectID": "Ecology_SR.html#conclusion",
+    "href": "Ecology_SR.html#conclusion",
+    "title": "Which shortcuts are really shortcuts in systematic reviews?",
+    "section": "2 Conclusion",
+    "text": "2 Conclusion\nEcological reviews often take short-cuts that increase the risk of bias in the reported findings - it is important that we recognise this risk and highlight it to stakeholders and policy makers.\n\n\n\n\n\n\nNoteAcknowledgements\n\n\n\nThis blogpost was greatly improved by comments from Neal Haddaway and Ross Mounce.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Rapid review short-cuts"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Dr Matthew J Grainger",
+    "section": "",
+    "text": "I am an “uncertain ecologist”. My research focuses on uncertainty in conservation decision making and how best to make use of it in statistical models and in communication with stakeholders. I have a footing in evidence synthesis and a strong sideline in pheasants.\n\n\n\nEdwards’s pheasant\n\n\nI am currently employed as a Researcher at the Norwegian Institute for Nature Research, based in the head office in Trondheim. A list of my publications can be found here.",
+    "crumbs": [
+      "About me",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#biography",
+    "href": "index.html#biography",
+    "title": "Dr Matthew J Grainger",
+    "section": "",
+    "text": "I am an “uncertain ecologist”. My research focuses on uncertainty in conservation decision making and how best to make use of it in statistical models and in communication with stakeholders. I have a footing in evidence synthesis and a strong sideline in pheasants.\n\n\n\nEdwards’s pheasant\n\n\nI am currently employed as a Researcher at the Norwegian Institute for Nature Research, based in the head office in Trondheim. A list of my publications can be found here.",
+    "crumbs": [
+      "About me",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#interests",
+    "href": "index.html#interests",
+    "title": "Dr Matthew J Grainger",
+    "section": "Interests",
+    "text": "Interests\n\nEvidence synthesis\nConservation decision making\nBiodiversity conservation\nBayesian networks\nOpen and Reproducible Science in Ecology",
+    "crumbs": [
+      "About me",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Dr Matthew J Grainger",
+    "section": "Education",
+    "text": "Education\nPhD Zoology, 2012, University of Pretoria",
+    "crumbs": [
+      "About me",
+      "Home"
+    ]
+  },
+  {
+    "objectID": "magnatude.html",
+    "href": "magnatude.html",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "",
+    "text": "In the previous posts in this series, I have argued that two common responses to messy ecological evidence often fail us:\n\nCounting studies instead of synthesising them\n\nRelying on pooled averages even when heterogeneity dominates\n\nAt this point, a natural question arises:\n\nIf direction is inconsistent and averages can be misleading, what should we be looking at instead?\n\nOne answer could be magnitude.\nThis post is about why, in many ecological questions, direction is contingent but magnitude is informative and about what must change statistically before magnitude-based synthesis is defensible.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#when-no-overall-effect-hides-the-real-signal",
+    "href": "magnatude.html#when-no-overall-effect-hides-the-real-signal",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "",
+    "text": "In the previous posts in this series, I have argued that two common responses to messy ecological evidence often fail us:\n\nCounting studies instead of synthesising them\n\nRelying on pooled averages even when heterogeneity dominates\n\nAt this point, a natural question arises:\n\nIf direction is inconsistent and averages can be misleading, what should we be looking at instead?\n\nOne answer could be magnitude.\nThis post is about why, in many ecological questions, direction is contingent but magnitude is informative and about what must change statistically before magnitude-based synthesis is defensible.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#the-cancellation-problem",
+    "href": "magnatude.html#the-cancellation-problem",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "2 The cancellation problem",
+    "text": "2 The cancellation problem\nConsider a simple and very common situation.\n\nSome studies report strong positive effects\n\nSome report strong negative effects\n\nThe pooled mean effect is close to zero\n\nA standard meta-analysis might reasonably conclude:\n\n“There is no overall effect.”\n\nBut in ecology, this conclusion can be deeply misleading.\nA system in which effects are sometimes strongly positive and sometimes strongly negative is not unresponsive. It is highly responsive just in context-dependent ways.\nThe problem is not the statistics.\nThe problem is the question being asked.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#a-concrete-ecological-example-grazing-and-plant-diversity",
+    "href": "magnatude.html#a-concrete-ecological-example-grazing-and-plant-diversity",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "3 A concrete ecological example: grazing and plant diversity",
+    "text": "3 A concrete ecological example: grazing and plant diversity\nConsider the effects of grazing intensity on plant species richness one of the most studied relationships in terrestrial ecology.\nAcross studies and systems, grazing has been shown to:\n\nIncrease plant diversity at low to moderate intensity\n(by reducing dominance and opening space for subordinates)\nDecrease plant diversity at high intensity\n(through biomass removal, trampling, and soil degradation)\n\nNow imagine a meta-analysis that pools studies across:\n\nDifferent livestock species\n\nDifferent productivity gradients\n\nDifferent baseline disturbance regimes\n\nDifferent management histories\n\nSome studies report strong positive effects of grazing on richness.\nOthers report strong negative effects.\nWhen combined, the mean effect size may sit very close to zero.\nA standard random-effects meta-analysis might conclude:\n\n“Grazing has no overall effect on plant species richness.”\n\nStatistically, that statement may be correct. Ecologically, it is almost meaningless.\nA driver that can strongly increase or strongly decrease biodiversity depending on context is not benign.\nThe problem here is not heterogeneity.\nThe problem is asking the wrong first question.\nBefore asking whether grazing increases or decreases diversity on average, a more fundamental question is:\n\nDoes grazing produce large changes in community structure at all?\n\nThat is a question about magnitude, not direction.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#a-simple-simulation",
+    "href": "magnatude.html#a-simple-simulation",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "4 A simple simulation",
+    "text": "4 A simple simulation\nTo make this concrete, we simulate an evidence base where:\n\nEffects are often large\n\nThe sign of effects varies across studies\n\nSampling error and heterogeneity are realistic\n\n\n\nSimulating bidirectional but strong effects\nlibrary(tidyverse)\nlibrary(metafor)\n\nset.seed(4)\n\nsimulate_bidirectional &lt;- function(\n  k = 30,\n  magnitude = 0.5,\n  tau = 0.3,\n  vi_range = c(0.05, 0.25)\n) {\n  vi &lt;- runif(k, vi_range[1], vi_range[2])\n  signs &lt;- sample(c(-1, 1), k, replace = TRUE)\n  theta &lt;- signs * magnitude + rnorm(k, 0, tau)\n  yi &lt;- rnorm(k, theta, sqrt(vi))\n\n  tibble(\n    study = seq_len(k),\n    yi = yi,\n    vi = vi,\n    sei = sqrt(vi)\n  )\n}\n\ndat &lt;- simulate_bidirectional()",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#what-standard-meta-analysis-concludes",
+    "href": "magnatude.html#what-standard-meta-analysis-concludes",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "5 What standard meta-analysis concludes",
+    "text": "5 What standard meta-analysis concludes\nWe first fit a conventional random-effects meta-analysis.\n\n\nStandard random-effects meta-analysis\nm_signed &lt;- rma(yi, vi, data = dat, method = \"REML\")\npredict(m_signed)\n\n\n\n    pred     se   ci.lb  ci.ub   pi.lb  pi.ub \n -0.0104 0.1254 -0.2561 0.2353 -1.1299 1.1091 \n\n\nWe get:\n\nA pooled effect near zero\n\nA confidence interval that overlaps zero\n\nA conclusion of “no overall effect”\n\nThis conclusion is statistically defensible but ecologically incomplete.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#the-temptation-synthesising-absolute-effects",
+    "href": "magnatude.html#the-temptation-synthesising-absolute-effects",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "6 The temptation: synthesising absolute effects",
+    "text": "6 The temptation: synthesising absolute effects\nA natural response is to say:\n\nIf direction cancels out, why not synthesise the size of effects instead?\n\nThis leads to the idea of magnitude-based synthesis, often operationalised by taking absolute values of effect sizes.\nHowever, this step requires care.\nNaïvely meta-analysing absolute effect sizes violates the assumptions of standard meta-analysis and will generally produce biased results if done without adjustment.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#why-naïve-magnitude-meta-analysis-is-invalid",
+    "href": "magnatude.html#why-naïve-magnitude-meta-analysis-is-invalid",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "7 Why naïve magnitude meta-analysis is invalid",
+    "text": "7 Why naïve magnitude meta-analysis is invalid\nTransforming effect sizes to absolute values breaks several core assumptions at once:\n\nSystematic upward bias\nEven when true effects are zero, the expected absolute value of noisy estimates is positive. Noise becomes signal.\nNon-normal sampling distributions\nAbsolute values follow a folded distribution that is skewed and asymmetric, not approximately normal.\nInvalid variances\nThe original sampling variances no longer describe uncertainty in the transformed effects, leading to incorrect weighting.\n\nPut simply:\n\nA naïve meta-analysis of absolute effect sizes will almost always suggest an effect, even when none exists.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#what-must-change-for-magnitude-based-synthesis-to-be-defensible",
+    "href": "magnatude.html#what-must-change-for-magnitude-based-synthesis-to-be-defensible",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "8 What must change for magnitude-based synthesis to be defensible",
+    "text": "8 What must change for magnitude-based synthesis to be defensible\nIf magnitude is the question, then the estimand and model must change. At least one of the following adjustments is required.\n\n8.1 Option 1: Bias-corrected magnitudes\nFor normally distributed sampling error, the expected absolute value under a true null effect is:\n\\[\nE(|y_i| \\mid \\theta = 0) = \\sqrt{\\frac{2 v_i}{\\pi}}\n\\]\nA simple bias-corrected magnitude is therefore:\n\\[\n|y_i| - \\sqrt{\\frac{2 v_i}{\\pi}}\n\\]\nThis removes the expected contribution of sampling noise and ensures that zero effects map approximately to zero.\nThis approach is imperfect, but vastly preferable to naïve absolute-value synthesis.\n\n\n8.2 Option 2: Explicit modelling of magnitude (folded-normal)\nA cleaner solution is to model magnitude with an appropriate likelihood that acknowledges the transformation.\nConceptually:\n\nSigned effects are generated with normal error\n\nMagnitudes follow a folded distribution\n\nThe target of inference is the distribution of true effect magnitudes\n\nThis approach avoids violated assumptions and makes uncertainty explicit.\nBelow is a minimal working example using rstan, treating the sampling standard errors as known.\n\n\nFolded-normal magnitude model (rstan)\nlibrary(rstan)\nlibrary(posterior)\n\nrstan_options(auto_write = TRUE)\noptions(mc.cores = parallel::detectCores())\n\nabs_yi &lt;- abs(dat$yi)\nsei    &lt;- dat$sei\n\nstan_code &lt;- \"\nfunctions {\n  real folded_normal_lpdf(real y, real mu, real sigma) {\n    // y &gt;= 0; folded normal = mixture of N(+mu,sigma) and N(-mu,sigma)\n    return log_sum_exp(\n      normal_lpdf(y |  mu, sigma),\n      normal_lpdf(y | -mu, sigma)\n    );\n  }\n}\ndata {\n  int&lt;lower=1&gt; N;\n  vector&lt;lower=0&gt;[N] y;       // observed magnitudes |yi|\n  vector&lt;lower=0&gt;[N] se;      // known sampling SDs\n}\nparameters {\n  real&lt;lower=0&gt; mu_mag;       // population mean magnitude\n  real&lt;lower=0&gt; tau_mag;      // heterogeneity (SD) among true magnitudes\n  vector&lt;lower=0&gt;[N] m;       // true study magnitudes\n}\nmodel {\n  // Priors (tweak as needed for your effect-size scale)\n  mu_mag ~ normal(0, 1);\n  tau_mag ~ exponential(2);\n\n  // Hierarchical distribution of true magnitudes\n  m ~ normal(mu_mag, tau_mag);\n\n  // Observation model: folded normal\n  for (n in 1:N) {\n    target += folded_normal_lpdf(y[n] | m[n], se[n]);\n  }\n}\ngenerated quantities {\n  // Posterior predictive: a new study's true magnitude\n  real m_new = fabs(normal_rng(mu_mag, tau_mag));\n}\n\"\n\nstan_data &lt;- list(\n  N  = nrow(dat),\n  y  = abs_yi,\n  se = sei\n)\n\nfit &lt;- stan(\n  model_code = stan_code,\n  data = stan_data,\n  chains = 4,\n  iter = 2000,\n  warmup = 1000,\n  seed = 1\n)\n\nprint(fit, pars = c(\"mu_mag\", \"tau_mag\", \"m_new\"), probs = c(0.025, 0.5, 0.975))\n\n\nInference for Stan model: anon_model.\n4 chains, each with iter=2000; warmup=1000; thin=1; \npost-warmup draws per chain=1000, total post-warmup draws=4000.\n\n        mean se_mean   sd 2.5%  50% 97.5% n_eff Rhat\nmu_mag  0.55    0.00 0.07 0.41 0.55  0.71   394  1.0\ntau_mag 0.14    0.01 0.08 0.02 0.14  0.30    28  1.1\nm_new   0.55    0.00 0.17 0.19 0.55  0.91  1613  1.0\n\nSamples were drawn using NUTS(diag_e) at Wed Feb 18 15:17:48 2026.\nFor each parameter, n_eff is a crude measure of effective sample size,\nand Rhat is the potential scale reduction factor on split chains (at \nconvergence, Rhat=1).\n\n\nTo summarise the posterior more neatly:\n\n\nPosterior summaries for key magnitude parameters\ndraws &lt;- as_draws_df(fit, pars = c(\"mu_mag\", \"tau_mag\", \"m_new\"))\n\nsummary_df &lt;- tibble(\n  param = c(\"mu_mag\", \"tau_mag\", \"m_new\"),\n  mean  = c(mean(draws$mu_mag), mean(draws$tau_mag), mean(draws$m_new)),\n  q025  = c(quantile(draws$mu_mag, 0.025), quantile(draws$tau_mag, 0.025), quantile(draws$m_new, 0.025)),\n  q50   = c(quantile(draws$mu_mag, 0.5),   quantile(draws$tau_mag, 0.5),   quantile(draws$m_new, 0.5)),\n  q975  = c(quantile(draws$mu_mag, 0.975), quantile(draws$tau_mag, 0.975), quantile(draws$m_new, 0.975))\n)\n\nsummary_df\n\n\n# A tibble: 3 × 5\n  param    mean   q025   q50  q975\n  &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 mu_mag  0.555 0.408  0.553 0.708\n2 tau_mag 0.142 0.0228 0.135 0.302\n3 m_new   0.553 0.189  0.552 0.912",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#a-visual-comparison-naïve-yi-meta-analysis-vs-folded-normal-magnitude-model",
+    "href": "magnatude.html#a-visual-comparison-naïve-yi-meta-analysis-vs-folded-normal-magnitude-model",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "9 A visual comparison: naïve |yi| meta-analysis vs folded-normal magnitude model",
+    "text": "9 A visual comparison: naïve |yi| meta-analysis vs folded-normal magnitude model\nTo make the difference concrete, we can compare:\n\nA naïve random-effects meta-analysis of abs(yi) using vi as if nothing changed (this is not valid!)\nThe posterior distribution for mu_mag from the folded-normal model\n\n\n\nPlot: naive magnitude meta-analysis vs folded-normal posterior\nlibrary(ggplot2)\n\n# Naïve magnitude meta-analysis (illustrative only; violates assumptions)\nm_naive_abs &lt;- rma(abs(dat$yi), dat$vi, method = \"REML\")\nnaive_est &lt;- as.numeric(m_naive_abs$b)\nnaive_ci  &lt;- c(as.numeric(m_naive_abs$ci.lb), as.numeric(m_naive_abs$ci.ub))\n\n# Posterior for mean true magnitude from folded-normal model\nmu_draws &lt;- draws$mu_mag\nmu_ci &lt;- quantile(mu_draws, probs = c(0.025, 0.5, 0.975))\n\n# Density data for plotting\ndens &lt;- density(mu_draws)\ndens_df &lt;- tibble(x = dens$x, y = dens$y)\n\n# Build the plot\nggplot(dens_df, aes(x = x, y = y)) +\n  geom_line(linewidth = 1) +\n  labs(\n    x = \"Mean true magnitude (mu_mag)\",\n    y = \"Posterior density\",\n    title = \"Magnitude inference: folded-normal model vs naive |yi| meta-analysis\",\n    subtitle = \"Naive approach treats |yi| as Gaussian with variance vi (illustrative only)\"\n  ) +\n  # Posterior median and 95% credible interval\n  geom_vline(xintercept = mu_ci[2], linetype = \"solid\", linewidth = 0.8) +\n  geom_vline(xintercept = mu_ci[c(1, 3)], linetype = \"dashed\", linewidth = 0.8) +\n  # Naive point estimate and CI\n  geom_vline(xintercept = naive_est, linetype = \"dotdash\", linewidth = 0.8) +\n  geom_vline(xintercept = naive_ci, linetype = \"dotted\", linewidth = 0.8) +\n  annotate(\"text\", x = mu_ci[2], y = max(dens$y), vjust = -0.5,\n           label = \"Folded-normal posterior median\", size = 3.2) +\n  annotate(\"text\", x = naive_est, y = max(dens$y)*0.85, vjust = -0.5,\n           label = \"Naive |yi| estimate\", size = 3.2) +\n  coord_cartesian(ylim = c(0, max(dens$y)*1.1))\n\n\n\n\n\n\n\n\n\nIn this figure:\n\nThe solid line is the posterior density for the mean true magnitude (mu_mag) from the folded-normal model.\nThe solid vertical line is the posterior median; dashed lines show the 95% credible interval.\nThe dot-dash vertical line is the naïve random-effects estimate from meta-analysing abs(yi) directly; dotted lines show its 95% CI.\n\nThe point is not that the naïve approach is always “wildly wrong” in every dataset. The point is that it is answering the question using an invalid sampling model and when sampling variances differ, that can materially change inference.\n\n9.1 Option 3: Shift the estimand entirely\nIn many cases, it is more informative to estimate quantities such as:\n\nThe probability that effects exceed a meaningful threshold\n\nThe median or upper quantiles of effect magnitude\n\nThe proportion of contexts with large responses\n\nThese quantities align naturally with decision-making and avoid cancellation without relying on problematic averages.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#what-magnitude-based-synthesis-is-and-isnt",
+    "href": "magnatude.html#what-magnitude-based-synthesis-is-and-isnt",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "10 What magnitude-based synthesis is (and isn’t)",
+    "text": "10 What magnitude-based synthesis is (and isn’t)\nMagnitude-based synthesis is not:\n\nIgnoring direction permanently\n\nClaiming all effects are beneficial or harmful\n\nA shortcut around careful modelling\n\nIt is:\n\nA way to detect responsiveness\n\nA guard against misleading cancellation\n\nA complement to directional and context-specific analyses\n\nUsed appropriately, it helps answer the question:\n\nDoes this driver produce changes large enough to matter?",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#when-magnitude-is-the-right-question",
+    "href": "magnatude.html#when-magnitude-is-the-right-question",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "11 When magnitude is the right question",
+    "text": "11 When magnitude is the right question\nMagnitude-based synthesis is particularly informative when:\n\nEffects are expected to be bidirectional\n\nContext dependence is strong\n\nManagement decisions hinge on risk, not mean response\n\nCommon ecological examples include:\n\nDisturbance regimes\n\nClimate variability\n\nLight, nutrients, or grazing intensity\n\nInvasive species impacts\n\nIn these cases, “no average effect” is often the wrong conclusion.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#from-magnitude-to-context",
+    "href": "magnatude.html#from-magnitude-to-context",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "12 From magnitude to context",
+    "text": "12 From magnitude to context\nMagnitude tells us whether systems respond.\nContext tells us how they respond.\nOnce we know that effects are large, the most important question becomes:\n\nUnder what conditions do outcomes differ?\n\nAnswering that requires treating heterogeneity as signal, not noise.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "magnatude.html#closing-thought",
+    "href": "magnatude.html#closing-thought",
+    "title": "Magnitude Matters: When Direction Is the Wrong Question",
+    "section": "13 Closing thought",
+    "text": "13 Closing thought\nA synthesis that averages away large but opposing effects is not neutral it is blind to the very dynamics ecologists often care about most.\nMagnitude-based synthesis can reveal those dynamics but only if the statistical model is aligned with the question being asked.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Meta-analysis of magnitude"
+    ]
+  },
+  {
+    "objectID": "OpenAlex.html",
+    "href": "OpenAlex.html",
+    "title": "Using OpenAlex to get publication metadata",
+    "section": "",
+    "text": "I have been playing around with the OpenAlexR package which interfaces with the OpenAlex API. This allows you to get bibliographic information about publications, authors, institutions, sources, funders, publishers, topics and concepts.\nHere I first look at the proportion of open publications published by NINA over time.\nFirst we need to look for the Institution ID.\nlibrary(openalexR, quietly = TRUE)\nlibrary(tidyverse, quietly = TRUE)\noa_fetch( entity = \"inst\", # same as \"institutions\" \n          display_name.search = \"\\\"Norwegian Institute for Nature\\\"\") |&gt; \n  select(display_name, ror) |&gt;  \n  knitr::kable()\n\n\n\n\ndisplay_name\nror\n\n\n\n\nNorwegian Institute for Nature Research\nhttps://ror.org/04aha0598\nThen we can get a dataframe of the publications.\nAll_NINA&lt;- oa_fetch( entity = \"works\", institutions.ror = \"04aha0598\", type = \"article\", from_publication_date = \"2000-01-01\", is_paratext = \"false\" )\n\n# Get the open records\n\nopen_access &lt;- oa_fetch( entity = \"works\", institutions.ror = \"04aha0598\", type = \"article\", from_publication_date = \"2000-01-01\", is_paratext = \"false\", is_oa = \"true\", group_by = \"publication_year\" )\n\n# Get the closed records\nclosed_access &lt;- oa_fetch( entity = \"works\", institutions.ror = \"04aha0598\", type = \"article\", from_publication_date = \"2000-01-01\", is_paratext = \"false\", is_oa = \"false\", group_by = \"publication_year\" )\n\n# Join the dataframes together\nuf_df &lt;- closed_access |&gt;  \n  select(- key_display_name) |&gt;  \n  full_join(open_access, by = \"key\", suffix = c(\"_ca\", \"_oa\"))\nNow we can plot the data.\nuf_df  |&gt;  filter(key &lt;= 2024) |&gt; # we do not yet have complete data for 2024\n  pivot_longer(cols = starts_with(\"count\"))  |&gt; \n  mutate( year = as.integer(key), is_oa = recode( name, \"count_ca\" = \"Closed Access\", \"count_oa\" = \"Open Access\" ), label = if_else(key &lt; 2024, NA_character_, is_oa) )  |&gt; \n  select(year, value, is_oa, label)  |&gt; \n  ggplot(aes(x = year, y = value, group = is_oa, color = is_oa)) + \n  geom_line(size = 1) + \n  labs( title = \"NINA's progress towards Open Access\", x = NULL, y = \"Number of journal articles\") +\n  scale_color_brewer(palette = \"Dark2\", direction = -1) +\n  scale_x_continuous(breaks = seq(2000, 2024, 2)) + \n  geom_text(aes(label = label), nudge_x = -5, hjust = 0) + \n  coord_cartesian(xlim = c(NA, 2024.5)) + \n  guides(color = \"none\")+ \n  ggthemes::theme_solarized()",
+    "crumbs": [
+      "Posts",
+      "Data & tools",
+      "Using OpenAlex to get publication metadata"
+    ]
+  },
+  {
+    "objectID": "OpenAlex.html#extract-the-topics",
+    "href": "OpenAlex.html#extract-the-topics",
+    "title": "Using OpenAlex to get publication metadata",
+    "section": "1 Extract the topics",
+    "text": "1 Extract the topics\nThe “topic” for each record is a description of the subject matter of the publication determined by using a large language model. The example from the OpenAlex topics page is:\nExample Topic: “Artificial Intelligence in Medicine” Domain: “Health Sciences” Field: “Medicine” Subfield: “Health Informatics”\nEach topic is made up of a subfield, a field and a domain. The model scores each documents topics, with the highest topic score being considered the “primary” topic.\n\n1.1 All topics\n\nexpanded_tibble &lt;- All_NINA |&gt;  # Unnest the 'topics' to duplicate each row for each topic \n  unnest(topics, names_sep = \"_\")  |&gt; \n  select(display_name, everything())\n\nword_df&lt;-expanded_tibble |&gt; \n  group_by(topics_display_name) |&gt; \n  tally()\n\nwordcloud2::wordcloud2(word_df)\n\n\n\n\n\n\n\n1.2 Primary topics\n\nget_top_topic &lt;- function(df) {\n  if (nrow(df) == 0 || sum(df$name == \"topic\") == 0) {\n    # If the dataframe is empty or contains no topics\n    return(data.frame(display_name = NA, score = NA))\n  } else {\n    # Otherwise, proceed to get the top topic\n    top_topic &lt;- df  |&gt; \n      filter(name == \"topic\")  |&gt; \n      slice_max(order_by = score)  |&gt; \n      slice_head(n = 1)  # Ensure only one result is returned\n    return(top_topic)\n  }\n}\n\ntop_topics&lt;-All_NINA  |&gt; \n  mutate(\n    top_topic_display_name = map_chr(topics, ~ {\n      result &lt;- get_top_topic(.x)\n      if (nrow(result) &gt; 0) result$display_name else NA\n    }),\n    top_topic_score = map_dbl(topics, ~ {\n      result &lt;- get_top_topic(.x)\n      if (nrow(result) &gt; 0) result$score else NA\n    })\n  )\n\n\ntopics_df&lt;-top_topics |&gt; \n  group_by(top_topic_display_name) |&gt; \n  tally()\n\n\nwordcloud2::wordcloud2(topics_df)",
+    "crumbs": [
+      "Posts",
+      "Data & tools",
+      "Using OpenAlex to get publication metadata"
+    ]
+  },
+  {
+    "objectID": "Publications.html",
+    "href": "Publications.html",
+    "title": "Publications",
+    "section": "",
+    "text": "The full list of my publications can be found on GoogleScholar. If you can not find an open access version of any of my publications please get in contact and I will send you one.\n\n\n\n\n\nauthor\nyear\ntitle\njournal\nnumber\n\n\n\n\nS Savilaakso, NR Haddaway, M Grainger, L Errington\n2026\nCritical methodological flaws in Feurer et al.(2025) render its findings untrustworthy\nEcoEvoRxiv\n\n\n\nP Martin, F Amirmohammedi, C Barreto, I Berger, P Bissessur, AP Christie, ...\n2026\nFactors influencing the use of scientific evidence in conservation practice and policy: insights from a systematic map\nEcoEvoRxiv\n\n\n\nS Davis, M Grainger, M Pfeifer, Z Pattison, P Stephens, R Sanderson\n2025\nRestoring riparian habitats for benefits to biodiversity and human livelihoods: a systematic map protocol for riparian restoration approaches in the tropics\nEnvironmental Evidence\n14 (1), 2\n\n\nE Flemyng, A Noel‐Storr, B Macura, G Gartlehner, J Thomas, JJ Meerpohl, ...\n2025\nPosition statement on artificial intelligence (AI) use in evidence synthesis across Cochrane, the Campbell Collaboration, JBI and the Collaboration for Environmental Evidence 2025\nCochrane Database of Systematic Reviews\n\n\n\nB Czúcz, T Simensen, AB Skrindo, GM Rusch, S Nybø, M Grainger, ...\n2025\nNo net loss accounting: Aligning biodiversity offsets with ecosystem accounts\nEcological Solutions and Evidence\n6 (1), e70006\n\n\nDWA Noble, ZA Xirocostas, NC Wu, AR Martinig, RA Almeida, ...\n2025\nThe promise of community-driven preprints in ecology and evolution\nProceedings of the Royal Society B: Biological Sciences\n292 (2039)\n\n\nER Ivimey-Cook, A Sánchez-Tójar, I Berberi, A Culina, DG Roche, ...\n2025\nFrom policy to practice: progress towards data-and code-sharing in ecology and evolution\nProceedings of the Royal Society B: Biological Sciences\n292 (2055)\n\n\nH Khalil, V Welch, M Grainger, F Campbell\n2025\nMethodology for mapping reviews, evidence maps, and gap maps\nResearch Synthesis Methods\n16 (5), 786-796\n\n\nJ Pick, B Allen, B Bachelot, K Bairos-Novak, J Brand, B Class, T Dallas, ...\n2025\nThe SORTEE guidelines for data and code quality control in ecology and evolutionary biology\n\n\n\n\nK Phosri, N Tantipisanuh, MJ Grainger, ML Gore, GA Gale, AJ Giordano, ...\n2025\nPopulation dynamics of the globally threatened fishing cat (Prionailurus viverrinus) in a coastal anthropogenic landscape of southern Thailand\nGlobal Ecology and Conservation\n59, e03524\n\n\nD d'Amato, S Rantala, K Korhonen‐Kurki, KE Locher‐Krause, T Stoffers, ...\n2025\nA social network analysis of the European science–policy–society interface on biodiversity\nConservation Biology\n39 (5), e70023\n\n\nM Crane, I Silva, MJ Grainger, GA Gale\n2025\nPredicting risk to bat species from wind turbine collision in Southeast Asia\nConservation Biology\n39 (2), e14452\n\n\nER Ivimey-Cook, A Culina, S Dimri, M Grainger, F Kar, M Lagisz, ...\n2025\nTADA! Simple guidelines to improve analytical code sharing for transparency and reproducibility\nEcoEvoRxiv\n\n\n\nR Spake, EE Jackson, JM Bullock, E Gardner, E Tipton, MJ Grainger, ...\n2025\nPrecision ecology for targeted conservation action\nNature Ecology & Evolution\n9 (7), 1102-1111\n\n\nJL Gan, MJ Grainger, MDF Shirley, S Davis, M Watson, S Dube, M Pfeifer\n2025\nEffectiveness of perches in promoting bird-mediated seed dispersal for natural forest regeneration: a systematic review\nEnvironmental Evidence\n14 (1), 10\n\n\nH Khalil, V Welsh, M Grainger, F Campbell\n2025\nGuidance to undertaking systematic evidence maps\nEnvironment International\n109827\n\n\nJA Bonilla Londoño, J Helo Sarmiento, C Bohórquez Peñuela, ...\n2025\nIncentivizing Sustainability through Conditional Agricultural Credit: A Systematic Review Protocol\nprotocolRxiv\n20250360182\n\n\nA Culina, D Foster, M Grainger, RE O'Dea, A Sánchez-Tójar, OL Pescott, ...\n2025\nElevating the importance of Risk of Bias assessment for ecology and evolution\nEcoEvoRxiv\n\n\n\nEKR VKM, H de Boer, B Gehrke, TKS Hjermann, EB Thorstad, M Grainger, ...\n2025\nScientific assessment of risk from trade to CITES-listed species of sturgeons and paddlefishes\n\n\n\n\nJ Leight, V Piñeiro, V Taleon, A Hernandez Santana, B Reyes, E Hasiner, ...\n2025\nThe causal effects of\" home-grown\" school feeding programs: A systematic review protocol\nprotocolRxiv\n20250237004\n\n\nMT Anochirim, M Grainger, G Stewart, E Takola\n2025\nThe implementation of network meta-analysis in Ecology; a case study using crop yield data\nEcoEvoRxiv\n\n\n\nJSH VKM, K Eldegard, M Grainger, A Kopatz, Q Mauvisseau, EK Rueness, ...\n2025\nNon-detriment finding for cheetah (Acinonyx jubatus)\n\n\n\n\nEKR VKM, K Eldegard, M Grainger, S Jo, BS Hermansen, H de Boer\n2025\nNon-detriment finding for African elephant (Loxodonta africana)\n\n\n\n\nEKR VKM, K Eldegard, M Grainger, S Jo, AK Hermansen, B Star, ...\n2025\nNon-detriment finding for grey wolf (Canis lupus)\n\n\n\n\nEKR VKM, K Eldegard, M Grainger, S Jo, BS Hermansen, H de Boer\n2025\nNon-detriment finding for leopard (Panthera pardus)\n\n\n\n\nHB VKM, M Grainger, TKS Hjermann, A Kopatz, EK Rueness\n2025\nNon-detriment finding for sperm whale (Physeter macrocephalus)\n\n\n\n\nEB Nilsen, LF Eriksen, CH Hilde, M Grainger\n2025\nExperimental harvest of willow ptarmigan, black grouse and capercaillie: Summary of the planning stage\n\n\n\n\nMS Aarønæs, M Grainger, G Søgaard, U Jansson, H de Wit, C Lindemann, ...\n2025\nUtvikling av framskrivinger og scenarioer for norsk natur\n\n\n\n\nK Eldegard, MW Furnes, M Grainger, B Moe, BK Sandercock, GA Sonerud, ...\n2024\nEffects of capture, marking, and tracking on the welfare of wild birds\nVitenskapskomiteen for mat og miljø (VKM)\n\n\n\nCR Nater, SP Hofhuis, M Grainger, Ø Flagstad, RA Ims, ST Killengreen, ...\n2024\nAn integrated population modelling workflow for supporting mesopredator management\nEcoEvoRxiv\n\n\n\nNR Haddaway, M Grainger, M Sciberras, I Kelling, SJ Cooke\n2024\nThe status of academic research on salmon farming: a scoping review protocol.\nagriRxiv\n20240489452\n\n\nM Evju, M Grainger, U Jansson, SL Olsen, RE Roos, O Skarpaas, ...\n2024\nOvervåking av dragehode Dracocephalum ruyschiana. Årsrapport 2023\n\n\n\n\nDWA Noble, ZA Xirocostas, NC Wu, AR Martinig, RA de Almeida, ...\n2024\ncode from: The promise of community-driven preprints in ecology and evolution\n\n\n\n\nEKR VKM, H de Boer, D Flø, B Gehrke, M Grainger, JS Hermansen, ...\n2024\nScientific assessment of risk posed by trade to crocodilians listed by CITES\n\n\n\n\nAL Kolstad, M Grainger, M Evju\n2024\nMaking use of spatially biased variables in ecosystem condition accounting–a GIS based workflow\nEcoEvoRxiv\n\n\n\nEKR VKM, K Eldegard, M Grainger, JS Hermansen, A Kopatz, H de Boer\n2024\nNon-detriment finding for European otter (Lutra lutra)\n\n\n\n\nA Kolstad, KP Adjei, V Bakkestuen, E Framstad, M Grainger, A Gray, ...\n2024\nVidereutvikling av indikatorer for å vurdere tilstand for økosystemer på land. En oppfølging av Nybø mfl. 2023\n\n\n\n\nTKS VKM, M Grainger, S Jo, EKR Hermansen, H de Boer\n2024\nNon-detriment finding for Guianan squirrel monkey\n\n\n\n\nJS Hermansen, K Eldegard, M Grainger, EK Rueness, H de Boer\n2024\nNon-detriment finding for soft-shelled tortoise (Malacochersus tornieri)\nVKM\n\n\n\nEKR VKM, K Eldegard, M Grainger, JS Hermansen, H de Boer\n2024\nNon-detriment finding for golden lion tamarin\n\n\n\n\nJS Hermansen, K Eldegard, M Grainger, A Kopatz, JAM Raeymaekers, ...\n2024\nNon-detriment finding for common buzzard (Buteo buteo)\nVitenskapskomiteen for mat og miljø (VKM)\n\n\n\nEKR VKM, M Grainger, JS Hermansen, A Kopatz, H de Boer\n2024\nNon-detriment finding for saltwater crocodile\n\n\n\n\nEB Nilsen, T Simensen, FT Singsaas, LF Eriksen, H Stokland, TE Sutcliffe, ...\n2024\nEffekter av arealbruk og arealbruksendringer på biodiversitet, økosystemtjenester og karbonlagring i Norge. Et systematisk kart og beslutningsstøtteverktøy\n\n\n\n\nS Nakagawa, ER Ivimey-Cook, MJ Grainger, RE O’Dea, S Burke, ...\n2023\nMethod Reporting with Initials for Transparency (MeRIT) promotes more granularity and accountability for author contributions\nnature communications\n14 (1), 1788\n\n\nPHP Braga, K Hébert, EJ Hudgins, ER Scott, BPM Edwards, ...\n2023\nNot just for programmers: How GitHub can accelerate collaborative and reproducible research in ecology and evolution\nMethods in Ecology and Evolution\n14 (6), 1364-1380\n\n\nSJ Cooke, CN Cook, VM Nguyen, JC Walsh, N Young, C Cvitanovic, ...\n2023\nEnvironmental evidence in action: on the science and practice of evidence synthesis and evidence-based decision-making\nEnvironmental Evidence\n12 (1), 10\n\n\nER Ivimey‐Cook, JL Pick, KR Bairos‐Novak, A Culina, E Gould, ...\n2023\nImplementing code review in the scientific workflow: Insights from ecology and evolutionary biology\nJournal of Evolutionary Biology\n36 (10), 1347-1356\n\n\nE Durrant, P Howson, B Puttick, S Potts, Y Shennan-Farpón, N Sari, ...\n2023\nExisting evidence on the use of participatory scenarios in ecological restoration: a systematic map\nEnvironmental Evidence\n12 (1), 27\n\n\nJL Gan, MJ Grainger, MDF Shirley, M Pfeifer\n2023\nHow effective are perches in promoting bird-mediated seed dispersal for natural forest regeneration? A systematic review protocol\nEnvironmental Evidence\n12 (1), 15\n\n\nNM Shwe, M Grainger, D Ngoprasert, SS Aung, M Grindley, T Savini\n2023\nAnthropogenic pressure on large carnivores and their prey in the highly threatened forests of Tanintharyi, southern Myanmar\nOryx\n57 (2), 262-271\n\n\nG Saridnirun, N Sukumal, MJ Grainger, T Savini\n2023\nLow-intensive agricultural landscapes could help to sustain Green Peafowl Pavo muticus inhabiting surrounding forest patches in Northern Thailand\nGlobal Ecology and Conservation\n44, e02487\n\n\nH de Boer, MG Asmyhr, D Flø, B Gehrke, M Grainger, JS Hermansen, ...\n2023\nScientific assessment of risk to populations of pythons listed by CITES as a result of trade\nVitenskapskomiteen for mat og miljø\n\n\n\nT Riley, L Wallrich, K Hair, M Grainger, C Pritchard, S Young, ...\n2023\nIntroducing CiteSource: a new R package to explore source-level contributions to the stages of a systematic review\n\n\n\n\nS Nybø, A Kolstad, H Sandvik, V Bakkestuen, M Evju, E Framstad, ...\n2023\nIndikatorer for økologisk tilstand i våtmark, semi-naturlig mark og naturlig åpne områder under skoggrensa\n\n\n\n\nCR Nater, SP Hofhuis, M Grainger, D Ehrich\n2023\nStatistiske verktøy for prediksjon av årlig bestandsvekst og effekter av jakt på rødrev\n\n\n\n\nM Evju, M Grainger, SL Olsen, RE Roos, O Skarpaas, OE Stabbetorp\n2023\nOvervåking av dragehode Dracocephalum ruyschiana i 2022. Resultater og forslag til veien videre\n\n\n\n\nNR Haddaway, MJ Grainger, CT Gray\n2022\nCitationchaser: A tool for transparent and efficient forward and backward citation chasing in systematic searching\nResearch synthesis methods\n13 (4), 533-545\n\n\nS Piras, S Righi, M Setti, N Koseoglu, MJ Grainger, GB Stewart, M Vittuari\n2022\nFrom social interactions to private environmental behaviours: The case of consumer food waste\nResources, Conservation and Recycling\n176, 105952\n\n\nRJ Boyd, GD Powney, F Burns, A Danet, F Duchenne, M Grainger, ...\n2022\nROBITT: a tool for assessing the risk‐of‐bias in studies of temporal trends in ecology\nMethods in Ecology and Evolution\n\n\n\nAP Christie, H Downey, WF Frick, M Grainger, D O'Brien, ...\n2022\nA practical conservation tool to combine diverse types of evidence for transparent evidence‐based decision‐making\nConservation Science and Practice\n4 (1), e579\n\n\nMS Reed, DM Young, NG Taylor, R Andersen, NGA Bell, H Cadillo-Quiroz, ...\n2022\nPeatland core domain sets: building consensus on what should be measured in research and monitoring\nMires and Peat\n28\n\n\nE Moore, P Howson, M Grainger, YA Teh, M Pfeifer\n2022\nThe role of participatory scenarios in ecological restoration: a systematic map protocol\nEnvironmental Evidence\n11 (1), 23\n\n\nHE Marshall, M Grainger, N Sukumal\n2022\nThe threat of free-ranging domestic dog to native wildlife: implication for conservation in Southeast Asia.\nRaffles Bulletin of Zoology\n70\n\n\nJJ Cusack, EB Nilsen, MF Israelsen, H Andrén, M Grainger, JDC Linnell, ...\n2022\nQuantifying the checks and balances of collaborative governance systems for adaptive carnivore management\nJournal of Applied Ecology\n\n\n\nD Hagen, AC Mehlhoop, E Torsæter, MO Kyrkjeeide, MJ Grainger, M Evju\n2022\nAssessing the effect of mitigation efforts to improve vegetation recovery in powerline construction sites across Norway\nEcological Engineering\n184, 106789\n\n\nM Grainger, NR Haddaway\n2022\nWhy “vote-counting” is never acceptable in evidence synthesis\nOSF\n\n\n\nWJ Sutherland, T Amano, N Boenisch, SH Cheng, AP Christie, ...\n2022\nPresenting conclusions from assessed evidence\nTransforming conservation: A practical guide to evidence and decision making\n\n\n\nG Gupta, M Grainger, JC Dunn, R Sanderson, PJK McGowan\n2022\nConservation of Galliformes in the Greater Himalaya: is there a need for a higher-quality evidence-base?\nBird Conservation International\n32 (3), 360-369\n\n\nNR Haddaway, A Bannach-Brown, MJ Grainger, WK Hamilton, ...\n2022\nThe evidence synthesis and meta-analysis in R conference (ESMARConf): levelling the playing field of conference accessibility and equitability\nSystematic Reviews\n11 (1), 113\n\n\nM Evju, RM Jacobsen, A Endrestøl, M Grainger, O Hanssen, MS Nowell, ...\n2022\nOvervåking av effekter av tiltak for truet natur. Feltmetodikk, analyser og resultater for sju arter og en naturtype\n\n\n\n\nT Amano, L Bako, M Best, N Boenisch, P Boersch-Supan, D Browne, ...\n2022\n12. Transforming Practice: Checklists for Delivering Change\nOpen Book Publishers\n\n\n\nT Amano, L Bako, M Best, N Boenisch, P Boersch-Supan, D Browne, ...\n2022\nTransforming practice: checklists for delivering change\nOpen Book Publishers\n\n\n\nL Aramyan, M Grainger, K Logatcheva, S Piras, M Setti, G Stewart, ...\n2021\nFood waste reduction in supply chains through innovations: a review\nMeasuring Business Excellence\n25 (4), 475-492\n\n\nH Downey, T Amano, M Cadotte, CN Cook, SJ Cooke, NR Haddaway, ...\n2021\nTraining future generations to deliver evidence‐based conservation and ecosystem management\nEcological solutions and Evidence\n2 (1), e12032\n\n\nG Saridnirun, N Sukumal, MJ Grainger, T Savini\n2021\nLiving with human encroachment: Status and distribution of Green Peafowl in northern stronghold of Thailand\nGlobal Ecology and Conservation\n28, e01674\n\n\nM Crane, I Silva, MJ Grainger, GA Gale\n2021\nLimitations and gaps in global bat wing morphology trait data\nMammal Review\n\n\n\nNR Haddaway, CT Gray, M Grainger\n2021\nNovel tools and methods for designing and wrangling multifunctional, machine-readable evidence synthesis databases\nEnvironmental Evidence\n10 (1), 5\n\n\nJ Cusack, EB Nilsen, MF Israelsen, H Andren, M Grainger, JDC Linnell, ...\n2021\nQuantifying the checks and balances of decentralised governance systems for adaptive carnivore management\nEcoEvoRxiv\n\n\n\nG Gupta, M Grainger, JC Dunn, R Sanderson, PJK McGowan\n2021\nWhat is the evidence available to support our knowledge about threats to the conservation of Galliformes in the Greater Himalaya?\nbioRxiv\n2021.02. 23.432604\n\n\nM Evju, SL Olsen, O Skarpaas, OE Stabbetorp\n2021\nOvervåking av dragehode Dracocephalum ruyschiana. Beskrivelse av metodikk og resultater 2017‒2020\n\n\n\n\nB Cretois, JDC Linnell, M Grainger, EB Nilsen, JK Rød\n2020\nHunters as citizen scientists: Contributions to biodiversity monitoring in Europe\nGlobal Ecology and Conservation\n23, e01077\n\n\nMJ Grainger, FC Bolam, GB Stewart, EB Nilsen\n2020\nEvidence synthesis for tackling research waste\nNature Ecology & Evolution\n4 (4), 495-497\n\n\nW Phumanee, R Steinmetz, R Phoonjampa, T Bejraburnin, M Grainger, ...\n2020\nOccupancy‐based monitoring of ungulate prey species in Thailand indicates population stability, but limited recovery\nEcosphere\n11 (9), e03208\n\n\nTNE Gray, MJ Grainger, R Grosu\n2020\nConservation decision‐making under uncertainty: Identifying when to reintroduce tiger Panthera tigris to Cambodia\nConservation Science and Practice\n2 (7), e187\n\n\nC Kandemir, C Reynolds, M Verma, M Grainger, G Stewart, S Righi, ...\n2020\nModelling Approaches to Food Waste: Discrete event simulation; machine learning; Bayesian networks; agent-based modelling; and mass balance estimation\nRoutledge Handbook of Food Waste\n326-344\n\n\nL Braunholtz, M Grainger, M Pfeifer\n2020\nHow have roads changed tropical terrestrial biodiversity? Protocol for a system-atic review and meta-analysis-version 2\n\n\n\n\nC Kandemir, C Reynolds, M Verma, M Grainger, G Stewart, S Righi, ...\n2020\nDiscrete event simulation; machine learning; Bayesian networks; agent-based modelling; and mass balance estimation\nRoutledge Handbook of Food Waste\n326\n\n\nC Kandemier, C Reynolds, M Verma, M Grainger, G Stewart, S Righi, ...\n2020\nModelling approaches to food waste: Discrete event simulation; machine learning; bayesian networks; agent based simulation; and mass balance estimation\nRoutledge Handbook of Food Waste\n326-343\n\n\nMJ Grainger, EB Nilsen\n2020\nNeed for transparent and repeatable conservation frameworks\nConservation Biology\n34 (1), 282-285\n\n\nFC Bolam, MJ Grainger, KL Mengersen, GB Stewart, WJ Sutherland, ...\n2019\nUsing the value of information to improve conservation decision making\nBiological Reviews\n94 (2), 629-647\n\n\nNR Haddaway, A Feierman, MJ Grainger, CT Gray, E Tanriver-Ayder, ...\n2019\nEviAtlas: a tool for visualising evidence synthesis databases\nEnvironmental Evidence\n8 (1), 22\n\n\nJ Carrick, MSAB Abdul Rahim, C Adjei, HHH Ashraa Kalee, SJ Banks, ...\n2019\nIs planting trees the solution to reducing flood risks?\nJournal of Flood Risk Management\n12 (S2), e12484\n\n\nB Freeman, D Jiménez-García, B Barca, M Grainger\n2019\nUsing remotely sensed and climate data to predict the current and potential future geographic distribution of a bird at multiple scales: the case of Agelastes meleagrides, a …\nAvian Research\n10 (1), 22\n\n\nN SUKUMAL, MJ GRAINGER, T SAVINI\n2019\nLower levels of human disturbance correspond with longer-term persistence of Endangered Green Peafowl Pavo muticus populations\nBird Conservation International\n1-10\n\n\nMJ Whittingham, AJ McKenzie, RM Francksen, D Feige, T Cadwallender, ...\n2019\nOffshore refuges support higher densities and show slower population declines of wintering Ruddy Turnstones Arenaria interpres\nBird Study\n66 (4), 431-440\n\n\nM Grainger, S Piras, S Righi, M Setti, G Stewart, M Vittuari\n2019\nIntegrated model of consumer behaviours in relation to food waste: Behavioural economics: D4. 4 Linking Bayesian and agent-based models to assess consumer food waste\n\n\n\n\nM Grainger, FC Bolam, GB Stewart, EB Nilsen\n2019\nMaximising the leverage of existing knowledge could reduce research waste in applied ecology and conservation\n\n20th Sept\n\n\nPJK McGowan, GB Stewart, G Long, MJ Grainger\n2018\nAn imperfect vision of indivisibility in the Sustainable Development Goals\nNature Sustainability\n1 (12)\n\n\nMJ Grainger, L Aramyan, K Logatcheva, S Piras, S Righi, M Setti, ...\n2018\nThe use of systems models to identify food waste drivers\nGlobal food security\n16, 1-8\n\n\nMJ Grainger, L Aramyan, S Piras, TE Quested, S Righi, M Setti, M Vittuari, ...\n2018\nModel selection and averaging in the assessment of the drivers of household food waste to reduce the probability of false positives\nPloS one\n13 (2), e0192075\n\n\nH Kendall, G Kaptan, G Stewart, M Grainger, S Kuznesof, P Naughton, ...\n2018\nDrivers of existing and emerging food safety risks: Expert opinion regarding multiple impacts\nFood Control\n90, 440-458\n\n\nMJ Grainger, PJ Garson, SJ Browne, PJK McGowan, T Savini\n2018\nConservation status of phasianidae in Southeast Asia\nBiological Conservation\n220, 60-66\n\n\nF Stephenson, AC Mill, CL Scott, GB Stewart, MJ Grainger, NVC Polunin, ...\n2018\nSocio-economic, technological and environmental drivers of spatio-temporal changes in fishing pressure\nMarine Policy\n88, 189-203\n\n\nM Grainger, S Piras, S Righi, M Setti, G Stewart, M Vittuari\n2018\nBehavioural economics: Linking Bayesian and agent-based models to assess consumer food waste\nREFRESH Deliverable\n4.4\n\n\nS Thunhikorn, MJ Grainger, PJK McGowan, T Savini\n2018\nSpatial distribution of display sites of Grey Peacock-pheasant in relation to micro-habitat and predators during the breeding season\nAvian Research\n9 (1), 17\n\n\nM Grainger, G Stewart, S Piras, S Righi, M Setti, M Vittuari\n2018\nModel integration. Integrated socio-economic model on food waste\nNewcastle University\n\n\n\nMJ Grainger, GB Stewart\n2017\nThe jury is still out on social media as a tool for reducing food waste a response to Young et al.(2017)\nResources, Conservation and Recycling\n122, 407-410\n\n\nM Grainger, D Ngoprasert, P McGowan, T Savini\n2017\nInforming decisions on an extremely data poor species facing imminent extinction\nOryx\n\n\n\nM Grainger, G Stewart, S Piras, S Righi, M Setti, M Vittuari, LH Aramyan\n2017\nD4. 3-Model integration: integrated socio-economic model on food waste\n\n\n\n\nLH Aramyan, MJ Grainger, K Logatcheva, S Piras, S Righi, M Setti, ...\n2017\nFood Waste Reduction in Supply Chains Through Innovations: What Factors Affect the Decision to Adopt Innovations\nThe\n24th IAMB Conference\n\n\nS Thunhikorn, MJ Grainger, PJK McGowan, T Savini\n2016\nMethods used to survey avian species and their potential for surveying ground-dwelling birds in Asia\nForktail\n32, 5-13\n\n\nS Thunhikorn, MJ Grainger, PJK McGowan, T Savini\n2016\nAssessing the population of grey peacock-pheasant (Polyplectron bicalcaratum) in a Southeast Asian conservation landscape\nRaffles Bulletin of Zoology\n64, 302-312\n\n\nM Grainger, G Stewart, S Piras, S Righi, M Setti, M Vittuari, LH Aramyan\n2016\nD4. 2-Model development and data protocol\nREFRESH\n\n\n\nM Grainger, GS Crichton, S Piras, S Righi, M Setti, M Vittuari\n2016\nModel Development and Data Protocol\nNewcastle University\n\n\n\nM Grainger, G Stewart, S Piras, S Righi, M Setti, M Vittuari\n2016\nAcknowledgments & Disclaimer\n\n\n\n\nG Matthew, CG STEWART, P Simone, S Righi, S Marco, V Matteo\n2016\nModel Development and Data Protocol\nWageningen University\n\n\n\nS Thunhikorn, MJ Grainger, PJK McGowan, T Savini\n2016\nAssessing the population status of Grey Peacock-pheasant (Polyplectron bicalcaratum) in Huai Kha Khaeng, a key conservation landscape in Southeast Asia\nRaffles Bulletin of Zoology\n\n\n\nIUCN Species Survival Commission\n2015\nAn IUCN situation analysis of terrestrial and freshwater fauna in West and Central Africa\nIUCN\n\n\n\nFHA Aalen, MJ Grainger, F Hibert, M Hoffmann, DP Mallon, ...\n2015\nAnalyse de situation de l'UICN concernant la faune terrestre et d'eau douce en Afrique centrale et de l'Ouest\nIUCN\n\n\n\nM Grainger, R van Aarde\n2015\nCan Non-Native Species Explain Patterns of Convergence and Deviation in Regenerating Coastal Dune Forest?\nEcological Restoration\n33 (3), 246-255\n\n\nMJ Grainger, RJ Van Aarde\n2013\nThe role of canopy gaps in the regeneration of coastal dune forest\nAfrican Journal of Ecology\n51 (1), 11-20\n\n\nM Grainger, P McGowan, A McKenzie, J Minderman, JP Rodriguez, ...\n2013\nMETHOD FOR THE ASSESSMENT OF PRIORITIES FOR INTERNATIONAL SPECIES CONSERVATION (MAPISCo)\n\n\n\n\nPJK McGowan, LL Owens, MJ Grainger\n2012\nGalliformes science and species extinctions: what we know and what we need to know\nAnimal Biodiversity and Conservation\n35 (2), 321-331\n\n\nMJ Grainger, RJ Van Aarde\n2012\nIs succession-based management of coastal dune forest restoration valid?\nEcological Restoration\n30 (3), 200-208\n\n\nRAR Guldemond, MJ Grainger, MJ Trimble\n2012\nWhere is the Evidence for Assessing Evidence‐Based Restoration? Comments on Ntshotsho et al.(2010)\nRestoration Ecology\n20 (1), 7-9\n\n\nMJ Grainger, RJ van Aarde, TD Wassenaar\n2011\nLandscape composition influences the restoration of subtropical coastal dune forest\nRestoration Ecology\n19 (101), 111-120\n\n\nMJ Grainger\n2011\nAn evaluation of coastal dune forest restoration in northern KwaZulu-Natal, South Africa\nUniversity of Pretoria\n\n\n\nMJ Grainger, RJ Van Aarde\n2011\nResilience of the medicinal plant community of rehabilitating coastal dune forests, KwaZulu-Natal, South Africa\nWiley-Blackwell\n\n\n\nRJ Van Aarde, MJ Grainger\n2011\nAn evaluation of coastal dune forest restoration in northern KwaZulu-Natal, South Africa\n\n\n\n\nC Bonnington, M Grainger, S Dangerfield, E Fanning\n2010\nThe influence of electric fences on large mammal movements in the Kilombero Valley, Tanzania.\nAfrican Journal of Ecology\n48 (1)\n\n\nC Bonnington, MD Steer, J Lamontagne-Godwin, N Owen, M Grainger\n2010\nEvidence for local declines in Tanzania’s puku antelope (Kobus vardoni Livingstone, 1857) population between 1999 and 2003\nAfrican Journal of Ecology\n48 (4), 1139-1142\n\n\nM Grainger, R van Aarde, I Whyte\n2005\nLandscape heterogeneity and the use of space by elephants in the Kruger National Park, South Africa\nAfrican Journal of Ecology\n43 (4), 369-375\n\n\nE Flemyng, A Noel‐Storr, B Macura, G Gartlehner, J Thomas, JJ Meerpohl, ...\nNA\nScolaris Search Portlet Scolaris Search Portlet\n\n\n\n\nK Morrison, E Ivimey-Cook, M Lagisz, A Mizuno, MS Santana, ESA Santos, ...\nNA\nAuthor List",
+    "crumbs": [
+      "About me",
+      "Publications"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html",
+    "href": "vote_counting_is_a_zombie.html",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "",
+    "text": "Vote counting is one of those methods that most evidence synthesis guidelines discourage and yet it keeps reappearing in ecological and conservation reviews.\nSometimes it appears explicitly (“X studies found a positive effect, Y found none”).\nSometimes implicitly (“most studies suggest…”).\nSometimes visually, through heatmaps or bar charts that invite the reader to mentally tally directions or significance.\nThis persistence is not because reviewers are careless. It is because vote counting feels intuitive under uncertainty especially when data are heterogeneous, sample sizes are small, and formal meta-analysis feels overconfident.\nIn this post, I show why vote counting is especially misleading under the conditions that dominate ecological evidence bases, and why different forms of vote counting can lead to mutually contradictory conclusions from the same data.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#the-persistence-of-a-method-we-all-know-is-wrong",
+    "href": "vote_counting_is_a_zombie.html#the-persistence-of-a-method-we-all-know-is-wrong",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "",
+    "text": "Vote counting is one of those methods that most evidence synthesis guidelines discourage and yet it keeps reappearing in ecological and conservation reviews.\nSometimes it appears explicitly (“X studies found a positive effect, Y found none”).\nSometimes implicitly (“most studies suggest…”).\nSometimes visually, through heatmaps or bar charts that invite the reader to mentally tally directions or significance.\nThis persistence is not because reviewers are careless. It is because vote counting feels intuitive under uncertainty especially when data are heterogeneous, sample sizes are small, and formal meta-analysis feels overconfident.\nIn this post, I show why vote counting is especially misleading under the conditions that dominate ecological evidence bases, and why different forms of vote counting can lead to mutually contradictory conclusions from the same data.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#what-do-we-mean-by-vote-counting",
+    "href": "vote_counting_is_a_zombie.html#what-do-we-mean-by-vote-counting",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "2 What do we mean by “vote counting”?",
+    "text": "2 What do we mean by “vote counting”?\nAlthough it comes in different guises, vote counting usually boils down to one of three approaches.\n\n2.1 Direction-based vote counting\n\n“Most studies report a positive effect.”\n\nEach study contributes one vote based on the sign of its estimated effect.\n\n\n2.2 Significance-based vote counting\n\n“Only X studies found a statistically significant effect.”\n\nEach study contributes one vote based on whether p &lt; 0.05.\n\n\n2.3 Visual vote counting\nForest plots, heatmaps, or summary figures are presented with minimal synthesis, inviting the reader to visually tally directions or “significant” results.\nThese approaches differ in presentation, but they share a critical assumption:\n\nEach study contributes one equal vote, regardless of precision, power, or context.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#why-vote-counting-feels-reasonable-in-ecology",
+    "href": "vote_counting_is_a_zombie.html#why-vote-counting-feels-reasonable-in-ecology",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "3 Why vote counting feels reasonable in ecology",
+    "text": "3 Why vote counting feels reasonable in ecology\nVote counting is often defended (explicitly or implicitly) because:\n\nEffect sizes are hard to compare across systems\nSample sizes vary wildly\nHeterogeneity is extreme\nReview authors want to avoid “over-interpretation”\n\nIn highly heterogeneous ecological data, vote counting can feel like the conservative choice.\nUnfortunately, it is usually the least informative one.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#a-simple-simulation-the-conditions-where-vote-counting-thrives",
+    "href": "vote_counting_is_a_zombie.html#a-simple-simulation-the-conditions-where-vote-counting-thrives",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "4 A simple simulation: the conditions where vote counting thrives",
+    "text": "4 A simple simulation: the conditions where vote counting thrives\nTo make this concrete, I simulate a small ecological evidence base with:\n\nA real, non-zero effect\nHigh heterogeneity across studies\nLow and variable power\n\n\n\nSimulation of heterogeneous, low-powered studies\nlibrary(tidyverse)\nlibrary(metafor)\n\nset.seed(2)\n\nsimulate_studies &lt;- function(\n  k = 30,\n  mu = 0.3,\n  tau = 0.4,\n  vi_range = c(0.05, 0.30)\n) {\n  vi &lt;- runif(k, vi_range[1], vi_range[2])\n  theta &lt;- rnorm(k, mu, tau)\n  yi &lt;- rnorm(k, theta, sqrt(vi))\n\n  tibble(\n    study = seq_len(k),\n    yi = yi,\n    vi = vi,\n    se = sqrt(vi),\n    z = yi / se,\n    p = 2 * pnorm(-abs(z)),\n    direction = if_else(yi &gt; 0, \"positive\", \"negative\"),\n    significant = p &lt; 0.05\n  )\n}\n\ndat &lt;- simulate_studies()",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#what-direction-based-vote-counting-concludes",
+    "href": "vote_counting_is_a_zombie.html#what-direction-based-vote-counting-concludes",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "5 What direction-based vote counting concludes",
+    "text": "5 What direction-based vote counting concludes\n\n\nCode\ndat |&gt; count(direction)\n\n\n# A tibble: 2 × 2\n  direction     n\n  &lt;chr&gt;     &lt;int&gt;\n1 negative     12\n2 positive     18\n\n\nA clear majority of studies estimate a positive effect.\nA common narrative conclusion would be:\n\n“Most studies suggest a positive effect, although results are mixed.”\n\nThis sounds cautious and reasonable.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#what-significance-based-vote-counting-concludes",
+    "href": "vote_counting_is_a_zombie.html#what-significance-based-vote-counting-concludes",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "6 What significance-based vote counting concludes",
+    "text": "6 What significance-based vote counting concludes\n\n\nCode\ndat |&gt; count(significant)\n\n\n# A tibble: 2 × 2\n  significant     n\n  &lt;lgl&gt;       &lt;int&gt;\n1 FALSE          22\n2 TRUE            8\n\n\nNow we see something very different: only a small minority of studies are statistically significant.\nA common narrative conclusion here would be:\n\n“Most studies found no significant effect.”",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#two-conclusions-from-the-same-data",
+    "href": "vote_counting_is_a_zombie.html#two-conclusions-from-the-same-data",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "7 Two conclusions from the same data",
+    "text": "7 Two conclusions from the same data\nThese two conclusions are:\n\nBased on the same evidence\nBoth commonly used in ecological reviews\nLogically incompatible\n\nThe contradiction arises because vote counting answers the wrong question:\n\nHow many studies “found” an effect?\n\ninstead of:\n\nWhat does the evidence imply about the distribution of effects?",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#the-meta-analytic-reality-check",
+    "href": "vote_counting_is_a_zombie.html#the-meta-analytic-reality-check",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "8 The meta-analytic reality check",
+    "text": "8 The meta-analytic reality check\nNow we fit a standard random-effects meta-analysis to the same data.\n\n\nRandom-effects meta-analysis\nm &lt;- rma(yi, vi, data = dat, method = \"REML\")\npredict(m)\n\n\n\n   pred     se   ci.lb  ci.ub   pi.lb  pi.ub \n 0.2334 0.1209 -0.0036 0.4704 -0.8263 1.2931 \n\n\nThe result is:\n\nA non-zero pooled mean\nA wide prediction interval\n\nIn other words:\n\nThe effect exists, but its direction and magnitude vary strongly by context.\n\nVote counting cannot express this.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#why-vote-counting-fails-under-ecological-conditions",
+    "href": "vote_counting_is_a_zombie.html#why-vote-counting-fails-under-ecological-conditions",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "9 Why vote counting fails under ecological conditions",
+    "text": "9 Why vote counting fails under ecological conditions\nVote counting does not merely discard information, it systematically distorts it when power is low and heterogeneity is high.\nMechanistically:\n\nLow power =&gt; non-significant != no effect\nEqual votes ignore precision\nDirection ignores magnitude\nSignificance thresholds create false dichotomies\nHeterogeneity is collapsed into counts\n\nUnder these conditions, vote counting is biased against detecting real but variable effects.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#when-is-vote-counting-defensible",
+    "href": "vote_counting_is_a_zombie.html#when-is-vote-counting-defensible",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "10 When is vote counting defensible?",
+    "text": "10 When is vote counting defensible?\nThere are limited cases where vote counting may be acceptable:\n\nPurely scoping exercises\nBinary outcomes with very similar designs\nExplicitly descriptive summaries with no inferential claims\n\nEven then, it should never be used to infer:\n\nStrength of effects\nGenerality\nExpected outcomes in new contexts",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#better-alternatives",
+    "href": "vote_counting_is_a_zombie.html#better-alternatives",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "11 Better alternatives",
+    "text": "11 Better alternatives\nDepending on the question, better options include:\n\nRandom-effects meta-analysis with prediction intervals\nMagnitude-based synthesis\nMeta-regression focused on context, not averages\nDecision-analytic framing\n\nThese approaches do not eliminate uncertainty, they represent it honestly.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  },
+  {
+    "objectID": "vote_counting_is_a_zombie.html#a-zombie-idea-worth-retiring",
+    "href": "vote_counting_is_a_zombie.html#a-zombie-idea-worth-retiring",
+    "title": "Vote Counting Is Dead (Except When It Isn’t): A Zombie Method in Ecology",
+    "section": "12 A zombie idea worth retiring",
+    "text": "12 A zombie idea worth retiring\nVote counting persists not because it works, but because it feels intuitive under uncertainty. In ecology, that intuition is usually misleading.\nThe uncomfortable truth is this:\n\nWhen evidence is heterogeneous and underpowered, counting studies is one of the worst ways to summarise it.",
+    "crumbs": [
+      "Posts",
+      "Evidence synthesis",
+      "Vote counting is a zombie method"
+    ]
+  }
+]
