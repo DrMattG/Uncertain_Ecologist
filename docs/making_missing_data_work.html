@@ -224,6 +224,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Meta-analysis of magnitude</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PRISMA_not_the_method.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PRISMA is not the method you are looking for</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -655,20 +661,20 @@ Table&nbsp;1: Missing data patterns
                                        Petal.Width                   
                               (1)                      (2)           
 ---------------------------------------------------------------------
-Sepal.Length               -0.207***                 -0.161**        
-                            (0.048)                  (0.056)         
-Sepal.Width                 0.223***                 0.225***        
-                            (0.049)                  (0.061)         
-Petal.Length                0.524***                 0.506***        
+Sepal.Length               -0.207***                -0.196***        
+                            (0.048)                  (0.057)         
+Sepal.Width                 0.223***                 0.226***        
+                            (0.049)                  (0.060)         
+Petal.Length                0.524***                 0.525***        
                             (0.024)                  (0.029)         
-Constant                     -0.240                   -0.441         
-                            (0.178)                  (0.222)         
+Constant                     -0.240                   -0.310         
+                            (0.178)                  (0.218)         
 ---------------------------------------------------------------------
 Observations                  150                      105           
-R2                           0.938                    0.938          
-Adjusted R2                  0.937                    0.936          
+R2                           0.938                    0.939          
+Adjusted R2                  0.937                    0.937          
 Residual Std. Error     0.192 (df = 146)         0.193 (df = 101)    
-F Statistic         734.389*** (df = 3; 146) 505.740*** (df = 3; 101)
+F Statistic         734.389*** (df = 3; 146) 515.717*** (df = 3; 101)
 =====================================================================
 Note:                                   *p&lt;0.05; **p&lt;0.01; ***p&lt;0.001</code></pre>
 </div>
@@ -710,7 +716,7 @@ Variances:
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>miss_model2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(<span class="st">'Petal.Width ~ Sepal.Length + Sepal.Width + Petal.Length'</span>, <span class="at">data=</span>iris_MCAR, <span class="at">missing=</span><span class="st">"ML"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(miss_model2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>lavaan 0.6-21 ended normally after 17 iterations
+<pre><code>lavaan 0.6-21 ended normally after 18 iterations
 
   Estimator                                         ML
   Optimization method                           NLMINB
@@ -733,13 +739,13 @@ Parameter Estimates:
 Regressions:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
   Petal.Width ~                                       
-    Sepal.Length     -0.161    0.055   -2.918    0.004
-    Sepal.Width       0.225    0.060    3.785    0.000
-    Petal.Length      0.506    0.029   17.534    0.000
+    Sepal.Length     -0.196    0.056   -3.494    0.000
+    Sepal.Width       0.226    0.059    3.809    0.000
+    Petal.Length      0.525    0.028   18.633    0.000
 
 Intercepts:
                    Estimate  Std.Err  z-value  P(&gt;|z|)
-   .Petal.Width      -0.441    0.218   -2.022    0.043
+   .Petal.Width      -0.310    0.213   -1.454    0.146
 
 Variances:
                    Estimate  Std.Err  z-value  P(&gt;|z|)

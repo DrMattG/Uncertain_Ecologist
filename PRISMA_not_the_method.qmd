@@ -1,0 +1,48 @@
+---
+title: "PRISMA is not the method you are looking for…"
+code-fold: true
+reading-time: true
+execute:
+  warning: false
+  message: false
+filters: []
+lang: en-GB
+---
+
+*... waves hand in a slightly tired, slightly exasperated Jedi voice*
+
+## PRISMA in ecological evidence synthesis
+
+There is a sentence that now appears in an extraordinary number of ecological evidence syntheses:
+
+> “We conducted a systematic review following PRISMA.”
+
+It is meant to reassure the reader and signal rigour, structure and credibility. It tells the reader, implicitly if not explicitly, that what follows is methodologically sound.
+
+But the problem is this: In ecology PRISMA is not the method you are looking for.
+
+PRISMA is a reporting guideline. It tells you how to *describe* what you did. It does not tell you how to design a search strategy, how to define inclusion criteria, how to screen studies, how to assess bias, or how to synthesise evidence. It is about visibility, not validity. So when PRISMA is presented as the methodological foundation of a review, what is actually being communicated, whether intentionally or not, is that the review has been written up in a particular way, not that it has been conducted according to a robust and defensible framework.
+
+In ecology, this distinction is not just technical, it is critical. We are not working with standardised interventions, tightly controlled trials, and consistent outcome measures. We are working with heterogeneous systems, context-dependent responses, multiple study designs, and often incomplete or inconsistently reported data. In that setting, the way evidence is assembled, the structure of the search, the clarity of the inclusion criteria, the consistency of screening decisions, is not a procedural detail. It is the foundation of the inference.
+
+And yet, PRISMA is often doing far more work than it should. It has become, in many cases, a kind of shorthand for rigour - A badge. Something that stands in for a more difficult conversation about how the review was actually conducted. However, PRISMA cannot tell you whether the search strategy was conceptually valid, whether relevant studies were missed, whether screening decisions were consistent, or whether the final evidence base is reproducible. It can make a review transparent, but it cannot make it sound.
+
+This is precisely why frameworks such as ROSES were developed for environmental evidence synthesis. ROSES recognises that ecological evidence is messy, that heterogeneity is the rule rather than the exception, and that different types of synthesis, systematic reviews, systematic maps, mixed-method approaches, require different forms of reporting and, importantly, different forms of methodological thinking. Used properly, ROSES sits alongside conduct guidance (such as that from the Collaboration for Environmental Evidence) to provide both transparency and structure. It does not replace methodological judgement, but it does make it visible.
+
+And then there is the other side of this: the absence of any checklist at all. Because if citing PRISMA as a method is a mild warning sign, not using a checklist is often a much stronger one. A checklist is not just bureaucratic overhead; it is a way of forcing clarity about what was done, what decisions were made, and how those decisions were documented. If it is missing, the immediate question is not “which checklist should they have used?” but “how were these decisions structured, and can they be followed or reproduced?” In a field where small decisions at the screening stage can fundamentally alter the evidence base, that is not a trivial concern.
+
+None of this is an argument against PRISMA. PRISMA is useful. It has improved reporting, and that is a good thing. But it needs to be used for what it is, a reporting standard, not as a substitute for methodological design. There is a real risk here: that increasingly sophisticated analytical methodsare being applied to evidence bases that are assembled in ways that are not fully transparent or conceptually grounded. When that happens, the outputs can look precise, even compelling, while resting on foundations that are less secure than they appear.
+
+So when you see the sentence:
+
+> “We conducted a systematic review following PRISMA”
+
+it should not reassure you. It should prompt a question.
+
+What did they actually do?
+
+Because in evidence synthesis, the credibility of the conclusions depends far less on how the review is reported, and far more on how the evidence was assembled in the first place.
+
+Remember: PRISMA is not the method you are looking for.
+
+![PRISMA is not the method you are looking for](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnNjMHBoemlzOGVsYTJyOHh1bWV5NmxrMjk5dW10dzBqNGZhZHVleiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l2JJKs3I69qfaQleE/giphy.gif)
