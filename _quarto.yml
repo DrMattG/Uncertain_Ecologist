@@ -35,6 +35,8 @@ website:
                 text: Meta-analysis of magnitude
               - href: PRISMA_not_the_method.qmd
                 text: PRISMA is not the method you are looking for
+              - href: funnel_plots.qmd
+                text: Funnel plots lie!
 
           - section: "Data & tools"
             contents:
